@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/05 14:21:46 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/05 15:59:43 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,15 @@ SRC				= main.c\
 				tuples_operations_1.c\
 				tuples_operations_2.c\
 				tuples_utils.c\
+				colors.c\
+				colors_operations_1.c\
+				colors_utils.c\
 				abs_float.c\
 				float_cmp.c
 				
 VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
+				$(SRC_PATH)colors/\
 				$(SRC_PATH)utils/
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))

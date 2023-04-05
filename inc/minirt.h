@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 21:54:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:47:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 ** Personal libraries
 */
 # include "tuples.h"
+# include "colors.h"
 
 /*
 ** Boolean type definition
