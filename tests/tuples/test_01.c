@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_01.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 19:48:20 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/04 21:32:08 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include <stdio.h>
+#include "../../inc/minirt.h"
+#include "../../inc/tuples.h"
+#include "../../lib/libft/libft.h"
 
-int	main(void)
+/*
+** Test for point creation
+*/
+
+int main(void)
 {
-	t_tuple	*a;
+	t_tuple *pnt;
 
-	a = point(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
-	a = vector(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
+	pnt = point(4, -4, 3);
+	print_tuple(*pnt);
+	free(pnt);
 	return (0);
 }

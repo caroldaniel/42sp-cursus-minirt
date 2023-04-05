@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/04 00:07:53 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/04 21:54:28 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,15 @@ CFI 			= -I $(INCLUDE) $(LIBFT_PATH) $(MLX_PATH)
 MLX_CF 			= -lm -lbsd -lmlx -lXext -lX11
 
 SRC				= main.c\
-				tuples.c
+				tuples.c\
+				tuples_operations.c\
+				tuples_utils.c\
+				float_cmp.c\
+				abs_float.c
 				
 VPATH 			:= $(SRC_PATH)\
-				$(SRC_PATH)tuples/
+				$(SRC_PATH)tuples/\
+				$(SRC_PATH)utils/
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
 

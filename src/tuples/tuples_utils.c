@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tuples_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 19:48:20 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/04 19:40:43 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/04 19:41:00 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(void)
+void	print_tuple(t_tuple tuple)
 {
-	t_tuple	*a;
-
-	a = point(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
-	a = vector(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
-	return (0);
+	if (tuple.w == 1.0)
+		printf("\nTuple is a point\n\n");
+	else
+		printf("\nTuple is a vector\n\n");
+	printf("tuple.x = %.1f\n", tuple.x);
+	printf("tuple.y = %.1f\n", tuple.y);
+	printf("tuple.z = %.1f\n", tuple.z);
+	printf("tuple.w = %.1f\n", tuple.w);
+	return ;
 }

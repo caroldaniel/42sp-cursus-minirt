@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   float_cmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 19:48:20 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/04 19:44:03 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/04 21:54:05 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(void)
+t_bool	float_cmp(float a, float b, float epsilon)
 {
-	t_tuple	*a;
-
-	a = point(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
-	a = vector(4.3, -4.2, 3.1);
-	print_tuple(*a);
-	free(a);
-	return (0);
+	if (abs_float(a - b) < epsilon)
+		return (true);
+	else
+		return (false);
 }

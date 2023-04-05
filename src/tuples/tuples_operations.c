@@ -1,47 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   tuples_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 23:30:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 19:49:05 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/04 19:41:47 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/04 21:46:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_tuple	*tuple(float x, float y, float z, short w)
+t_tuple	*tuple_add(t_tuple a, t_tuple b)
 {
-	t_tuple	*tuple;
+	t_tuple	*sum;
 
-	tuple = malloc(sizeof(t_tuple));
-	if (!tuple)
+	if ((a.w + b.w) > 1)
 		return (NULL);
-	tuple->x = x;
-	tuple->y = y;
-	tuple->z = z;
-	tuple->w = w;
-	return (tuple);
+	sum = tuple(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
+	return (sum);
 }
 
-t_tuple	*point(float x, float y, float z)
+t_tuple	*tuple_subtract(t_tuple a, t_tuple b)
 {
-	t_tuple	*point;
+	t_tuple	*sub;
 
-	point = tuple(x, y, z, 1.0);
-	if (!point)
+	if ((a.w - b.w) < 0)
 		return (NULL);
-	return (point);
+	sub = tuple(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
+	return (sub);
 }
 
-t_tuple	*vector(float x, float y, float z)
+t_tuple	*tuple_negate(t_tuple a)
 {
-	t_tuple	*vector;
+	t_tuple	*neg;
+	t_tuple	*zero;
 
-	vector = tuple(x, y, z, 0.0);
-	if (!vector)
+	if (a.w == 1)
 		return (NULL);
-	return (vector);
+	zero = vector(0, 0, 0);
+	neg = tuple_subtract(*zero, a);
+	free(zero);
+	return (neg);
 }
