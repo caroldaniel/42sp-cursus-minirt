@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_05.c                                          :+:      :+:    :+:   */
+/*   test_21.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 15:14:53 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/05 14:10:02 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/05 15:19:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,28 @@
 #include "../../lib/libft/libft.h"
 
 /*
-** Test for tuples' addition
+** Test for cross product
 */
 
 int main(void)
 {
 	t_tuple *a;
 	t_tuple *b;
-	t_tuple *sum;
+	t_tuple *pdt;
 
-	a = tuple(3, -2, 5, 1);
-	printf("\nThis is tuple A:\n");
+	printf("\nThis is a tuple:\n");
+	a = vector(1, 2, 3);
 	print_tuple(*a);
-	b = tuple(-2, 3, 1, 1);
-	printf("\nThis is tuple B:\n");
+	printf("\nThis is a tuple:\n");
+	b = vector(2, 3, 4);
 	print_tuple(*b);
-	printf("\nAdding them together...\n");
-	sum = tuple_add(*a, *b);
-	if (!sum)
-		printf("Can't add two points!\n");
-	else
-	{
-		print_tuple(*sum);
-		free(sum);
-	}
+	printf("\nNow, let's get its cross product:\n");
+	pdt = cross(*a, *b);
+	printf("cross(b, a) = (%.1f, %.1f, %.1f)\n", pdt->x, pdt->y, pdt->z);
+		free(pdt);
+	pdt = cross(*b, *a);
+	printf("cross(b, a) = (%.1f, %.1f, %.1f)\n", pdt->x, pdt->y, pdt->z);
+	free(pdt);
 	free(a);
 	free(b);
 	return (0);

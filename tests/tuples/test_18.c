@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_05.c                                          :+:      :+:    :+:   */
+/*   test_18.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 15:14:53 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/05 14:10:02 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/05 15:08:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,29 @@
 #include "../../lib/libft/libft.h"
 
 /*
-** Test for tuples' addition
+** Test for normatization
 */
 
 int main(void)
 {
-	t_tuple *a;
-	t_tuple *b;
-	t_tuple *sum;
+	t_tuple *v;
+	t_tuple	*norm;
 
-	a = tuple(3, -2, 5, 1);
-	printf("\nThis is tuple A:\n");
-	print_tuple(*a);
-	b = tuple(-2, 3, 1, 1);
-	printf("\nThis is tuple B:\n");
-	print_tuple(*b);
-	printf("\nAdding them together...\n");
-	sum = tuple_add(*a, *b);
-	if (!sum)
-		printf("Can't add two points!\n");
+	printf("\nThis is a tuple:\n");
+	v = vector(4, 0, 0);
+	print_tuple(*v);
+	printf("\nNow, let's normalize it:\n");
+	norm = normalize(*v);
+	if (!norm)
+		printf("Can't normalize a point!\n");
 	else
 	{
-		print_tuple(*sum);
-		free(sum);
+		printf("vector(%.1f, %.1f, %.1f) normalized: (%.1f, %.1f, %.1f)\n", \
+			v->x, v->y, v->z, norm->x, norm->y, norm->z);
+		printf("magnitude of vector(%.1f, %.1f, %.1f): %.1f\n", \
+			norm->x, norm->y, norm->z, magnitude(*norm));
+		free(norm);
 	}
-	free(a);
-	free(b);
+	free(v);
 	return (0);
 }

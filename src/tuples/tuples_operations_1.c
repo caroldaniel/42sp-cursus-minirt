@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples_operations.c                                :+:      :+:    :+:   */
+/*   tuples_operations_1.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:41:47 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 21:46:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/05 10:08:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,24 @@ t_tuple	*tuple_negate(t_tuple a)
 	neg = tuple_subtract(*zero, a);
 	free(zero);
 	return (neg);
+}
+
+t_tuple *tuple_multiply(t_tuple v, double scalar)
+{
+	t_tuple *res;
+	
+	if (v.w == 1)
+		return (NULL);
+	res = tuple(v.x * scalar, v.y * scalar, v.z * scalar, 0.0);
+	return (res);
+}
+
+t_tuple *tuple_divide(t_tuple v, double scalar)
+{
+	t_tuple *res;
+	
+	if (v.w == 1 || scalar == 0)
+		return (NULL);
+	res = tuple(v.x / scalar, v.y / scalar, v.z / scalar, 0.0);
+	return (res);
 }

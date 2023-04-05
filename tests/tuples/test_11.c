@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 21:44:25 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:15:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../../lib/libft/libft.h"
 
 /*
-** Test for point creation
+** Test for tuples negation
 */
 
 int main(void)

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 21:32:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:14:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../../lib/libft/libft.h"
 
 /*
-** Test for vector creation
+** Test for tuples' addition
 */
 
 int main(void)

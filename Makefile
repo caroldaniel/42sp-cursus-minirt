@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/04 21:54:28 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/05 14:21:46 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ MLX_CF 			= -lm -lbsd -lmlx -lXext -lX11
 
 SRC				= main.c\
 				tuples.c\
-				tuples_operations.c\
+				tuples_operations_1.c\
+				tuples_operations_2.c\
 				tuples_utils.c\
-				float_cmp.c\
-				abs_float.c
+				abs_float.c\
+				float_cmp.c
 				
 VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
@@ -58,7 +59,7 @@ $(NAME):		$(OBJ)
 				@printf "\n$(CY)Generating libft...$(RC)\n"
 				make -C $(LIBFT_PATH) $(LIBFT)
 				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
-				$(CC) $(CF) -I $(INCLUDE) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft -L $(MLX_PATH) $(MLX_CF)
+				$(CC) $(CF) -I $(INCLUDE) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft -L $(MLX_PATH) $(MLX_CF) -lm
 				@printf "$(GR)Done!$(RC)\n\n"
 
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_05.c                                          :+:      :+:    :+:   */
+/*   test_14.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 20:25:24 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 15:14:53 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/05 14:10:02 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/05 14:25:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,23 @@
 #include "../../lib/libft/libft.h"
 
 /*
-** Test for tuples' addition
+** Test for magnitude calculation
 */
 
 int main(void)
 {
-	t_tuple *a;
-	t_tuple *b;
-	t_tuple *sum;
+	t_tuple *v;
+	double	mag;
 
-	a = tuple(3, -2, 5, 1);
-	printf("\nThis is tuple A:\n");
-	print_tuple(*a);
-	b = tuple(-2, 3, 1, 1);
-	printf("\nThis is tuple B:\n");
-	print_tuple(*b);
-	printf("\nAdding them together...\n");
-	sum = tuple_add(*a, *b);
-	if (!sum)
-		printf("Can't add two points!\n");
+	printf("\nThis is a tuple:\n");
+	v = vector(0, 0, 1);
+	print_tuple(*v);
+	printf("\nNow, let's get its magnitude:\n");
+	mag = magnitude(*v);
+	if (mag < 0)
+		printf("Can't get a point's magnitude!\n");
 	else
-	{
-		print_tuple(*sum);
-		free(sum);
-	}
-	free(a);
-	free(b);
+		printf("magnitude of vector(%.1f, %.1f, %.1f) is %.1f\n", v->x, v->y, v->z, mag);
+	free(v);
 	return (0);
 }
