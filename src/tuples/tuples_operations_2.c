@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 09:38:09 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 14:58:35 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:36:00 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 double	magnitude(t_tuple v)
 {
-	double mag;
-	
+	double	mag;
+
 	if (v.w == 1)
 		return (-1);
 	mag = sqrt((pow(v.x, 2.0) + pow(v.y, 2.0) + pow(v.z, 2.0)));
 	return (mag);
 }
 
-t_tuple *normalize(t_tuple v)
+t_tuple	*normalize(t_tuple v)
 {
 	t_tuple	*nml;
 	double	mag;
@@ -44,7 +44,7 @@ double	dot(t_tuple a, t_tuple b)
 	return (pdt);
 }
 
-t_tuple *cross(t_tuple a, t_tuple b)
+t_tuple	*cross(t_tuple a, t_tuple b)
 {
 	t_tuple	*v;
 

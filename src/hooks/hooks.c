@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 15:46:31 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/06 18:32:58 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/06 17:58:45 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/06 18:27:10 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*color(double r, double g, double b)
-{
-	t_color	*color;
+static int	key_handle(int keycode, t_data *data);
 
-	color = malloc(sizeof(t_color));
-	if (!color)
-		return (NULL);
-	color->r = r;
-	color->g = g;
-	color->b = b;
-	return (color);
+void	set_hooks(t_data *data)
+{
+	mlx_key_hook(data->mlx_win, &key_handle, data);
+	return ;
+}
+
+static int	key_handle(int keycode, t_data *data)
+{
+	if (keycode == KEY_ESC)
+		exit(data_destroy(data, 0));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/06 11:54:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:37:10 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@
 */
 
 # define MINIRT	"MiniRT"
+
+/*
+** Macros for exit_code
+*/
+
+# define ERR_DATAINIT	1
+# define ERR_MLXINIT	2
 
 /*------LIBRARIES------*/
 
@@ -51,6 +58,7 @@
 */
 # include "tuples.h"
 # include "colors.h"
+# include "keys.h"
 
 /*
 ** Boolean type definition
@@ -74,6 +82,9 @@ typedef struct s_data
 ** Data utils
 */
 t_data	*data_init(void);
+int		data_destroy(t_data *data, int exit_code);
+
+void	set_hooks(t_data *data);
 
 /*
 ** Utils

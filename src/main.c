@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 16:34:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:11:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(void)
 
 	data = data_init();
 	if (!data)
-		return (1);	
-	data->mlx_win = mlx_new_window(data->mlx, 1920, 1000, MINIRT);
+		return (data_destroy(data, ERR_DATAINIT));
+	set_hooks(data);
 	mlx_loop(data->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/06 11:56:53 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/06 18:28:10 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,9 @@ SRC				= main.c\
 				colors.c\
 				colors_operations_1.c\
 				colors_utils.c\
-				data.c\
+				data_init.c\
+				data_destroy.c\
+				hooks.c\
 				abs_float.c\
 				float_cmp.c
 				
@@ -48,6 +50,7 @@ VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
 				$(SRC_PATH)colors/\
 				$(SRC_PATH)data/\
+				$(SRC_PATH)hooks/\
 				$(SRC_PATH)utils/
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
@@ -90,12 +93,11 @@ fclean:			clean
 				@printf "$(RE)Executables removed!$(RC)\n\n"
 
 install:		
-				sudo apt-get update 
-				sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev valgrind -y
+				sudo apt install xorg libxext-dev zlib1g-dev libbsd-dev valgrind -y
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:							
-				valgrind --suppressions=./local.supp --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
+				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
 .PHONY:			all clean fclean re bonus rebonus
 
