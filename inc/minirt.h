@@ -6,12 +6,20 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/05 15:47:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 11:54:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
+
+/*------MACROS------*/
+
+/*
+** Macros for unmutable strings
+*/
+
+# define MINIRT	"MiniRT"
 
 /*------LIBRARIES------*/
 
@@ -30,7 +38,7 @@
 */
 
 # include <math.h>
-# include "../lib/minilibx/mlx.h"
+# include "../lib/libmlx/mlx.h"
 
 /*
 ** My own libft library, completed with previously implemented functions such as
@@ -49,9 +57,23 @@
 */
 typedef enum e_bool
 {
-	false,
-	true
+	FALSE,
+	TRUE
 }	t_bool;
+
+/*
+** Data type definition
+*/
+typedef struct s_data
+{
+	void	*mlx;
+	void	*mlx_win;
+}	t_data;
+
+/*
+** Data utils
+*/
+t_data	*data_init(void);
 
 /*
 ** Utils

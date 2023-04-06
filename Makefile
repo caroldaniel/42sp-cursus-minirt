@@ -6,27 +6,31 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/05 15:59:43 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/06 11:56:53 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= miniRT
-MLX 			= libmlx_Linux.a
-LIBFT			= libft.a
 
+# Paths
 OBJ_PATH		= ./obj/
 SRC_PATH 		= ./src/
 INCLUDE 		= ./inc/
 LIB				= ./lib/
 
-LIBFT_PATH 		= $(LIB)libft/
-MLX_PATH 		= $(LIB)minilibx/
+# Libraries
+FT				= libft.a
+MLX 			= libmlx_Linux.a
+
+FT_PATH 		= $(LIB)libft/
+MLX_PATH 		= $(LIB)libmlx/
 
 #compilation
 CC 				= cc
 CF 				= -g -Wall -Wextra -Werror
-CFI 			= -I $(INCLUDE) $(LIBFT_PATH) $(MLX_PATH)
-MLX_CF 			= -lm -lbsd -lmlx -lXext -lX11
+CFI 			= -I$(INCLUDE)
+CFI_FT			= -L$(FT_PATH) -lft
+CFI_MLX			= -L$(MLX_PATH) -lmlx -lXext -lX11
 
 SRC				= main.c\
 				tuples.c\
@@ -36,12 +40,14 @@ SRC				= main.c\
 				colors.c\
 				colors_operations_1.c\
 				colors_utils.c\
+				data.c\
 				abs_float.c\
 				float_cmp.c
 				
 VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
 				$(SRC_PATH)colors/\
+				$(SRC_PATH)data/\
 				$(SRC_PATH)utils/
 
 OBJ				= $(addprefix $(OBJ_PATH), $(notdir $(SRC:.c=.o)))
@@ -53,17 +59,18 @@ RM 				= rm -rf
 $(OBJ_PATH)%.o: %.c
 				@printf "\n$(CY)Generating object...$(RC)\n"
 				mkdir -p $(OBJ_PATH)
-				$(CC) $(CF) $(CFI) -c $< -o $@
+				$(CC) $(CF) $(CFI) -lmlx -c $< -o $@
 				@printf "$(GR)Object ready!$(RC)"
 
 $(NAME):		$(OBJ)
 				@printf "\n$(CY)Generating MiniLibX...$(RC)\n"
 				@make -C $(MLX_PATH)
 				@printf "$(GR)MiniLibX created!$(RC)\n\n"
-				@printf "\n$(CY)Generating libft...$(RC)\n"
-				make -C $(LIBFT_PATH) $(LIBFT)
+				@printf "\n$(CY)Generating Libft...$(RC)\n"
+				make -C $(FT_PATH)
+				@printf "$(GR)Libft created!$(RC)\n\n"		
 				@printf "\n$(CY)Generating minishell executable...$(RC)\n"
-				$(CC) $(CF) -I $(INCLUDE) -o $(NAME) $(OBJ) -L $(LIBFT_PATH) -lft -L $(MLX_PATH) $(MLX_CF) -lm
+				$(CC) $(CF) $(OBJ) $(CFI) $(CFI_FT) $(CFI_MLX) -lm -lz -o $(NAME) 
 				@printf "$(GR)Done!$(RC)\n\n"
 
 
@@ -72,18 +79,19 @@ all:			$(NAME)
 re:				fclean all
 
 clean:
-				make -C $(LIBFT_PATH) clean
+				make -C $(FT_PATH) clean
 				make -C $(MLX_PATH) clean
 				$(RM) $(OBJ) $(OBJ_PATH)
 				@printf "$(RE)miniRT objects removed!$(RC)\n\n"
 
 fclean:			clean
-				make -C $(LIBFT_PATH) fclean
+				make -C $(FT_PATH) fclean
 				$(RM) $(NAME)
 				@printf "$(RE)Executables removed!$(RC)\n\n"
 
 install:		
-				sudo apt-get install valgrind xorg libxext-dev libbsd-dev -y
+				sudo apt-get update 
+				sudo apt-get install xorg libxext-dev zlib1g-dev libbsd-dev valgrind -y
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:							
