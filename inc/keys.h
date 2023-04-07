@@ -6,12 +6,16 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:12:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/06 18:17:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:25:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
+
+/*
+** Key numbers
+*/
 
 # define KEY_LEFT	65361
 # define KEY_UP		65362
@@ -56,5 +60,28 @@
 # define KEY_W		119
 # define KEY_E		101
 # define KEY_ESC    65307
+
+/*
+** Mouse hook events
+*/
+
+# define MOUSE_LEFT_CLICK	1
+# define MOUSE_MIDDLE_CLICK	2
+# define MOUSE_RIGHT_CLICK	3
+# define MOUSE_WHEEL_UP		4
+# define MOUSE_WHEEL_DOWN	5
+
+/*
+** Events on X Window System
+*/
+
+# define KEY_PRESS		2
+# define KEY_RELEASE	3
+# define BUTTON_PRESS	4
+# define BUTTON_RELEASE	5
+# define MOUSE_MOVE		6
+# define EXPOSE			12
+# define DESTROY_NOTIFY	17
+# define WINDOW_CLOSE	33
 
 #endif

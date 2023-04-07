@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/06 18:37:10 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/06 23:44:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ typedef struct s_data
 /*
 ** Data utils
 */
-t_data	*data_init(void);
+void	data_init(t_data *data);
 int		data_destroy(t_data *data, int exit_code);
 
 void	set_hooks(t_data *data);
