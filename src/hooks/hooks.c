@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:58:45 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 00:18:26 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:28:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	key_handle(int keycode, t_data *data);
 
 void	set_hooks(t_data *data)
 {
-    mlx_hook(data->mlx_win, DESTROY_NOTIFY, 1L, close_window, data);
-	mlx_key_hook(data->mlx_win, key_handle, data);
+	mlx_hook(data->win_ptr, DESTROY_NOTIFY, 0L, close_window, data);
+	mlx_key_hook(data->win_ptr, key_handle, data);
 	return ;
 }
 

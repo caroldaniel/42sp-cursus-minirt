@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   image_generate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 15:46:31 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 19:11:57 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/07 20:52:14 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/07 21:16:10 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*color(double r, double g, double b, double a)
+void	image_generate(t_img *img)
 {
-	t_color	*color;
+	int	x;
+	int	y;
 
-	color = malloc(sizeof(t_color));
-	if (!color)
-		return (NULL);
-	color->alpha = a;
-	color->red = r;
-	color->green = g;
-	color->blue = b;
-	return (color);
+	x = -1;
+	while (++x < IMG_X)
+	{
+		y = -1;
+		while (++y < IMG_Y)
+			img->data[x * IMG_Y + y] = combine(*img->grid[x][y], *img);
+	}
 }

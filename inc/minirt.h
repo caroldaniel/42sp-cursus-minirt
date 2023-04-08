@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/06 23:44:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/07 21:11:12 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,20 @@
 /*------MACROS------*/
 
 /*
-** Macros for unmutable strings
+** Macros for the window
 */
 
-# define MINIRT	"MiniRT"
+# define MINIRT			"MiniRT"
+# define IMG_X			500
+# define IMG_Y			500
+# define BIG_ENDIAN		1
 
 /*
-** Macros for exit_code
+** Macros for exit_codes
 */
 
-# define ERR_DATAINIT	1
-# define ERR_MLXINIT	2
+# define ERR_MLXINIT	1
+# define ERR_IMGINIT	2
 
 /*------LIBRARIES------*/
 
@@ -74,8 +77,9 @@ typedef enum e_bool
 */
 typedef struct s_data
 {
-	void	*mlx;
-	void	*mlx_win;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_img	img;
 }	t_data;
 
 /*
@@ -83,6 +87,10 @@ typedef struct s_data
 */
 void	data_init(t_data *data);
 int		data_destroy(t_data *data, int exit_code);
+
+void	image_init(t_data *data);
+void	image_generate(t_img *img);
+void	image_create(t_data *data);
 
 void	set_hooks(t_data *data);
 

@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   image_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 15:46:31 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 19:11:57 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/07 20:47:01 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/07 21:26:54 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*color(double r, double g, double b, double a)
+void	image_init(t_data *data)
 {
-	t_color	*color;
+	int	x;
+	int	y;
 
-	color = malloc(sizeof(t_color));
-	if (!color)
-		return (NULL);
-	color->alpha = a;
-	color->red = r;
-	color->green = g;
-	color->blue = b;
-	return (color);
+	x = -1;
+	while (++x < IMG_X)
+	{
+		y = -1;
+		while (++y < IMG_Y)
+		{
+			data->img.grid[x][y] = color(1, 0.5, 0, 1);
+			if (!data->img.grid[x][y])
+				return ;
+		}
+	}
 }

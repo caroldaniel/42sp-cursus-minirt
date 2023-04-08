@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   image_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/05 15:46:31 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 19:11:57 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/07 21:26:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_color	*color(double r, double g, double b, double a)
+void	image_create(t_data *data)
 {
-	t_color	*color;
-
-	color = malloc(sizeof(t_color));
-	if (!color)
-		return (NULL);
-	color->alpha = a;
-	color->red = r;
-	color->green = g;
-	color->blue = b;
-	return (color);
+	image_init(data);
+	image_generate(&data->img);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ptr, 0, 0);
 }
