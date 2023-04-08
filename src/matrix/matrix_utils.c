@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:58:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 01:02:57 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:58:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	print_matrix(t_matrix matrix)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = -1;
+	printf("[ \n");
 	while (++y < matrix.size)
 	{
 		x = -1;
@@ -25,4 +26,5 @@ void	print_matrix(t_matrix matrix)
 			printf("%f ", matrix.data[y][x]);
 		printf("\n");
 	}
+	printf("]\n");
 }

@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:21:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 21:28:14 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:21:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_color	***init_grid(int width, int height);
+static t_color	**init_grid(int width, int height);
 
 void	data_init(t_data *data)
 {
@@ -28,20 +28,21 @@ void	data_init(t_data *data)
 		exit(data_destroy(data, ERR_IMGINIT));
 }
 
-static t_color	***init_grid(int width, int height)
+static t_color	**init_grid(int width, int height)
 {
-	t_color	***grid;
-	int		i;
+	t_color	**grid;
+	int		y;
 
-	grid = malloc(sizeof(t_color **) * width);
+	grid = malloc(sizeof(t_color *) * height);
 	if (!grid)
 		return (NULL);
-	i = -1;
-	while (++i < width)
+	y = -1;
+	while (++y < width)
 	{
-		grid[i] = malloc(sizeof(t_color *) * height);
-		if (!grid[i])
+		grid[y] = malloc(sizeof(t_color) * width);
+		if (!grid[y])
 			return (NULL);
+		ft_bzero(grid[y], sizeof(t_color) * width);
 	}
 	return (grid);
 }

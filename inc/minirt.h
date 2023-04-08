@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 00:48:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 15:02:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdbool.h>
 # include <unistd.h>
 # include <fcntl.h>
 
@@ -64,15 +65,6 @@
 # include "tuples.h"
 # include "colors.h"
 # include "matrix.h"
-
-/*
-** Boolean type definition
-*/
-typedef enum e_bool
-{
-	FALSE,
-	TRUE
-}	t_bool;
 
 /*
 ** Point type definition
@@ -111,12 +103,12 @@ t_coord coordinate(int x, int y);
 void	image_init(t_data *data);
 void	image_generate(t_img *img);
 void	image_create(t_data *data);
-void	put_pixel(t_img img, int x, int y, t_color *color);
+void	put_pixel(t_img img, int x, int y, t_color color);
 
 /*
 ** Utils
 */
-t_bool	float_cmp(float a, float b, float epsilon);
+bool	float_cmp(float a, float b, float epsilon);
 float	abs_float(float flt);
 
 #endif

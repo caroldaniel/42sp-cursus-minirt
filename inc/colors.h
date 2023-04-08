@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 21:21:55 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 14:11:39 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,21 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
-	t_color	***grid;
+	t_color	**grid;
 }	t_img;
 
 /*
 ** Init
 */
-t_color	*color(double r, double g, double b, double a);
+t_color	color(double r, double g, double b, double a);
 
 /*
 ** Operations
 */
-t_color	*color_add(t_color a, t_color b);
-t_color	*color_subtract(t_color a, t_color b);
-t_color	*color_multiply(t_color c, double scalar);
-t_color	*hadamard_product(t_color a, t_color b);
+t_color	color_add(t_color a, t_color b);
+t_color	color_subtract(t_color a, t_color b);
+t_color	color_multiply(t_color c, double scalar);
+t_color	hadamard_product(t_color a, t_color b);
 
 /*
 ** Utils
