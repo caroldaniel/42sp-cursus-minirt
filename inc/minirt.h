@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 00:14:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 00:48:42 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 */
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
 # include <fcntl.h>
 
