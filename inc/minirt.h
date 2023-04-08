@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 21:11:12 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/08 00:14:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,10 @@
 /*
 ** Personal libraries
 */
+# include "keys.h"
 # include "tuples.h"
 # include "colors.h"
-# include "keys.h"
+# include "matrix.h"
 
 /*
 ** Boolean type definition
@@ -71,6 +72,15 @@ typedef enum e_bool
 	FALSE,
 	TRUE
 }	t_bool;
+
+/*
+** Point type definition
+*/
+typedef struct s_coord
+{
+	int	x;
+	int y;
+}	t_coord;
 
 /*
 ** Data type definition
@@ -87,12 +97,20 @@ typedef struct s_data
 */
 void	data_init(t_data *data);
 int		data_destroy(t_data *data, int exit_code);
+void	set_hooks(t_data *data);
 
+/*
+** Coordinate utils
+*/
+t_coord coordinate(int x, int y);
+
+/*
+** Image utils
+*/
 void	image_init(t_data *data);
 void	image_generate(t_img *img);
 void	image_create(t_data *data);
-
-void	set_hooks(t_data *data);
+void	put_pixel(t_img img, int x, int y, t_color *color);
 
 /*
 ** Utils

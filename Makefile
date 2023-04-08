@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/07 21:10:46 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/08 00:26:52 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,11 @@ SRC				= main.c\
 				colors.c\
 				colors_operations_1.c\
 				colors_utils.c\
+				matrix.c\
+				image.c\
 				image_create.c\
-				image_init.c\
 				image_generate.c\
+				coordinate.c\
 				data_init.c\
 				data_destroy.c\
 				hooks.c\
@@ -52,6 +54,7 @@ SRC				= main.c\
 VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
 				$(SRC_PATH)colors/\
+				$(SRC_PATH)matrix/\
 				$(SRC_PATH)image/\
 				$(SRC_PATH)data/\
 				$(SRC_PATH)hooks/\

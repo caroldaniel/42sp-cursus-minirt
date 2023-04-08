@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image_init.c                                       :+:      :+:    :+:   */
+/*   coordinate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 20:47:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 21:26:54 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/07 23:16:25 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/07 23:23:49 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	image_init(t_data *data)
+t_coord coordinate(int x, int y)
 {
-	int	x;
-	int	y;
+	t_coord p;
 
-	x = -1;
-	while (++x < IMG_X)
-	{
-		y = -1;
-		while (++y < IMG_Y)
-		{
-			data->img.grid[x][y] = color(1, 0.5, 0, 1);
-			if (!data->img.grid[x][y])
-				return ;
-		}
-	}
+	p.x = x;
+	p.y = y;
+	return (p);
 }
