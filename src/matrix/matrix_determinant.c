@@ -1,40 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuples.c                                           :+:      :+:    :+:   */
+/*   matrix_determinant.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 23:30:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 17:12:51 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/08 23:55:55 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/09 00:03:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-t_tuple	tuple(double x, double y, double z, short w)
-{
-	t_tuple	tuple;
-
-	tuple.x = x;
-	tuple.y = y;
-	tuple.z = z;
-	tuple.w = w;
-	return (tuple);
-}
-
-t_tuple	point(double x, double y, double z)
-{
-	t_tuple	point;
-
-	point = tuple(x, y, z, 1.0);
-	return (point);
-}
-
-t_tuple	vector(double x, double y, double z)
-{
-	t_tuple	vector;
-
-	vector = tuple(x, y, z, 0.0);
-	return (vector);
-}

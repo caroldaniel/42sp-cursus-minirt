@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 15:02:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/09 00:04:34 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@
 typedef struct s_coord
 {
 	int	x;
-	int y;
+	int	y;
 }	t_coord;
 
 /*
@@ -95,7 +95,7 @@ void	set_hooks(t_data *data);
 /*
 ** Coordinate utils
 */
-t_coord coordinate(int x, int y);
+t_coord	coordinate(int x, int y);
 
 /*
 ** Image utils

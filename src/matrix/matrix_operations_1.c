@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:49:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 15:39:09 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/09 00:03:37 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,39 @@ t_matrix	matrix_multiply(t_matrix a, t_matrix b)
 		}
 	}
 	return (mult);
+}
+
+t_tuple	matrix_tuple_multiply(t_matrix m, t_tuple t)
+{
+	t_tuple	result;
+
+	if (m.size != 4)
+		return (tuple(0, 0, 0, 0));
+	result = tuple(0, 0, 0, 0);
+	result.x = m.data[0][0] * t.x + m.data[0][1] * t.y + \
+		m.data[0][2] * t.z + m.data[0][3] * t.w;
+	result.y = m.data[1][0] * t.x + m.data[1][1] * t.y + \
+		m.data[1][2] * t.z + m.data[1][3] * t.w;
+	result.z = m.data[2][0] * t.x + m.data[2][1] * t.y + \
+		m.data[2][2] * t.z + m.data[2][3] * t.w;
+	result.w = m.data[3][0] * t.x + m.data[3][1] * t.y + \
+		m.data[3][2] * t.z + m.data[3][3] * t.w;
+	return (result);
+}
+
+t_matrix	matrix_transpose(t_matrix m)
+{
+	t_matrix	t;
+	int			y;
+	int			x;
+
+	t = matrix_init(m.size);
+	y = -1;
+	while (++y < m.size)
+	{
+		x = -1;
+		while (++x < m.size)
+			t.data[y][x] = m.data[x][y];
+	}
+	return (t);
 }
