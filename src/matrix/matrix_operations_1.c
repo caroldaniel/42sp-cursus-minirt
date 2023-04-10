@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:49:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/09 00:03:37 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:10:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	matrix_compare(t_matrix a, t_matrix b)
 	{
 		x = -1;
 		while (++x < a.size)
-			if (a.data[y][x] != b.data[y][x])
+			if (!float_cmp(a.data[y][x], b.data[y][x], 0.00001))
 				return (false);
 	}
 	return (true);
@@ -87,4 +87,23 @@ t_matrix	matrix_transpose(t_matrix m)
 			t.data[y][x] = m.data[x][y];
 	}
 	return (t);
+}
+
+t_matrix	matrix_inverse(t_matrix m)
+{
+	t_matrix	m_inv;
+	int			y;
+	int			x;
+
+	if (!determinant(m))
+		return (matrix_init(0));
+	m_inv = matrix_init(m.size);
+	y = -1;
+	while (++y < m.size)
+	{
+		x = -1;
+		while (++x < m.size)
+			m_inv.data[x][y] = cofactor(m, y, x) / determinant(m);
+	}
+	return (m_inv);
 }

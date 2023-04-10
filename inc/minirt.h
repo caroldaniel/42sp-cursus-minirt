@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/09 00:04:34 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:05:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	put_pixel(t_img img, int x, int y, t_color color);
 /*
 ** Utils
 */
-bool	float_cmp(float a, float b, float epsilon);
-float	abs_float(float flt);
+bool	float_cmp(double a, double b, double epsilon);
+double	abs_float(double flt);
 
 #endif

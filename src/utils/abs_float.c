@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 21:52:56 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/04 21:53:56 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:05:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-float	abs_float(float flt)
+double	abs_float(double flt)
 {
 	if (flt >= 0)
 		return (flt);

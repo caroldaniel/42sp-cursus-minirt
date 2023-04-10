@@ -1,19 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   matrix_determinant.c                               :+:      :+:    :+:   */
+/*   matrix_operations_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:55:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/09 23:03:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 14:05:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-
-double		cofactor(t_matrix m, int row_idx, int col_idx);
-t_matrix	submatrix(t_matrix m, int row_idx, int col_idx);
 
 double	determinant(t_matrix m)
 {
