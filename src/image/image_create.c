@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 15:01:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 19:33:57 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 static void	draw_on_grid(t_data *data);
 static void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);
 static void	calculate_matrix(void);
+static void	calculate_translation(void);
+static void calculate_transformation(void);
 
 void	image_create(t_data *data)
 {
 	image_init(data);
 	draw_on_grid(data);
 	calculate_matrix();
+	calculate_translation();
+	calculate_transformation();
 	image_generate(&data->img);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.ptr, 0, 0);
 }
@@ -87,4 +91,43 @@ static void	calculate_matrix(void)
 	matrix_destroy(&c);
 	matrix_destroy(&inv);
 	matrix_destroy(&c_inv);
+}
+
+static void	calculate_translation(void)
+{
+	t_matrix	s;
+	t_tuple		p;
+	t_tuple		res;
+
+	p = vector(-4, 6, 8);	
+	s = scaling(2.0, 3.0, 4.0);
+	print_matrix(s);
+	res = matrix_tuple_multiply(s, p);
+	print_tuple(res);
+	matrix_destroy(&s);
+}
+
+static void calculate_transformation(void)
+{
+	t_matrix a;
+	t_matrix b;
+	t_matrix c;
+	t_matrix d;
+	
+	a = translation(5, 4, 3);
+	printf("Translation:\n");
+	print_matrix(a);
+	b = scaling(5, 4, 3);	
+	printf("Scaling:\n");
+	print_matrix(b);
+	c = rotation_z(M_PI / 6);	
+	printf("Rotate Z:\n");
+	print_matrix(c);
+	d = shearing(4, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0);
+	printf("Shearing:\n");
+	print_matrix(d);
+	matrix_destroy(&a);
+	matrix_destroy(&b);
+	matrix_destroy(&c);
+	matrix_destroy(&d);
 }

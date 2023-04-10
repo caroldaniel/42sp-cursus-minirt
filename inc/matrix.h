@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:11:49 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 14:14:37 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 19:20:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MATRIX_H
 
 # include <stdbool.h>
+# include <math.h>
 
 typedef struct s_matrix
 {
@@ -34,7 +35,15 @@ t_matrix	matrix_inverse(t_matrix m);
 double		determinant(t_matrix m);
 double		cofactor(t_matrix m, int row_idx, int col_idx);
 t_matrix	submatrix(t_matrix m, int row_idx, int col_idx);
+t_matrix	identity(int size);
 
 void		print_matrix(t_matrix matrix);
+
+t_matrix	translation(double x, double y, double z);
+t_matrix	scaling(double x, double y, double z);
+t_matrix	rotation_x(double radians);
+t_matrix	rotation_y(double radians);
+t_matrix	rotation_z(double radians);
+t_matrix	shearing(int size, ...);
 
 #endif

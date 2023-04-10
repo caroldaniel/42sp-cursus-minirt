@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 23:55:55 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 14:05:43 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:50:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,28 @@ t_matrix	submatrix(t_matrix m, int row_idx, int col_idx)
 		sub_y++;
 	}
 	return (sub_m);
+}
+
+t_matrix	identity(int size)
+{
+	t_matrix	idt;
+	int			y;
+	int			x;
+
+	idt = matrix_init(size);
+	if (!size)
+		return (idt);
+	y = -1;
+	while (++y < size)
+	{
+		x = -1;
+		while (++x < size)
+		{
+			if (y == x)
+				idt.data[y][x] = 1;
+			else
+				idt.data[y][x] = 0;
+		}
+	}
+	return (idt);
 }
