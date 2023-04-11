@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/10 17:08:32 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/10 22:44:34 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,11 @@ SRC				= main.c\
 				image.c\
 				image_create.c\
 				image_generate.c\
+				image_utils.c\
+				ray.c\
+				ray_operations_1.c\
+				sphere.c\
+				sphere_operations_1.c\
 				coordinate.c\
 				data_init.c\
 				data_destroy.c\
@@ -64,6 +69,8 @@ VPATH 			:= $(SRC_PATH)\
 				$(SRC_PATH)matrix/\
 				$(SRC_PATH)transform/\
 				$(SRC_PATH)image/\
+				$(SRC_PATH)ray/\
+				$(SRC_PATH)objects/\
 				$(SRC_PATH)data/\
 				$(SRC_PATH)hooks/\
 				$(SRC_PATH)utils/

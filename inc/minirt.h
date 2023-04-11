@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 15:05:16 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:35:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # include "tuples.h"
 # include "colors.h"
 # include "matrix.h"
+# include "ray.h"
 
 /*
 ** Point type definition
@@ -103,6 +104,7 @@ t_coord	coordinate(int x, int y);
 void	image_init(t_data *data);
 void	image_generate(t_img *img);
 void	image_create(t_data *data);
+void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);
 void	put_pixel(t_img img, int x, int y, t_color color);
 
 /*
