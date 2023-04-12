@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 23:30:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 17:12:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 10:31:05 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_tuple	tuple(double x, double y, double z, short w)
+t_tuple	tuple(double x, double y, double z, double w)
 {
 	t_tuple	tuple;
 

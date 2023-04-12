@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:55:56 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 22:00:08 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:04:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	sphere(void)
 	static int	id = 0;
 
 	id++;
-	return (id);	
+	return (id);
 }

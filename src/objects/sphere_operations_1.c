@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:32:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 23:19:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:04:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersection	intersect_sphere(int sphere, t_ray ray)
+t_x_list	intersect_sphere(int sphere, t_ray ray)
 {
 	t_tuple	sphere_to_ray;
 	double	discriminant;
@@ -26,8 +26,9 @@ t_intersection	intersect_sphere(int sphere, t_ray ray)
 	c = dot(sphere_to_ray, sphere_to_ray) - 1;
 	discriminant = pow(b, 2.0) - 4 * a * c;
 	if (discriminant < 0)
-		return (intersection(sphere, 0));
+		return (x_list(0));
 	else
-		return (intersection(sphere, 2, ((-b - sqrt(discriminant)) / (2 * a)), \
-			((-b + sqrt(discriminant)) / (2 * a))));
+		return (x_list(2, \
+			intersection(sphere, (-b - sqrt(discriminant)) / (2 * a)), \
+			intersection(sphere, (-b + sqrt(discriminant)) / (2 * a))));
 }

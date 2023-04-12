@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:15:30 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 16:45:41 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:04:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_matrix	scaling(double x, double y, double z)
 		return (s);
 	s.data[0][0] = x;
 	s.data[1][1] = y;
-	s.data[2][2] = z;	
+	s.data[2][2] = z;
 	return (s);
 }

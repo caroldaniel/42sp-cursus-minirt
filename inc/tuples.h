@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:37:59 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 17:10:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 10:34:08 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_tuple
 /*
 ** Init
 */
-t_tuple	tuple(double x, double y, double z, short w);
+t_tuple	tuple(double x, double y, double z, double w);
 t_tuple	point(double x, double y, double z);
 t_tuple	vector(double x, double y, double z);
 
