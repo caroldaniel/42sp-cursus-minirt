@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/12 14:02:33 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/12 20:02:01 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC				= main.c\
 				ray.c\
 				ray_operations_1.c\
 				ray_intersection.c\
+				ray_utils.c\
 				sphere.c\
 				sphere_operations_1.c\
 				coordinate.c\
