@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 08:08:16 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/12 20:22:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 23:16:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_x	*intersection(int object, double t)
+t_x	*intersection(t_object object, double t)
 {
 	t_x	*x;
 
@@ -34,14 +34,14 @@ t_x_list	x_list_init(void)
 	return (xl);
 }
 
-t_x_list	*x_list(t_x_list *xl, int count, ...)
+t_x_list	x_list(t_x_list *xl, int count, ...)
 {
 	va_list	args;
 	t_x		*inter;
 	int		i;
 
 	if (!count)
-		return (xl);
+		return (*xl);
 	va_start(args, count);
 	i = -1;
 	while (++i < count)
@@ -50,7 +50,7 @@ t_x_list	*x_list(t_x_list *xl, int count, ...)
 		x_list_add(xl, inter);
 	}
 	va_end(args);
-	return (xl);
+	return (*xl);
 }
 
 void	x_list_add(t_x_list *xl, t_x *new)
@@ -75,21 +75,15 @@ void	x_list_add(t_x_list *xl, t_x *new)
 	xl->count++;
 }	
 
-t_x	*hit(t_x_list xl)
+void	x_list_destroy(t_x_list *xl)
 {
 	t_x	*curr;
 
-	curr = xl.list;
-	if (!curr)
-		return (NULL);
-	while (curr)
+	xl->count = 0;
+	while (xl->list)
 	{
-		if (curr->t < 0)
-		{
-			curr = curr->next;
-			continue ;
-		}
-		return (curr);
+		curr = xl->list;
+		xl->list = xl->list->next;
+		free(curr);
 	}
-	return (NULL);
 }

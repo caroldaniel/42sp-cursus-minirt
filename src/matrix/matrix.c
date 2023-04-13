@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:15:34 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/10 14:43:29 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:58:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_matrix	matrix_destroy(t_matrix *matrix)
 	int	i;
 
 	i = -1;
+	if (!matrix->data)
+		return (*matrix);
 	while (++i < matrix->size)
 		if (matrix->data[i])
 			free(matrix->data[i]);
