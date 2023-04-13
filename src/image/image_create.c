@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/12 23:28:52 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/13 00:31:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,27 @@ void	image_create(t_data *data)
 
 static void	draw_on_grid(t_data *data)
 {
-	t_tuple		hour;
-	t_matrix	rot;
-	t_color		c;
-	int			i;
+	t_x_list	xl;
+	t_object	s;
+	t_matrix	t;
+	int			x;
+	int			y;
 
-	hour = point(0, 200, 0);
-	rot = rotation_z(M_PI / 6);
-	c = color(1, 1, 1, 1);
-	i = -1;
-	while (++i < 12)
+	s = sphere();
+	t = scaling(3, 3, 3);
+	set_transform(&s, t);
+	y = -1 - (IMG_Y / 2);
+	while (++y < IMG_Y / 2)
 	{
-		hour = matrix_tuple_multiply(rot, hour);
-		put_pixel(data->img, hour.x, hour.y, c);
+		x = -1 - (IMG_X / 2);
+		while (++x < IMG_X / 2)
+		{
+			xl = intersect_sphere(s, ray(point(0, 0, -4), \
+				normalize(tuple_subtract(point(x, y, 10), point(0, 0, -4)))));
+			if (hit(xl))
+				put_pixel(data->img, x, y, color(1, 0, 0, 1));
+			x_list_destroy(&xl);
+		}
 	}
-	matrix_destroy(&rot);
+	matrix_destroy(&t);
 }
