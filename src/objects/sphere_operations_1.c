@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:32:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/12 19:14:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:15:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ t_x_list	intersect_sphere(int sphere, t_ray ray)
 		return (xl);
 	else
 		return (x_list(&xl, 2, \
-			intersection(sphere, (-coef[1] - sqrt(disc)) / (2 * coef[0] )), \
-			intersection(sphere, (-coef[1] + sqrt(disc)) / (2 * coef[0] ))));
+			intersection(sphere, (-coef[1] - sqrt(disc)) / (2 * coef[0])), \
+			intersection(sphere, (-coef[1] + sqrt(disc)) / (2 * coef[0]))));
 }

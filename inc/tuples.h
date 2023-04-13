@@ -6,13 +6,16 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:37:59 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/12 10:34:08 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:10:47 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLES_H
 # define TUPLES_H
 
+/*
+** Tuple type definition
+*/
 typedef struct s_tuple
 {
 	double	x;

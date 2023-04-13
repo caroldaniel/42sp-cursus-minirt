@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/12 20:25:22 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/12 22:14:37 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	image_create(t_data *data)
 {
 	int			s;
 	t_x			*i[4];
-	t_x_list 	xl;
-	t_x 		*h;
+	t_x_list	xl;
+	t_x			*h;
 
 	image_init(data);
 	draw_on_grid(data);
