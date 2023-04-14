@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/13 00:31:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/13 22:12:45 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	draw_on_grid(t_data *data)
 	int			y;
 
 	s = sphere();
-	t = scaling(3, 3, 3);
+	t = scaling(42, 42, 42);
 	set_transform(&s, t);
 	y = -1 - (IMG_Y / 2);
 	while (++y < IMG_Y / 2)
@@ -39,10 +39,10 @@ static void	draw_on_grid(t_data *data)
 		x = -1 - (IMG_X / 2);
 		while (++x < IMG_X / 2)
 		{
-			xl = intersect_sphere(s, ray(point(0, 0, -4), \
-				normalize(tuple_subtract(point(x, y, 10), point(0, 0, -4)))));
+			xl = intersect_sphere(s, ray(point(0, 0, -50), \
+				normalize(tuple_subtract(point(x, y, 10), point(0, 0, -50)))));
 			if (hit(xl))
-				put_pixel(data->img, x, y, color(1, 0, 0, 1));
+				put_pixel(data->img, x, y, color(1, 1, 1, 1));
 			x_list_destroy(&xl);
 		}
 	}
