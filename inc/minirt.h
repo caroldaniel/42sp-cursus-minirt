@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/13 22:02:39 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/14 19:53:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,12 @@
 /*
 ** Personal libraries
 */
-# include "keys.h"
-# include "tuples.h"
 # include "colors.h"
+# include "tuples.h"
 # include "matrix.h"
+# include "keys.h"
 # include "ray.h"
+# include "scene.h"
 
 /*
 ** Point type definition

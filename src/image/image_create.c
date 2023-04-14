@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/13 22:12:45 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/14 20:05:37 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,42 @@ void	image_create(t_data *data)
 
 static void	draw_on_grid(t_data *data)
 {
-	t_x_list	xl;
+	// t_scene		scene;
+	t_ray		r;
+	t_x			*h;
+	// t_lighting	p_light;
 	t_object	s;
 	t_matrix	t;
+	t_tuple		p_grid;
+	t_tuple		p_obsv;
 	int			x;
 	int			y;
 
+	// scene.light = point_light(point(-10, 10, -10), color(1, 1, 1, 1));
 	s = sphere();
-	t = scaling(42, 42, 42);
+	t = scaling(40, 40, 40);
 	set_transform(&s, t);
+	p_obsv = point(0, 0, -50);
 	y = -1 - (IMG_Y / 2);
 	while (++y < IMG_Y / 2)
 	{
 		x = -1 - (IMG_X / 2);
 		while (++x < IMG_X / 2)
 		{
-			xl = intersect_sphere(s, ray(point(0, 0, -50), \
-				normalize(tuple_subtract(point(x, y, 10), point(0, 0, -50)))));
-			if (hit(xl))
-				put_pixel(data->img, x, y, color(1, 1, 1, 1));
-			x_list_destroy(&xl);
+			p_grid = point(x, y, 10);
+			r = ray(p_obsv, normalize(tuple_subtract(p_grid, p_obsv)));
+			h = hit(r);
+			if (h)
+			{
+				printf("Here\n");
+				put_pixel(data->img, x, y, color(1, 1, 1, 0));
+				// scene.eyev = tuple_negate(r.direction);
+				// p_light = point_on_light(scene, r, h);
+				// intersect_sphere(s, &r);
+				// put_pixel(data->img, x, y, lightning(p_light));
+			}
+			ray_destroy(&r);
 		}
 	}
-	matrix_destroy(&t);
+	object_destroy(&s);
 }

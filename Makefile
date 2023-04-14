@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/12 20:02:01 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/14 18:51:34 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,8 +56,13 @@ SRC				= main.c\
 				ray_operations_1.c\
 				ray_intersection.c\
 				ray_utils.c\
+				object.c\
+				object_operations_1.c\
 				sphere.c\
 				sphere_operations_1.c\
+				lighting.c\
+				material.c\
+				scene.c\
 				coordinate.c\
 				data_init.c\
 				data_destroy.c\
@@ -72,6 +77,7 @@ VPATH 			= $(SRC_PATH)\
 				$(SRC_PATH)transform/\
 				$(SRC_PATH)image/\
 				$(SRC_PATH)ray/\
+				$(SRC_PATH)scene/\
 				$(SRC_PATH)objects/\
 				$(SRC_PATH)data/\
 				$(SRC_PATH)hooks/\

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   object.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 21:36:02 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 19:53:45 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/14 15:23:17 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/14 15:27:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#include "minirt.h"
 
-
-
-#endif
+void	object_destroy(t_object *o)
+{
+	free(o->transform.data);
+	return ;
+}
