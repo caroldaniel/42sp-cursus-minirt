@@ -6,14 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:12:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 19:52:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:13:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEYS_H
 # define KEYS_H
 
-#include "minirt.h"
+# include "minirt.h"
 
 /*
 ** Key numbers

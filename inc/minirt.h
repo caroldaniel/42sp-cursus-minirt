@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 21:19:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:32:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 
 # define MINIRT			"MiniRT"
-# define IMG_X			200
-# define IMG_Y			200
+# define IMG_X			250
+# define IMG_Y			250
 # define BIG_ENDIAN		1
 
 /*
@@ -84,6 +84,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	t_world	world;
 }	t_data;
 
 /*

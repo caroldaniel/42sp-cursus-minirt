@@ -6,14 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:37:59 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 19:52:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:13:56 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TUPLES_H
 # define TUPLES_H
 
-#include "minirt.h"
+# include "minirt.h"
 
 /*
 ** Tuple type definition

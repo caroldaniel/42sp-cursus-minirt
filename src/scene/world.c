@@ -1,36 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   image.c                                            :+:      :+:    :+:   */
+/*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/07 20:47:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 12:16:37 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/15 13:11:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	image_init(t_data *data)
+t_world	world_init(void)
 {
-	int	x;
-	int	y;
+	t_world	world;
 
-	y = -1;
-	while (++y < IMG_Y)
-	{
-		x = -1;
-		while (++x < IMG_X)
-			data->img.grid[y][x] = color(0, 0, 0, 1);
-	}
+	world.l_list = NULL;
+	world.o_list = NULL;
+	return (world);
 }
 
-void	put_pixel(t_img img, int x, int y, t_color color)
+void	world_destroy(t_world *world)
 {
-	if (x < -IMG_X / 2 || y < -IMG_Y / 2)
-		return ;
-	if (x > IMG_X / 2 || y > IMG_Y / 2)
-		return ;
-	img.grid[-(y - IMG_Y / 2)][x + IMG_X / 2] = color;
+	point_light_destroy(&world->l_list);
+	object_list_destroy(&world->o_list);
+	return ;
+}
+
+void	intersect_world(t_world world, t_ray *ray)
+{
+	t_object	*curr;
+
+	curr = world.o_list;
+	while (curr)
+	{
+		if (curr->type == SPHERE)
+			intersect_sphere(curr, ray);
+		curr = curr->next;
+	}
+	return ;
 }

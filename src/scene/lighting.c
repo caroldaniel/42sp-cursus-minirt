@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 23:32:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:11:42 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,39 @@
 static t_color	diffuse(t_hit h, t_color eff_color, t_tuple lightv);
 static t_color	specular(t_hit h, t_tuple reflectv);
 
-t_hit	*get_hit_info(t_light light, t_ray r)
+t_hit	*get_hit_info(t_light *light, t_ray *ray)
 {
 	t_hit	*h_light;
 	t_x		*h;
 
-	h = hit(r);
+	h = hit(ray);
 	if (!h)
 		return (NULL);
 	h_light = malloc(sizeof(t_hit));
 	if (!h_light)
 		return (NULL);
-	h_light->point = position(r, h->t);
-	h_light->eyev = tuple_negate(r.direction);
+	h_light->point = position(ray, h->t);
+	h_light->eyev = tuple_negate(ray->direction);
 	h_light->normalv = normal_at(h->object, h_light->point);
-	h_light->light = light;
-	h_light->material = h->object.material;
+	h_light->light = *light;
+	h_light->material = h->object->material;
 	return (h_light);
+}
+
+void	hit_info_destroy(t_hit **h_light)
+{
+	if (!(*h_light))
+		return ;
+	free(*h_light);
+	return ;
 }
 
 t_color	lightning(t_hit h)
 {
-	t_color eff_color;
+	t_color	eff_color;
 	t_tuple	lightv;
 	t_color	ambient;
-	
+
 	eff_color = hadamard_product(h.material.color, h.light.intensity);
 	lightv = normalize(tuple_subtract(h.light.position, h.point));
 	ambient = color_multiply(eff_color, h.material.ambient);
@@ -64,10 +72,10 @@ static t_color	specular(t_hit h, t_tuple reflectv)
 {
 	double	reflect_dot;
 	double	factor;
-	
+
 	reflect_dot = dot(reflectv, h.eyev);
 	if (reflect_dot <= 0)
-		return(color(0, 0, 0, 1));
+		return (color(0, 0, 0, 1));
 	factor = pow(reflect_dot, h.material.shininess);
 	return (color_multiply(h.light.intensity, h.material.specular * factor));
 }

@@ -6,48 +6,50 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:40:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 22:20:28 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:11:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_tuple	position(t_ray ray, double t)
+t_tuple	position(t_ray *ray, double t)
 {
 	t_tuple	pos;
 	t_tuple	mult;
 
-	mult = tuple_multiply(ray.direction, t);
-	pos = tuple_add(ray.origin, mult);
+	mult = tuple_multiply(ray->direction, t);
+	pos = tuple_add(ray->origin, mult);
 	return (pos);
 }
 
-t_ray	transform(t_ray r, t_matrix m)
+t_ray	*transform(t_ray *ray, t_matrix m)
 {
-	t_ray	t;
+	t_ray	*t;
 	t_tuple	origin_t;
 	t_tuple	direction_t;
 
-	origin_t = matrix_tuple_multiply(m, r.origin);
-	direction_t = matrix_tuple_multiply(m, r.direction);
-	t = ray(origin_t, direction_t);
+	origin_t = matrix_tuple_multiply(m, ray->origin);
+	direction_t = matrix_tuple_multiply(m, ray->direction);
 	matrix_destroy(&m);
+	t = ray_new(origin_t, direction_t);
 	return (t);
 }
 
-t_x	*hit(t_ray ray)
+t_tuple	normal_at(t_object *o, t_tuple p)
 {
-	t_x	*curr;
+	t_tuple	nml;
 
-	curr = ray.x_list;
-	while (curr)
-	{
-		if (curr->t < 0)
-		{
-			curr = curr->next;
-			continue ;
-		}
-		return (curr);
-	}
-	return (NULL);
+	if (o->type == SPHERE)
+		nml = normal_at_sphere(o, p);
+	else
+		nml = tuple(0, 0, 0, 0);
+	return (nml);
+}
+
+t_tuple	reflect(t_tuple in, t_tuple nml)
+{
+	t_tuple	mult;
+
+	mult = tuple_multiply(nml, 2 * dot(in, nml));
+	return (tuple_subtract(in, mult));
 }

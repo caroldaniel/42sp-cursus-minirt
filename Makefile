@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/14 18:51:34 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/15 11:40:04 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,8 @@ SRC				= main.c\
 				sphere_operations_1.c\
 				lighting.c\
 				material.c\
-				scene.c\
+				point_light.c\
+				world.c\
 				coordinate.c\
 				data_init.c\
 				data_destroy.c\

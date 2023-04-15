@@ -6,21 +6,21 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:55:56 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 16:12:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 11:45:01 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_object	sphere(void)
+t_object	*sphere_new(t_material material, t_matrix transform)
 {
 	static int	id = 0;
-	t_object	sphere;
+	t_object	*sphere;
 
 	id++;
-	sphere.type = SPHERE;
-	sphere.id = id;
-	sphere.transform = identity(4);
-	sphere.material = material();
+	sphere = object_new(SPHERE, id, material);
+	if (!sphere)
+		return (NULL);
+	set_transform(sphere, transform);
 	return (sphere);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:21:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 14:21:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 12:45:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	data_init(t_data *data)
 	data->img.grid = init_grid(IMG_X, IMG_Y);
 	if (!data->img.grid)
 		exit(data_destroy(data, ERR_IMGINIT));
+	data->world = world_init();
 }
 
 static t_color	**init_grid(int width, int height)
