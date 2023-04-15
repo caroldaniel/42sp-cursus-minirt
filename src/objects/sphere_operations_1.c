@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:32:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 17:42:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/14 22:21:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	intersect_sphere(t_object s, t_ray *ray)
 	coef[0] = dot(t_ray.direction, t_ray.direction);
 	coef[1] = 2 * dot(t_ray.direction, s_to_ray);
 	coef[2] = dot(s_to_ray, s_to_ray) - 1;
-	ray_destroy(&t_ray);
 	disc = pow(coef[1], 2.0) - 4.0 * coef[0] * coef[2];
 	if (disc < 0)
 		return ;

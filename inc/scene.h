@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/14 19:54:45 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/14 23:30:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 
 #include "minirt.h"
 
+/*
+** Object types
+*/
+enum e_object {
+	SPHERE
+};
+
+/*
+** Material type definition
+*/
 typedef struct s_material
 {
 	t_color	color;
@@ -23,13 +33,6 @@ typedef struct s_material
 	double	specular;
 	double	shininess;
 }	t_material;
-
-/*
-** Object types
-*/
-enum e_object {
-	SPHERE
-};
 
 /*
 ** Object type definition
@@ -43,7 +46,7 @@ typedef struct s_object
 }	t_object;
 
 /*
-** INtersection and intersection list types definitions
+** Intersection types definitions
 */
 typedef struct s_x
 {
@@ -63,10 +66,34 @@ typedef struct s_ray
 }	t_ray;
 
 /*
-** Ray Init
+** Light point type definition
 */
-t_ray	ray(t_tuple origin, t_tuple direction);
-void	ray_destroy(t_ray *ray);
+typedef struct s_light
+{
+	t_color intensity;
+	t_tuple position;
+}	t_light;
+
+/*
+** Hit info type definition
+*/
+typedef struct s_hit
+{
+	t_tuple		point;
+	t_tuple		eyev;
+	t_tuple		normalv;
+	t_light		light;
+	t_material	material;
+}	t_hit;
+
+/*
+** Elements Init
+*/
+t_ray		ray(t_tuple origin, t_tuple direction);
+t_light		point_light(t_tuple position, t_color intensity);
+t_material	material(void);
+
+void		ray_destroy(t_ray *ray);
 
 /*
 ** Objects Init
@@ -79,6 +106,8 @@ t_object	sphere(void);
 t_tuple	position(t_ray ray, double t);
 t_ray	transform(t_ray ray, t_matrix m);
 t_x		*hit(t_ray ray);
+t_hit	*get_hit_info(t_light light, t_ray r);
+t_color	lightning(t_hit h);
 
 /*
 ** Intersection list management
@@ -105,35 +134,6 @@ t_tuple	normal_at_sphere(t_object s, t_tuple p);
 /*
 ** Utils
 */
-void	print_x_list(t_ray *ray);
-
-typedef struct s_light
-{
-	t_color intensity;
-	t_tuple position;
-}	t_light;
-
-typedef struct s_scene
-{
-	t_light	light;
-	t_tuple	eyev;
-}	t_scene;
-
-typedef struct s_lighting
-{
-	t_tuple		point;
-	t_tuple		eyev;
-	t_tuple		normalv;
-	t_light		light;
-	t_material	material;
-}	t_lighting;
-
-t_lighting	point_on_light(t_scene s, t_ray ray, t_x *hit);
-
-t_color		lightning(t_lighting p);
-
-t_scene		scene(t_light light, t_tuple camera);
-t_light		point_light(t_tuple position, t_color intensity);
-t_material	material(void);
+void	print_x_list(t_ray ray);
 
 #endif
