@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:11:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:20:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ t_hit	*get_hit_info(t_light *light, t_ray *ray)
 	h_light->normalv = normal_at(h->object, h_light->point);
 	h_light->light = *light;
 	h_light->material = h->object->material;
+	h_light->inside = true;		
+	if (dot(h_light->normalv, h_light->eyev) < 0)
+		h_light->normalv = tuple_negate(h_light->normalv);
+	else
+		h_light->inside = false;		
 	return (h_light);
 }
 

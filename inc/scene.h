@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:13:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/15 13:16:52 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_hit
 	t_tuple		normalv;
 	t_light		light;
 	t_material	material;
+	bool		inside;
 }	t_hit;
 
 /*
