@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 12:32:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:54:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_data
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img	img;
+	t_cam	camera;
 	t_world	world;
 }	t_data;
 
@@ -106,6 +107,7 @@ void	image_init(t_data *data);
 void	image_generate(t_img *img);
 void	image_create(t_data *data);
 void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);
+void	render(t_data *data);
 void	put_pixel(t_img img, int x, int y, t_color color);
 
 /*

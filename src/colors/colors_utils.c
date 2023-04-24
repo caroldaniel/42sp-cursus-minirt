@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:40:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/07 19:51:20 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/23 12:01:27 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	three_channels(t_color c, t_img img);
 
 void	print_color(t_color color)
 {
-	printf("color.red = %.1f\n", color.red);
-	printf("color.green = %.1f\n", color.green);
-	printf("color.blue = %.1f\n", color.blue);
-	printf("color.alpha = %.1f\n", color.alpha);
+	printf("color.red = %.5f\n", color.red);
+	printf("color.green = %.5f\n", color.green);
+	printf("color.blue = %.5f\n", color.blue);
+	printf("color.alpha = %.5f\n", color.alpha);
 	return ;
 }
 

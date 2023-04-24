@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   world.c                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/21 16:21:45 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/23 15:06:56 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/23 22:06:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_world	world_init(void)
+void	render(t_data *data)
 {
-	t_world	world;
+	t_ray	*ray;
+	t_color	c;
+	int		y;
+	int		x;
 
-	world.l_list = NULL;
-	world.o_list = NULL;
-	return (world);
-}
-
-void	world_destroy(t_world *world)
-{
-	light_destroy(&world->l_list);
-	object_list_destroy(&world->o_list);
-	return ;
-}
-
-void	intersect_world(t_world world, t_ray *ray)
-{
-	t_object	*curr;
-
-	curr = world.o_list;
-	while (curr)
+	y = -1;
+	while(++y < data->camera.vsize)
 	{
-		if (curr->type == SPHERE)
-			intersect_sphere(curr, ray);
-		curr = curr->next;
+		x = -1;
+		while(++x < data->camera.hsize)
+		{
+			ray = ray_for_pixel(data->camera, x, y);
+			c = color_at(data->world, ray);
+			put_pixel(data->img, x, y, c);
+			ray_destroy(&ray);
+		}
 	}
-	return ;
 }

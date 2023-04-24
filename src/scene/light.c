@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:48:41 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:10:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/21 16:06:42 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	light_add(t_light **pl, t_light *new)
 	return ;
 }
 
-void	point_light_destroy(t_light **pl)
+void	light_destroy(t_light **pl)
 {
 	t_light	*curr;
 

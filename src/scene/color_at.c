@@ -1,62 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lighting.c                                         :+:      :+:    :+:   */
+/*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:20:03 by cado-car         ###   ########.fr       */
+/*   Created: 2023/04/21 15:45:45 by cado-car          #+#    #+#             */
+/*   Updated: 2023/04/23 12:01:01 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+static t_color	shade_hit(t_light *light, t_ray *ray);
+static t_color	lightning(t_hit *h);
 static t_color	diffuse(t_hit h, t_color eff_color, t_tuple lightv);
 static t_color	specular(t_hit h, t_tuple reflectv);
 
-t_hit	*get_hit_info(t_light *light, t_ray *ray)
+t_color	color_at(t_world world, t_ray *ray)
 {
-	t_hit	*h_light;
-	t_x		*h;
+	t_color	color;
 
-	h = hit(ray);
+	intersect_world(world, ray);
+	color = shade_hit(world.l_list, ray);
+	return (color);
+}
+
+static t_color	shade_hit(t_light *light, t_ray *ray)
+{
+	t_hit	*h;
+	t_color	c;
+
+	h = get_hit_info(light, ray);
 	if (!h)
-		return (NULL);
-	h_light = malloc(sizeof(t_hit));
-	if (!h_light)
-		return (NULL);
-	h_light->point = position(ray, h->t);
-	h_light->eyev = tuple_negate(ray->direction);
-	h_light->normalv = normal_at(h->object, h_light->point);
-	h_light->light = *light;
-	h_light->material = h->object->material;
-	h_light->inside = true;		
-	if (dot(h_light->normalv, h_light->eyev) < 0)
-		h_light->normalv = tuple_negate(h_light->normalv);
-	else
-		h_light->inside = false;		
-	return (h_light);
+		return (color(0, 0, 0, 1));
+	c = lightning(h);
+	hit_info_destroy(&h);
+	if (!light->next)
+		return (c);
+	return (color_add(c, shade_hit(light->next, ray)));
 }
 
-void	hit_info_destroy(t_hit **h_light)
-{
-	if (!(*h_light))
-		return ;
-	free(*h_light);
-	return ;
-}
-
-t_color	lightning(t_hit h)
+static t_color	lightning(t_hit *h)
 {
 	t_color	eff_color;
 	t_tuple	lightv;
 	t_color	ambient;
 
-	eff_color = hadamard_product(h.material.color, h.light.intensity);
-	lightv = normalize(tuple_subtract(h.light.position, h.point));
-	ambient = color_multiply(eff_color, h.material.ambient);
-	return (color_add(ambient, diffuse(h, eff_color, lightv)));
+	eff_color = hadamard_product(h->material.color, h->light.intensity);
+	lightv = normalize(tuple_subtract(h->light.position, h->point));
+	ambient = color_multiply(eff_color, h->material.ambient);
+	return (color_add(ambient, diffuse(*h, eff_color, lightv)));
 }
 
 static t_color	diffuse(t_hit h, t_color eff_color, t_tuple lightv)

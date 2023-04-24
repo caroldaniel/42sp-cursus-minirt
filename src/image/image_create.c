@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:08:10 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/23 22:18:22 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,41 +24,18 @@ void	image_create(t_data *data)
 
 static void	draw_on_grid(t_data *data)
 {
-	// t_tuple		p_obsv;
-	// t_tuple		p_grid;
-	t_ray		*ray;
-	// t_hit		*h_light;
-	
-	// int			x;
-	// int			y;
+	t_object	*s;
 
-	light_add(&data->world.l_list, light_new(point(-100, 100, -100), \
+	data->camera = camera(IMG_X, IMG_Y, M_PI / 3);
+	matrix_destroy(&data->camera.transform);
+	data->camera.transform = view_transform(point(0, 1.5, -5), point(0, 1, 0), \
+		vector(0, 1, 0));
+	light_add(&(data->world.l_list), light_new(point(-10, 10, -10), \
 		color(1, 1, 1, 1)));
-	object_add(&data->world.o_list, sphere_new(material(color(0.8, 1, 0.6, 1), \
-		0.1, 0.7, 0.2), identity(4)));
-	object_add(&data->world.o_list, sphere_new(material(color(1, 0.02, 1, 1), \
-		0.1, 0.9, 0.9), scaling(0.5, 0.5, 0.5)));
-	ray = ray_new(point(0, 0, -5), vector (0, 0, 1));
-	intersect_world(data->world, ray);
-	print_x_list(*ray);
-	ray_destroy(&ray);
-	// p_obsv = point(0, 0, -50);
-	// y = -1 - (IMG_Y / 2);
-	// while (++y < IMG_Y / 2)
-	// {
-	// 	x = -1 - (IMG_X / 2);
-	// 	while (++x < IMG_X / 2)
-	// 	{
-	// 		p_grid = point(x, y, 10);
-	// 		ray = ray_new(p_obsv, normalize(tuple_subtract(p_grid, p_obsv)));
-	// 		intersect_sphere(s1, ray);
-	// 		h_light = get_hit_info(light, ray);
-	// 		if (h_light)
-	// 		{
-	// 			put_pixel(data->img, x, y, lightning(*h_light));
-	// 			hit_info_destroy(&h_light);
-	// 		}
-	// 		ray_destroy(&ray);
-	// 	}
-	// }
+	s = sphere_new(material(), translation(-0.5, 1, 0.5));
+	s->material.color = color(0.1, 1, 0.5, 1);
+	s->material.diffuse = 0.7;
+	s->material.specular = 0.3;
+	object_add(&(data->world.o_list), s);
+	render(data);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:47:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 12:16:37 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/23 21:24:26 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	image_init(t_data *data)
 
 void	put_pixel(t_img img, int x, int y, t_color color)
 {
-	if (x < -IMG_X / 2 || y < -IMG_Y / 2)
+	if (x < 0 || y < 0)
 		return ;
-	if (x > IMG_X / 2 || y > IMG_Y / 2)
+	if (x >= IMG_X || y >= IMG_Y)
 		return ;
-	img.grid[-(y - IMG_Y / 2)][x + IMG_X / 2] = color;
+	img.grid[y][x] = color;
 }
