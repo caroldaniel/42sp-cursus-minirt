@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 13:51:25 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 22:05:41 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 12:31:12 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
 	forward = normalize(tuple_subtract(to, from));
 	left = cross(forward, normalize(up));
 	true_up = cross(left, forward);
-	orientation = matrix_populate(4, left.x, left.y, left.z, 0, \
-		true_up.x, true_up.y, true_up.z, 0, \
-		-forward.x, -forward.y, -forward.z, 0, \
-		0, 0, 0, 1);
+	orientation = matrix_populate(4, left.x, left.y, left.z, 0.0, \
+		true_up.x, true_up.y, true_up.z, 0.0, \
+		-forward.x, -forward.y, -forward.z, 0.0, \
+		0.0, 0.0, 0.0, 1.0);
 	translate = translation(-from.x, -from.y, -from.z);
 	return (calculate_transform(&orientation, &translate));
 }

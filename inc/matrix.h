@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 00:11:49 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:13:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:11:31 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ t_matrix	rotation_x(double radians);
 t_matrix	rotation_y(double radians);
 t_matrix	rotation_z(double radians);
 t_matrix	shearing(int size, ...);
+t_matrix	chain_transform(int nb, ...);
 
 #endif

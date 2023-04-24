@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:07:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 22:17:12 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 11:51:01 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ t_ray	*ray_for_pixel(t_cam cam, int x, int y)
 	pixel = matrix_tuple_multiply(inv_c, point(world[0], world[1], -1.0));
 	origin = matrix_tuple_multiply(inv_c, point(0.0, 0.0, 0.0));
 	matrix_destroy(&inv_c);
-	print_tuple(origin);
-	print_tuple(normalize(tuple_subtract(pixel, origin)));
 	return (ray_new(origin, normalize(tuple_subtract(pixel, origin))));
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 21:54:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 13:39:15 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 */
 
 # define MINIRT			"MiniRT"
-# define IMG_X			250
+# define IMG_X			500
 # define IMG_Y			250
 # define BIG_ENDIAN		1
 
