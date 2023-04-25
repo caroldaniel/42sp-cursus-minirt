@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 21:54:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:21:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,12 +165,5 @@ t_x			*hit(t_ray *ray);
 t_hit		*get_hit_info(t_light *light, t_ray *ray);
 void		hit_info_destroy(t_hit **h_light);
 t_color		color_at(t_world world, t_ray *ray);
-
-/*
-** World management
-*/
-t_world		world_init(void);
-void		world_destroy(t_world *world);
-void		intersect_world(t_world world, t_ray *ray);
 
 #endif

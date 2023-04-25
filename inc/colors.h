@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:12:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:16:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	int		y;
+	int		x;
 	t_color	**grid;
 }	t_img;
 

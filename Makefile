@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/24 13:10:36 by cado-car         ###   ########.fr        #
+#    Updated: 2023/04/24 20:43:23 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,9 +49,9 @@ SRC				= main.c\
 				rotation.c\
 				shearing.c\
 				chain_transform.c\
-				image.c\
 				image_create.c\
-				image_generate.c\
+				image_display.c\
+				put_pixel.c\
 				image_utils.c\
 				ray.c\
 				ray_operations_1.c\

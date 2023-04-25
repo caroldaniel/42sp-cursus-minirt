@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:56:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 13:19:14 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:45:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ t_matrix	chain_transform(int nb, ...)
 static t_matrix	calculate(int nb, va_list args)
 {
 	t_matrix	curr;
+	t_matrix	next;
+	t_matrix	result;
 
 	curr = va_arg(args, t_matrix);
-	if (nb == 0)
+	if (nb == 1)
 		return (curr);
-	return (matrix_multiply(curr, calculate(--nb, args)));
+	next = calculate(--nb, args);
+	result = matrix_multiply(next, curr);
+	return (result);
 }

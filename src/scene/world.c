@@ -6,19 +6,17 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/21 16:21:45 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:20:39 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_world	world_init(void)
+void	world_init(t_data *data)
 {
-	t_world	world;
-
-	world.l_list = NULL;
-	world.o_list = NULL;
-	return (world);
+	data->world.l_list = NULL;
+	data->world.o_list = NULL;
+	return ;
 }
 
 void	world_destroy(t_world *world)

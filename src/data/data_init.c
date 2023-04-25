@@ -6,30 +6,48 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:21:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 12:37:10 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:21:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_color	**init_grid(int width, int height);
+static void		window_init(t_data *data);
+static void		image_init(t_data *data);
+static t_color	**grid_init(int width, int height);
 
 void	data_init(t_data *data)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		exit(data_destroy(data, ERR_MLXINIT));
-	data->win_ptr = mlx_new_window(data->mlx_ptr, IMG_X, IMG_Y, MINIRT);
-	data->img.ptr = mlx_new_image(data->mlx_ptr, IMG_X, IMG_Y);
-	data->img.data = (int *)mlx_get_data_addr(data->img.ptr, \
-		&data->img.bits_per_pixel, &data->img.size_line, &data->img.endian);
-	data->img.grid = init_grid(IMG_X, IMG_Y);
-	if (!data->img.grid)
-		exit(data_destroy(data, ERR_IMGINIT));
-	data->world = world_init();
+	window_init(data);
+	image_init(data);
+	world_init(data);
 }
 
-static t_color	**init_grid(int width, int height)
+static void	window_init(t_data *data)
+{
+	data->win.x = IMG_X;
+	data->win.y = IMG_Y;
+	data->win.ptr = mlx_new_window(data->mlx_ptr, data->win.x, data->win.y, RT);
+	return ;
+}
+
+static void	image_init(t_data *data)
+{
+	data->img.x = IMG_X;
+	data->img.y = IMG_Y;
+	data->img.ptr = mlx_new_image(data->mlx_ptr, data->img.x, data->img.y);
+	data->img.data = (int *)mlx_get_data_addr(data->img.ptr, \
+		&data->img.bits_per_pixel, &data->img.size_line, &data->img.endian);
+	data->img.grid = grid_init(data->img.x, data->img.y);
+	if (!data->img.grid)
+		exit(data_destroy(data, ERR_IMGINIT));
+	return ;
+}
+
+static t_color	**grid_init(int width, int height)
 {
 	t_color	**grid;
 	int		y;
@@ -38,7 +56,7 @@ static t_color	**init_grid(int width, int height)
 	if (!grid)
 		return (NULL);
 	y = -1;
-	while (++y < width)
+	while (++y < height)
 	{
 		grid[y] = malloc(sizeof(t_color) * width);
 		if (!grid[y])

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 18:12:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:13:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:46:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@
 ** Events on X Window System
 */
 
-# define KEY_PRESS		2
-# define KEY_RELEASE	3
-# define BUTTON_PRESS	4
-# define BUTTON_RELEASE	5
-# define MOUSE_MOVE		6
-# define EXPOSE			12
-# define DESTROY_NOTIFY	17
-# define WINDOW_CLOSE	33
+# define KEY_PRESS			2
+# define KEY_RELEASE		3
+# define BUTTON_PRESS		4
+# define BUTTON_RELEASE		5
+# define MOUSE_MOVE			6
+# define EXPOSE				12
+# define DESTROY_NOTIFY		17
+# define CONFIGURE_NOTIFY	22
 
 #endif

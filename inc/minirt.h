@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 13:39:15 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 21:47:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** Macros for the window
 */
 
-# define MINIRT			"MiniRT"
+# define RT				"MiniRT"
 # define IMG_X			500
 # define IMG_Y			250
 # define BIG_ENDIAN		1
@@ -77,12 +77,22 @@ typedef struct s_coord
 }	t_coord;
 
 /*
+** WIndow type definition
+*/
+typedef struct s_win
+{
+	void	*ptr;
+	int		y;
+	int		x;
+}	t_win;
+
+/*
 ** Data type definition
 */
 typedef struct s_data
 {
 	void	*mlx_ptr;
-	void	*win_ptr;
+	t_win	win;
 	t_img	img;
 	t_cam	camera;
 	t_world	world;
@@ -103,12 +113,18 @@ t_coord	coordinate(int x, int y);
 /*
 ** Image utils
 */
-void	image_init(t_data *data);
-void	image_generate(t_img *img);
 void	image_create(t_data *data);
+void	image_display(t_data *data);
 void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);
 void	render(t_data *data);
 void	put_pixel(t_img img, int x, int y, t_color color);
+
+/*
+** World management
+*/
+void	world_init(t_data *data);
+void	world_destroy(t_world *world);
+void	intersect_world(t_world world, t_ray *ray);
 
 /*
 ** Utils

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 12:43:00 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/04/24 20:23:00 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	data_destroy(t_data *data, int exit_code)
 		return (exit_code);
 	grid_destroy(&data->img, IMG_Y);
 	mlx_destroy_image(data->mlx_ptr, data->img.ptr);
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_window(data->mlx_ptr, data->win.ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	matrix_destroy(&data->camera.transform);
