@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 14:09:49 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 09:49:10 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 12:53:31 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	calculate_ratios(t_cam *cam)
 {
 	double	half_view;
 	double	aspect;
-	
+
 	half_view = tan(cam->field_of_view / 2);
 	aspect = cam->hsize / cam->vsize;
 	if (aspect >= 1)

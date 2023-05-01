@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:56:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 21:45:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 12:53:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_matrix	chain_transform(int nb, ...)
 	t_matrix	result;
 
 	va_start(args, nb);
-	result = calculate(nb, args);	
+	result = calculate(nb, args);
 	va_end(args);
 	return (result);
 }

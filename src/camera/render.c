@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:06:56 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 22:06:25 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 12:53:47 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	render(t_data *data)
 	int		x;
 
 	y = -1;
-	while(++y < data->camera.vsize)
+	while (++y < data->camera.vsize)
 	{
 		x = -1;
-		while(++x < data->camera.hsize)
+		while (++x < data->camera.hsize)
 		{
 			ray = ray_for_pixel(data->camera, x, y);
 			c = color_at(data->world, ray);
