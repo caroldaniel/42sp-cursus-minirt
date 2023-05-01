@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 22:00:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 20:28:07 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	image_render(t_data *data)
 		vector(0, 1, 0));
 	light_add(&(data->world.l_list), light_new(point(-10, 10, -10), \
 		color(1, 1, 1, 1)));
-	light_add(&(data->world.l_list), light_new(point(10, -10, -10), \
-		color(1, 0, 0, 1)));
+	// light_add(&(data->world.l_list), light_new(point(10, 10, -10), 
+	// 	color(1, 1, 1, 1)));
 	floor = sphere_new(material(), scaling(10, 0.01, 10));
 	floor->material.color = color(1, 0.9, 0.9, 1);
 	floor->material.specular = 0;

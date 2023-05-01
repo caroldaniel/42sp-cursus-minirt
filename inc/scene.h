@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 20:21:32 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:50:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ typedef struct s_hit
 	t_light		light;
 	t_material	material;
 	bool		inside;
+	t_tuple		over_point;
+	bool		in_shadow;
 }	t_hit;
 
 /*
@@ -162,7 +164,7 @@ void		print_x_list(t_ray ray);
 ** Hit and point lighting
 */
 t_x			*hit(t_ray *ray);
-t_hit		*get_hit_info(t_light *light, t_ray *ray);
+t_hit		*get_hit_info(t_world world, t_light *light, t_ray *ray);
 void		hit_info_destroy(t_hit **h_light);
 t_color		color_at(t_world world, t_ray *ray);
 

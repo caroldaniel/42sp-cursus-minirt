@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:45:45 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/23 12:01:01 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:54:51 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static t_color	shade_hit(t_light *light, t_ray *ray);
+static t_color	shade_hit(t_world world, t_light *light, t_ray *ray);
 static t_color	lightning(t_hit *h);
 static t_color	diffuse(t_hit h, t_color eff_color, t_tuple lightv);
 static t_color	specular(t_hit h, t_tuple reflectv);
@@ -22,23 +22,23 @@ t_color	color_at(t_world world, t_ray *ray)
 	t_color	color;
 
 	intersect_world(world, ray);
-	color = shade_hit(world.l_list, ray);
+	color = shade_hit(world, world.l_list, ray);
 	return (color);
 }
 
-static t_color	shade_hit(t_light *light, t_ray *ray)
+static t_color	shade_hit(t_world world, t_light *light, t_ray *ray)
 {
 	t_hit	*h;
 	t_color	c;
 
-	h = get_hit_info(light, ray);
+	h = get_hit_info(world, light, ray);
 	if (!h)
 		return (color(0, 0, 0, 1));
 	c = lightning(h);
 	hit_info_destroy(&h);
 	if (!light->next)
 		return (c);
-	return (color_add(c, shade_hit(light->next, ray)));
+	return (color_add(c, shade_hit(world, light->next, ray)));
 }
 
 static t_color	lightning(t_hit *h)
@@ -48,8 +48,10 @@ static t_color	lightning(t_hit *h)
 	t_color	ambient;
 
 	eff_color = hadamard_product(h->material.color, h->light.intensity);
-	lightv = normalize(tuple_subtract(h->light.position, h->point));
+	lightv = normalize(tuple_subtract(h->light.position, h->over_point));
 	ambient = color_multiply(eff_color, h->material.ambient);
+	if (h->in_shadow)
+		return (ambient);
 	return (color_add(ambient, diffuse(*h, eff_color, lightv)));
 }
 

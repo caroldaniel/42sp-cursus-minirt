@@ -6,13 +6,15 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/01 12:53:08 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:56:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_hit	*get_hit_info(t_light *light, t_ray *ray)
+static bool	is_shadowed(t_world world, t_light *light, t_tuple point);
+
+t_hit	*get_hit_info(t_world world, t_light *light, t_ray *ray)
 {
 	t_hit	*h_light;
 	t_x		*h;
@@ -33,7 +35,29 @@ t_hit	*get_hit_info(t_light *light, t_ray *ray)
 		h_light->normalv = tuple_negate(h_light->normalv);
 	else
 		h_light->inside = false;
+	h_light->over_point = tuple_add(h_light->point, \
+		tuple_multiply(h_light->normalv, 0.00001));
+	h_light->in_shadow = is_shadowed(world, light, h_light->over_point);
 	return (h_light);
+}
+
+static bool	is_shadowed(t_world world, t_light *light, t_tuple point)
+{
+	t_tuple	v;
+	double	distance;
+	t_tuple	direction;
+	t_ray	*r;
+	t_x		*h;
+
+	v = tuple_subtract(light->position, point);
+	distance = magnitude(v);
+	direction = normalize(v);
+	r = ray_new(point, direction);
+	intersect_world(world, r);
+	h = hit(r);
+	if (h && h->t < distance)
+		return (true);
+	return (false);
 }
 
 void	hit_info_destroy(t_hit **h_light)
