@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/01 19:50:33 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:04:11 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ typedef struct s_light
 ** Object type definition
 */
 enum e_object {
-	SPHERE
+	SPHERE,
+	PLANE
 };
 
 typedef struct s_object

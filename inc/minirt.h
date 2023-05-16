@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/01 20:09:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:49:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 ** Macros for exit_codes
 */
 
-# define ERR_MLXINIT	1
-# define ERR_IMGINIT	2
+# define ERR_WRNGARG	1
+# define ERR_MLXINIT	2
+# define ERR_IMGINIT	3
 
 /*------LIBRARIES------*/
 
@@ -91,6 +92,7 @@ typedef struct s_win
 */
 typedef struct s_data
 {
+	char	*file_path;
 	void	*mlx_ptr;
 	t_win	win;
 	t_img	img;
@@ -101,7 +103,7 @@ typedef struct s_data
 /*
 ** Data utils
 */
-void	data_init(t_data *data);
+void	data_init(t_data *data, char *file_path);
 int		data_destroy(t_data *data, int exit_code);
 void	set_hooks(t_data *data);
 

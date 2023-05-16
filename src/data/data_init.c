@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:21:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 21:21:20 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:54:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@ static void		window_init(t_data *data);
 static void		image_init(t_data *data);
 static t_color	**grid_init(int width, int height);
 
-void	data_init(t_data *data)
+void	data_init(t_data *data, char *file_path)
 {
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		exit(data_destroy(data, ERR_MLXINIT));
+	data->file_path = ft_strdup(file_path);
 	window_init(data);
 	image_init(data);
 	world_init(data);

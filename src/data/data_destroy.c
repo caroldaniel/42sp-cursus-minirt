@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/24 20:23:00 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/15 21:48:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@ static void	grid_destroy(t_img *img, int height);
 
 int	data_destroy(t_data *data, int exit_code)
 {
+	printf("Error\n");
 	if (!data->mlx_ptr)
 		return (exit_code);
+	free(data->file_path);
 	grid_destroy(&data->img, IMG_Y);
 	mlx_destroy_image(data->mlx_ptr, data->img.ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win.ptr);
