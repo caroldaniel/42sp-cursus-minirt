@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:40:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:11:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/05/29 21:06:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,6 @@ t_ray	*transform(t_ray *ray, t_matrix m)
 	matrix_destroy(&m);
 	t = ray_new(origin_t, direction_t);
 	return (t);
-}
-
-t_tuple	normal_at(t_object *o, t_tuple p)
-{
-	t_tuple	nml;
-
-	if (o->type == SPHERE)
-		nml = normal_at_sphere(o, p);
-	else
-		nml = tuple(0, 0, 0, 0);
-	return (nml);
 }
 
 t_tuple	reflect(t_tuple in, t_tuple nml)
