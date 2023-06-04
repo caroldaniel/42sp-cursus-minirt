@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 00:38:08 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:22:52 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,20 @@ static void	image_render(t_data *data)
 	// light_add(&(data->world.l_list), light_new(point(10, 10, -10), 
 	// 	color(1, 1, 1, 1)));
 	floor = plane_new(material(), identity(4));
-	floor->material.color = color(1, 0.9, 0.9, 1);
+	floor->material.pattern = stripe_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1));
 	floor->material.specular = 0;
 	s1 = sphere_new(material(), translation(-0.5, 1, 0.5));
-	s1->material.color = color(0.1, 1, 0.5, 1);
+	s1->material.pattern = stripe_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1));
 	s1->material.diffuse = 0.7;
 	s1->material.specular = 0.3;
 	s2 = sphere_new(material(), chain_transform(2, scaling(0.5, 0.5, 0.5), \
 		translation(1.5, 0.5, -0.5)));
-	s2->material.color = color(0.5, 1, 0.1, 1);
+	s2->material.pattern = stripe_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1));
 	s2->material.diffuse = 0.7;
 	s2->material.specular = 0.3;
 	s3 = sphere_new(material(), chain_transform(2, scaling(0.33, 0.33, 0.33), \
 		translation(-1.5, 0.33, -0.75)));
-	s3->material.color = color(1, 0.8, 0.1, 1);
+	s3->material.pattern = stripe_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1));
 	s3->material.diffuse = 0.7;
 	s3->material.specular = 0.3;
 	object_add(&(data->world.o_list), floor);

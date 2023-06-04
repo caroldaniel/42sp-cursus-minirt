@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:06:56 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/01 12:53:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:30:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	render(t_data *data)
 			c = color_at(data->world, ray);
 			put_pixel(data->img, x, y, c);
 			ray_destroy(&ray);
+			update_progress_bar((x + (y * data->camera.hsize)), \
+				data->camera.vsize * data->camera.hsize);
 		}
 	}
+	update_progress_bar((x + (y * data->camera.hsize)), \
+		data->camera.vsize * data->camera.hsize);
+	printf("\n%sRendering Complete%s\n", ESC_BOLD_GREEN, ESC_RESET_COLOR);
 }

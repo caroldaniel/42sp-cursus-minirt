@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/15 21:49:21 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:04:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,16 @@
 # define ERR_WRNGARG	1
 # define ERR_MLXINIT	2
 # define ERR_IMGINIT	3
+
+/*
+** Macros for message colors
+*/
+
+# define ESC_BOLD_ORANGE	"\033[1;33m"
+# define ESC_BOLD_GREEN		"\033[1;32m"
+# define ESC_RESET_COLOR	"\033[0m"
+
+
 
 /*------LIBRARIES------*/
 
@@ -133,5 +143,6 @@ void	intersect_world(t_world world, t_ray *ray);
 */
 bool	float_cmp(double a, double b, double epsilon);
 double	abs_float(double flt);
+void	update_progress_bar(int current, int total);
 
 #endif

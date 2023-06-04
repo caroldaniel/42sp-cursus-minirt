@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/29 21:24:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 19:11:10 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct s_cam
 */
 typedef struct s_material
 {
-	t_color	color;
-	double	ambient;
-	double	diffuse;
-	double	specular;
-	double	shininess;
+	t_pattern	pattern;
+	double		ambient;
+	double		diffuse;
+	double		specular;
+	double		shininess;
 }	t_material;
 
 /*
@@ -98,6 +98,7 @@ typedef struct s_hit
 	t_tuple		normalv;
 	t_light		light;
 	t_material	material;
+	t_color		color_hit;
 	bool		inside;
 	t_tuple		over_point;
 	bool		in_shadow;

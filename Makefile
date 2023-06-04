@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/04 00:39:01 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/04 19:41:39 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC				= main.c\
 				colors.c\
 				colors_operations_1.c\
 				colors_utils.c\
+				pattern.c\
 				matrix.c\
 				matrix_operations_1.c\
 				matrix_operations_2.c\
@@ -77,7 +78,8 @@ SRC				= main.c\
 				data_destroy.c\
 				hooks.c\
 				abs_float.c\
-				float_cmp.c
+				float_cmp.c\
+				progress_bar.c
 				
 VPATH 			= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\

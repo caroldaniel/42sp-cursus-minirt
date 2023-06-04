@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   progress_bar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 20:12:41 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/04 19:28:43 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/04 20:29:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+void	update_progress_bar(int current, int total)
 {
-	t_data	data;
-
-	if (argc != 1)
-		exit(data_destroy(&data, ERR_WRNGARG));
-	data_init(&data, argv[1]);
-	image_create(&data);
-	set_hooks(&data);
-	mlx_loop(data.mlx_ptr);
-	return (0);
+	int	progress;
+	int	bars;
+	int	i;
+	
+	progress = (current * 100) / total;
+	bars = progress / 2;
+	printf("\r[");
+	i = -1;
+	while (++i < 50)
+	{
+		if (i < bars)
+			printf("=");
+		else
+			printf(" ");
+	}
+	if (progress == 100)
+		printf("] %s%3d%%%s", ESC_BOLD_GREEN, progress, ESC_RESET_COLOR);
+	else
+		printf("] %s%3d%%%s", ESC_BOLD_ORANGE, progress, ESC_RESET_COLOR);
 }
