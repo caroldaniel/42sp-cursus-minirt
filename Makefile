@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/04/24 20:43:23 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/04 00:39:01 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ SRC				= main.c\
 				object_operations_1.c\
 				sphere.c\
 				sphere_operations_1.c\
+				plane.c\
+				plane_operations_1.c\
 				color_at.c\
 				hit_info.c\
 				material.c\

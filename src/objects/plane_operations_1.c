@@ -6,9 +6,11 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:50:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/29 21:33:47 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:02:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minirt.h"
 
 void	intersect_plane(t_object *pl, t_ray *ray)
 {
@@ -18,8 +20,10 @@ void	intersect_plane(t_object *pl, t_ray *ray)
 	ray_t = transform(ray, matrix_inverse(pl->transform));
 	if (abs_float(ray_t->direction.y) < 0.001)
 		return ;
-	t = -ray->origin.y / ray->direction.y
-	
+	t = -ray_t->origin.y / ray_t->direction.y;
+	x_list_add(&ray->x_list, x_new(pl, t));
+	ray_destroy(&ray_t);
+	return ;
 }
 
 t_tuple	normal_at_plane(t_object *pl)
