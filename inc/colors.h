@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 19:13:00 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:26:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minirt.h"
 # include "tuples.h"
+# include "matrix.h"
 
 /*
 ** Color type definition
@@ -47,7 +48,8 @@ typedef struct s_img
 */
 enum e_pattern {
 	SOLID,
-	STRIPE
+	STRIPE,
+	CHECKER
 };
 
 /*
@@ -55,9 +57,10 @@ enum e_pattern {
 */
 typedef struct s_pattern
 {
-	t_color	a;
-	t_color b;
-	int		type;
+	t_color		a;
+	t_color 	b;
+	t_matrix	transform;
+	int			type;
 }	t_pattern;
 
 /*
@@ -77,7 +80,8 @@ t_color	hadamard_product(t_color a, t_color b);
 ** Pattern
 */
 t_pattern	solid_pattern(t_color a);
-t_pattern	stripe_pattern(t_color a, t_color b);
+t_pattern	stripe_pattern(t_color a, t_color b, t_matrix transform);
+t_pattern	checker_pattern(t_color a, t_color b, t_matrix transform);
 t_color		pattern_at(t_pattern pattern, t_tuple point);
 
 /*
