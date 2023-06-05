@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/04 22:50:35 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/05 10:36:04 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,6 @@ SRC				= main.c\
 				data_init.c\
 				data_destroy.c\
 				hooks.c\
-				abs_float.c\
 				float_cmp.c\
 				progress_bar.c
 				

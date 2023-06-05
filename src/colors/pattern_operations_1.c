@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:45:54 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:25:37 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:29:52 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,17 @@ t_color	pattern_at_object(t_object *object, t_tuple world_point)
 	return (pattern_at(object->material.pattern, pattern_point));
 }
 
-t_color	pattern_at(t_pattern pattern, t_tuple point)
+t_color	pattern_at(t_pattern pattern, t_tuple p)
 {
 	if (pattern.type == SOLID)
 		return (pattern.a);
 	if (pattern.type == STRIPE)
-	{
-		if (fmod(abs_float(point.x), 2.0) < 1.0)
+		if ((int)floor(p.x) % 2 == 0)
 			return (pattern.a);
-		return (pattern.b);
-	}
 	if (pattern.type == CHECKER)
-	{
-		if (fmod(abs_float(point.x) + abs_float(point.y) + abs_float(point.z), \
-			2.0) < 1.0)
+		if (((int)floor(p.x) + (int)floor(p.y) + (int)floor(p.z)) % 2 == 0)
 			return (pattern.a);
-		return (pattern.b);
-	}
-	return (color(0, 0, 0, 1));
+	return (pattern.b);
 }
 
 void	set_pattern_transform(t_pattern *pattern, t_matrix t)

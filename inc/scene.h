@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 00:13:55 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:35:48 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,14 +152,14 @@ t_tuple		normal_at_sphere(t_object *s, t_tuple p);
 */
 t_object	*plane_new(t_matrix transform);
 void		intersect_plane(t_object *pl, t_ray *ray);
-t_tuple		normal_at_plane(t_object *pl);
+t_tuple		normal_at_plane(t_object *pl, t_tuple p);
 
 /*
 ** Cylinder
 */
 t_object	*cylinder_new(t_matrix transform, double min, double max, bool cap);
-void		intersect_cylinder(t_object *s, t_ray *ray);
-t_tuple		normal_at_cylinder(t_object *c, t_tuple p);
+void		intersect_cylinder(t_object *cyl, t_ray *ray);
+t_tuple		normal_at_cylinder(t_object *cyl, t_tuple p);
 
 /*
 ** Ray Operations

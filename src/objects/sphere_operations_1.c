@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 22:32:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/29 21:13:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:35:57 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,9 @@ void	intersect_sphere(t_object *s, t_ray *ray)
 
 t_tuple	normal_at_sphere(t_object *s, t_tuple p)
 {
-	t_matrix	inv;
-	t_matrix	trs;
-	t_tuple		o_p;
-	t_tuple		o_nml;
-	t_tuple		nml;
-
-	inv = matrix_inverse(s->transform);
-	o_p = matrix_tuple_multiply(inv, p);
-	o_nml = tuple_subtract(o_p, point(0, 0, 0));
-	trs = matrix_transpose(inv);
-	nml = matrix_tuple_multiply(trs, o_nml);
-	nml.w = 0;
-	matrix_destroy(&inv);
-	matrix_destroy(&trs);
-	return (normalize(nml));
+	t_tuple	sph_nml;
+	
+	s = (t_object *)s;
+	sph_nml = tuple_subtract(p, point(0, 0, 0));
+	return (normalize(sph_nml));
 }
