@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:34:35 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 23:33:54 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@ static void	image_render(t_data *data)
 		chain_transform(2, scaling(0.2, 0.2, 0.2), translation(0.5, 0, 0)));
 	s2->material.diffuse = 0.7;
 	s2->material.specular = 0.3;
-	s3 = sphere_new(material(), chain_transform(2, scaling(0.33, 0.33, 0.33), \
-		translation(-1.5, 0.33, -0.75)));
+	s3 = cylinder_new(material(), identity(4));
 	s3->material.pattern = checker_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1), \
 		scaling(0.2, 0.2, 0.2));
 	s3->material.diffuse = 0.7;
