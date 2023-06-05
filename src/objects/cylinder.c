@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object_operations_1.c                              :+:      :+:    :+:   */
+/*   cylinder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 14:49:57 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 23:31:54 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/04 22:49:04 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/04 22:50:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "minirt.h"
 
-void	set_transform(t_object *object, t_matrix t)
+t_object	*cylinder_new(t_material material, t_matrix transform)
 {
-	matrix_destroy(&object->transform);
-	object->transform = t;
-}
+	static int	id = 0;
+	t_object	*cylinder;
 
-t_tuple	normal_at(t_object *o, t_tuple p)
-{
-	t_tuple	nml;
-
-
-	if (o->type == SPHERE)
-		nml = normal_at_sphere(o, p);
-	else if (o->type == PLANE)
-		nml = normal_at_plane(o);
-	else if (o->type == CYLINDER)
-		nml = normal_at_cylinder(o, p);
-	else
-		nml = tuple(0, 0, 0, 0);
-	return (nml);
+	id++;
+	cylinder = object_new(CYLINDER, id, material);
+	if (!cylinder)
+		return (NULL);
+	set_transform(cylinder, transform);
+	return (cylinder);
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:09:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 23:28:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ typedef struct s_light
 */
 enum e_object {
 	SPHERE,
-	PLANE
+	PLANE,
+	CYLINDER
 };
 
 typedef struct s_object
@@ -144,11 +145,18 @@ void		intersect_sphere(t_object *s, t_ray *ray);
 t_tuple		normal_at_sphere(t_object *s, t_tuple p);
 
 /*
-** PLane
+** Plane
 */
 t_object	*plane_new(t_material material, t_matrix transform);
 void		intersect_plane(t_object *pl, t_ray *ray);
 t_tuple		normal_at_plane(t_object *pl);
+
+/*
+** Cylinder
+*/
+t_object	*cylinder_new(t_material material, t_matrix transform);
+void		intersect_cylinder(t_object *s, t_ray *ray);
+t_tuple		normal_at_cylinder(t_object *c, t_tuple p);
 
 /*
 ** Ray Operations
