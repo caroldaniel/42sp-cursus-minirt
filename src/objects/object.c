@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:23:17 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/15 13:12:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/04 23:55:31 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_object	*object_new(int type, int id, t_material material)
+t_object	*object_new(int type, int id)
 {
 	t_object	*new;
 
@@ -22,7 +22,10 @@ t_object	*object_new(int type, int id, t_material material)
 	new->type = type;
 	new->id = id;
 	new->transform = identity(4);
-	new->material = material;
+	new->material = material();
+	new->minimum = 0;
+	new->maximum = 0;
+	new->capped = false;
 	new->next = NULL;
 	return (new);
 }

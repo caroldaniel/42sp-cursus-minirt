@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 23:28:20 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 00:13:55 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,9 @@ typedef struct s_object
 	int				id;
 	t_matrix		transform;
 	t_material		material;
+	double			minimum;
+	double			maximum;
+	bool			capped;
 	struct s_object	*next;
 }	t_object;
 
@@ -132,7 +135,7 @@ void		light_destroy(t_light **pl);
 ** Object list management
 */
 t_material	material(void);
-t_object	*object_new(int type, int id, t_material material);
+t_object	*object_new(int type, int id);
 void		object_add(t_object **ol, t_object *new);
 void		object_list_destroy(t_object**ol);
 void		set_transform(t_object *object, t_matrix t);
@@ -140,21 +143,21 @@ void		set_transform(t_object *object, t_matrix t);
 /*
 ** Sphere
 */
-t_object	*sphere_new(t_material material, t_matrix transform);
+t_object	*sphere_new(t_matrix transform);
 void		intersect_sphere(t_object *s, t_ray *ray);
 t_tuple		normal_at_sphere(t_object *s, t_tuple p);
 
 /*
 ** Plane
 */
-t_object	*plane_new(t_material material, t_matrix transform);
+t_object	*plane_new(t_matrix transform);
 void		intersect_plane(t_object *pl, t_ray *ray);
 t_tuple		normal_at_plane(t_object *pl);
 
 /*
 ** Cylinder
 */
-t_object	*cylinder_new(t_material material, t_matrix transform);
+t_object	*cylinder_new(t_matrix transform, double min, double max, bool cap);
 void		intersect_cylinder(t_object *s, t_ray *ray);
 t_tuple		normal_at_cylinder(t_object *c, t_tuple p);
 
