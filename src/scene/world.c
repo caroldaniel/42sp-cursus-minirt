@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 22:56:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:09:56 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,22 @@ void	world_destroy(t_world *world)
 void	intersect_world(t_world world, t_ray *ray)
 {
 	t_object	*curr;
+	t_matrix	inv;
+	t_ray		*local_ray;
 
 	curr = world.o_list;
 	while (curr)
 	{
+		inv = matrix_inverse(curr->transform);
+		local_ray = transform(ray, inv);
+		matrix_destroy(&inv);
 		if (curr->type == SPHERE)
-			intersect_sphere(curr, ray);
+			intersect_sphere(curr, ray, local_ray);
 		if (curr->type == PLANE)
-			intersect_plane(curr, ray);
+			intersect_plane(curr, ray, local_ray);
 		if (curr->type == CYLINDER)
-			intersect_cylinder(curr, ray);
+			intersect_cylinder(curr, ray, local_ray);
+		ray_destroy(&local_ray);
 		curr = curr->next;
 	}
 	return ;

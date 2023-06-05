@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:07:38 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:48:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_hit	*get_hit_info(t_world world, t_light *light, t_ray *ray)
 	else
 		h_light->inside = false;
 	h_light->over_point = tuple_add(h_light->point, \
-		tuple_multiply(h_light->normalv, 0.00001));
+		tuple_multiply(h_light->normalv, EPSILON));
 	h_light->in_shadow = is_shadowed(world, light, h_light->over_point);
 	return (h_light);
 }

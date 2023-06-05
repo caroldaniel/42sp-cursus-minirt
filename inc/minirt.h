@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 11:25:55 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:58:49 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define IMG_X			200
 # define IMG_Y			200
 # define BIG_ENDIAN		1
+# define EPSILON		0.001
 
 /*
 ** Macros for exit_codes
@@ -142,6 +143,7 @@ void	intersect_world(t_world world, t_ray *ray);
 ** Utils
 */
 bool	float_cmp(double a, double b, double epsilon);
+void	swap_doubles(double *a, double *b);
 void	update_progress_bar(int current, int total);
 
 #endif

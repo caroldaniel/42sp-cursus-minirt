@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:45:54 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 11:29:52 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:49:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ t_color	pattern_at_object(t_object *object, t_tuple world_point)
 
 	obj_t_inv = matrix_inverse(object->transform);
 	object_point = matrix_tuple_multiply(obj_t_inv, world_point);
+	matrix_destroy(&obj_t_inv);
 	pat_t_inv = matrix_inverse(object->material.pattern.transform);
 	pattern_point = matrix_tuple_multiply(pat_t_inv, object_point);
-	matrix_destroy(&obj_t_inv);
 	matrix_destroy(&pat_t_inv);
 	return (pattern_at(object->material.pattern, pattern_point));
 }

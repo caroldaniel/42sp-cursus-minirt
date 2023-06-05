@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/05 10:36:04 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/05 15:59:05 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRC				= main.c\
 				data_destroy.c\
 				hooks.c\
 				float_cmp.c\
+				swap_doubles.c\
 				progress_bar.c
 				
 VPATH 			= $(SRC_PATH)\

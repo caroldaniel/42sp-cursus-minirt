@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 21:40:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/29 21:06:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:38:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_ray	*transform(t_ray *ray, t_matrix m)
 
 	origin_t = matrix_tuple_multiply(m, ray->origin);
 	direction_t = matrix_tuple_multiply(m, ray->direction);
-	matrix_destroy(&m);
 	t = ray_new(origin_t, direction_t);
 	return (t);
 }

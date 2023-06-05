@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_operations_1.c                               :+:      :+:    :+:   */
+/*   swap_doubles.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 21:50:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:49:29 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/05 15:57:25 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/05 15:58:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	intersect_plane(t_object *pl, t_ray *ray, t_ray *local_ray)
+void	swap_doubles(double *a, double *b)
 {
-	double	t;
+	double temp;
 
-	if (fabs(local_ray->direction.y) < EPSILON)
-		return ;
-	t = (-local_ray->origin.y) / local_ray->direction.y;
-	x_list_add(&ray->x_list, x_new(pl, t));
+	temp = *b;
+	*b = *a;
+	*a = temp;
 	return ;
-}
-
-t_tuple	normal_at_plane(t_object *pl, t_tuple p)
-{
-	t_tuple		pl_nml;
-
-	pl = (t_object *)pl;
-	p = (t_tuple)p;
-	pl_nml = vector(0, 1, 0);
-	return (pl_nml);
 }
