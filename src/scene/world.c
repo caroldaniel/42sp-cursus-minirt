@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 16:09:56 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:41:35 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	world_init(t_data *data)
 {
 	data->world.l_list = NULL;
 	data->world.o_list = NULL;
-	
 	return ;
 }
 

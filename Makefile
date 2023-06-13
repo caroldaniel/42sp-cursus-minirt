@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/05 15:59:05 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/13 12:56:01 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC				= main.c\
 				rotation.c\
 				shearing.c\
 				chain_transform.c\
+				image.c\
 				image_create.c\
 				image_display.c\
 				put_pixel.c\
@@ -142,7 +143,7 @@ install:
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:			all			
-				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
+				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) haha
 
 .PHONY:			all clean fclean re bonus rebonus
 

@@ -6,25 +6,25 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 17:12:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:12:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	image_init(t_data *data);
+static void	image_pointer_init(t_data *data);
 static void	image_render(t_data *data);
 static void	image_generate(t_data *data);
 
 void	image_create(t_data *data)
 {
-	image_init(data);
+	image_pointer_init(data);
 	image_render(data);
 	image_generate(data);
 	image_display(data);
 }
 
-static void	image_init(t_data *data)
+static void	image_pointer_init(t_data *data)
 {
 	int	x;
 	int	y;
@@ -44,17 +44,17 @@ static void	image_render(t_data *data)
 	t_object	*wall;
 	// t_object	*s1;
 	// t_object	*s2;
-	// t_object	*s3;
+	t_object	*s3;
 
 	data->camera = camera(data->img.x, data->img.y, M_PI / 3);
 	matrix_destroy(&data->camera.transform);
-	data->camera.transform = view_transform(point(0, 1.5, -5), point(0, 1, 0), \
+	data->camera.transform = view_transform(point(0, 4, -5), point(0, 1, 0), \
 		vector(0, 1, 0));
 	light_add(&(data->world.l_list), light_new(point(-10, 10, -10), \
 		color(1, 1, 1, 1)));
 	// light_add(&(data->world.l_list), light_new(point(10, 10, -10), 
 	// 	color(1, 1, 1, 1)));
-	floor = plane_new(identity(4));
+	floor = plane_new(translation(0, 0.5, 0));
 	floor->material.pattern = checker_pattern(color(1, 0.5, 0.5, 1), \
 		color(1, 1, 1, 1), scaling(0.7, 0.7, 0.7));
 	floor->material.specular = 0;
@@ -73,15 +73,15 @@ static void	image_render(t_data *data)
 	// 	chain_transform(2, scaling(0.2, 0.2, 0.2), translation(0.5, 0, 0)));
 	// s2->material.diffuse = 0.7;
 	// s2->material.specular = 0.3;
-	// s3 = cylinder_new(scaling(0.5, 0.5, 0.5), 0, 1, true);
-	// s3->material.pattern = solid_pattern(color(1, 1, 0.5, 1));
-	// s3->material.diffuse = 0.7;
-	// s3->material.specular = 0.3;
+	s3 = cylinder_new(identity(4), 0.0, 2.5, true);
+	s3->material.pattern = solid_pattern(color(1, 1, 0.5, 1));
+	s3->material.diffuse = 0.7;
+	s3->material.specular = 0.3;
 	object_add(&(data->world.o_list), floor);
 	object_add(&(data->world.o_list), wall);
 	// object_add(&(data->world.o_list), s1);
 	// object_add(&(data->world.o_list), s2);
-	// object_add(&(data->world.o_list), s3);
+	object_add(&(data->world.o_list), s3);
 	render(data);
 }
 

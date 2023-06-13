@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:28:43 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 09:43:01 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:42:00 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	update_progress_bar(int current, int total)
 	int	progress;
 	int	bars;
 	int	i;
-	
+
 	progress = (current * 100) / total;
 	bars = progress / 2;
 	printf("\r[");

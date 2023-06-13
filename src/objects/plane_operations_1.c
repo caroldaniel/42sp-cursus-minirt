@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:50:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:49:29 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:29:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	intersect_plane(t_object *pl, t_ray *ray, t_ray *local_ray)
 {
 	double	t;
 
-	if (fabs(local_ray->direction.y) < EPSILON)
+	if (float_cmp(local_ray->direction.y, 0.0, EPSILON))
 		return ;
 	t = (-local_ray->origin.y) / local_ray->direction.y;
 	x_list_add(&ray->x_list, x_new(pl, t));

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:58:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:40:17 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@
 */
 
 # define RT				"MiniRT"
-# define IMG_X			200
-# define IMG_Y			200
+# define IMG_X			300
+# define IMG_Y			300
 # define BIG_ENDIAN		1
-# define EPSILON		0.001
+# define EPSILON		0.01
 
 /*
 ** Macros for exit_codes
 */
 
 # define ERR_WRNGARG	1
-# define ERR_MLXINIT	2
-# define ERR_IMGINIT	3
+# define ERR_MEMALOC	2
+# define ERR_MLXINIT	3
+# define ERR_EXTINVL	4
+# define ERR_FDERROR	5
 
 /*
 ** Macros for message colors
@@ -39,9 +41,8 @@
 
 # define ESC_BOLD_ORANGE	"\033[1;33m"
 # define ESC_BOLD_GREEN		"\033[1;32m"
+# define ESC_BOLD_RED		"\033[1;31m"
 # define ESC_RESET_COLOR	"\033[0m"
-
-
 
 /*------LIBRARIES------*/
 
@@ -126,6 +127,7 @@ t_coord	coordinate(int x, int y);
 /*
 ** Image utils
 */
+void	image_init(t_data *data);
 void	image_create(t_data *data);
 void	image_display(t_data *data);
 void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);

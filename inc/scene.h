@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:42:13 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:23:11 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_world
 */
 t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
 t_cam		camera(int hsize, int vsize, int field_of_view);
+void		camera_destroy(t_cam *cam);
 t_ray		*ray_for_pixel(t_cam cam, int x, int y);
 
 /*
