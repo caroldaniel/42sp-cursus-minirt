@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 20:45:54 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/06 21:36:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:40:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_color	pattern_at(t_pattern pattern, t_tuple p)
 	if (pattern.type == SOLID)
 		return (pattern.a);
 	if (pattern.type == STRIPE)
-		if ((int)floor(p.x) % 2 == 0)
+		if (((int)floor(p.x)) % 2 == 0)
 			return (pattern.a);
 	if (pattern.type == CHECKER)
 		if (((int)floor(p.x) + (int)floor(p.y) + (int)floor(p.z)) % 2 == 0)

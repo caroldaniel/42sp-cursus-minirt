@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 19:41:47 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 17:08:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:57:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_tuple	tuple_divide(t_tuple v, double scalar)
 {
 	t_tuple	res;
 
-	if (scalar == 0)
+	if (comp(scalar, 0.0, EPSILON))
 		return (tuple(0, 0, 0, 0));
 	res = tuple(v.x / scalar, v.y / scalar, v.z / scalar, v.w / scalar);
 	return (res);

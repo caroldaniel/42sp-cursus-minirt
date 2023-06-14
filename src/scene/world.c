@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 11:39:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/06 18:41:35 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:48:07 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	intersect_world(t_world world, t_ray *ray)
 			intersect_plane(curr, ray, local_ray);
 		if (curr->type == CYLINDER)
 			intersect_cylinder(curr, ray, local_ray);
+		if (curr->type == CONE)
+			intersect_cone(curr, ray, local_ray);
 		ray_destroy(&local_ray);
 		curr = curr->next;
 	}

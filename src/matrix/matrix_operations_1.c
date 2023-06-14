@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 14:49:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:48:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:37:55 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	matrix_compare(t_matrix a, t_matrix b)
 	{
 		x = -1;
 		while (++x < a.size)
-			if (!float_cmp(a.data[y][x], b.data[y][x], EPSILON))
+			if (!comp(a.data[y][x], b.data[y][x], EPSILON))
 				return (false);
 	}
 	return (true);

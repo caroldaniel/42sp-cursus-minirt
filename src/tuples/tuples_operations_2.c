@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 09:38:09 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/08 17:13:45 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 17:19:54 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ double	magnitude(t_tuple v)
 {
 	double	mag;
 
-	if (v.w == 1)
+	if (comp(v.w, 1, EPSILON))
 		return (-1);
 	mag = sqrt((pow(v.x, 2.0) + pow(v.y, 2.0) + pow(v.z, 2.0)));
 	return (mag);
@@ -38,7 +38,7 @@ double	dot(t_tuple a, t_tuple b)
 {
 	double	pdt;
 
-	if (a.w == 1 || b.w == 1)
+	if (comp(a.w, 1.0, EPSILON) || comp(b.w, 1.0, EPSILON))
 		return (-1);
 	pdt = a.x * b.x + a.y * b.y + a.z * b.z;
 	return (pdt);
@@ -48,7 +48,7 @@ t_tuple	cross(t_tuple a, t_tuple b)
 {
 	t_tuple	v;
 
-	if (a.w == 1 || b.w == 1)
+	if (comp(a.w, 1.0, EPSILON) || comp(b.w, 1.0, EPSILON))
 		return (tuple(0, 0, 0, 0));
 	v = vector(a.y * b.z - a.z * b.y, \
 		a.z * b.x - a.x * b.z, \

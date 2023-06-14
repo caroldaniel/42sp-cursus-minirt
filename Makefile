@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/13 12:56:01 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/14 16:14:04 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,8 @@ SRC				= main.c\
 				sphere_operations_1.c\
 				cylinder.c\
 				cylinder_operations_1.c\
+				cone.c\
+				cone_operations_1.c\
 				plane.c\
 				plane_operations_1.c\
 				color_at.c\
@@ -81,7 +83,7 @@ SRC				= main.c\
 				data_init.c\
 				data_destroy.c\
 				hooks.c\
-				float_cmp.c\
+				comp.c\
 				swap_doubles.c\
 				progress_bar.c
 				

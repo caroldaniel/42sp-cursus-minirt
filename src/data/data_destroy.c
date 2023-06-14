@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 13:42:10 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 11:50:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int	data_destroy(t_data *data, int exit_code)
 		mlx_destroy_image(data->mlx_ptr, data->img.ptr);
 		mlx_destroy_window(data->mlx_ptr, data->win.ptr);
 		mlx_destroy_display(data->mlx_ptr);
-		if (!data->file_path)
-			return (exit_code);
-		free(data->file_path);
 		free(data->mlx_ptr);
 	}
 	return (exit_code);
@@ -39,7 +36,7 @@ static void	print_exit_message(int exit_code)
 	if (exit_code)
 		printf("%sError%s\n", ESC_BOLD_RED, ESC_RESET_COLOR);
 	else
-		printf("%sMiniRT session ended%s\n", ESC_BOLD_ORANGE, ESC_RESET_COLOR);
+		printf("\n%sClosing MiniRT%s\n", ESC_BOLD_ORANGE, ESC_RESET_COLOR);
 	if (exit_code == ERR_WRNGARG)
 		printf("Wrong usage. Use: `./minirt <path_to_rt_file>`\n");
 	if (exit_code == ERR_MEMALOC)
@@ -49,8 +46,7 @@ static void	print_exit_message(int exit_code)
 	if (exit_code == ERR_EXTINVL)
 		printf("Invalid extention. Please choose a `.rt` file to continue.\n");
 	if (exit_code == ERR_FDERROR)
-		printf("Check your file path and try again.\n");
-		
+		perror("Failed to open file");
 }
 
 static void	grid_destroy(t_img *img, int height)

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 12:46:51 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 11:43:49 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	data.mlx_ptr = NULL;
 	if (argc != 2)
 		exit(data_destroy(&data, ERR_WRNGARG));
 	data_init(&data, argv[1]);

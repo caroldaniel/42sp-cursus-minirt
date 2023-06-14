@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 22:49:04 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/06 18:42:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:49:05 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_object	*cylinder_new(t_matrix transform, double min, double max, bool cap)
 	cylinder = object_new(CYLINDER, id);
 	if (!cylinder)
 		return (NULL);
-	set_transform(cylinder, transform);
+	set_object_transform(cylinder, transform);
 	cylinder->minimum = min;
 	cylinder->maximum = max;
 	cylinder->capped = cap;

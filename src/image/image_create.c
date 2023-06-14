@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 13:12:28 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 19:35:56 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,21 @@ static void	image_render(t_data *data)
 	t_object	*s3;
 
 	data->camera = camera(data->img.x, data->img.y, M_PI / 3);
-	matrix_destroy(&data->camera.transform);
-	data->camera.transform = view_transform(point(0, 4, -5), point(0, 1, 0), \
-		vector(0, 1, 0));
+	set_camera_transform(&data->camera, view_transform(point(0, 4, -5), \
+		point(0, 1, 0), vector(0, 1, 0)));
 	light_add(&(data->world.l_list), light_new(point(-10, 10, -10), \
 		color(1, 1, 1, 1)));
 	// light_add(&(data->world.l_list), light_new(point(10, 10, -10), 
 	// 	color(1, 1, 1, 1)));
 	floor = plane_new(translation(0, 0.5, 0));
-	floor->material.pattern = checker_pattern(color(1, 0.5, 0.5, 1), \
+	floor->material.pattern = stripe_pattern(color(0, 0, 0, 1), \
 		color(1, 1, 1, 1), scaling(0.7, 0.7, 0.7));
 	floor->material.specular = 0;
 	wall = plane_new(chain_transform(2, rotation_x(M_PI / 2), translation(0, 0, 5)));
-	wall->material.pattern = checker_pattern(color(1, 0.5, 0.5, 1), \
+	wall->material.pattern = stripe_pattern(color(0, 0, 0, 1), \
 		color(1, 1, 1, 1), scaling(0.7, 0.7, 0.7));
 	wall->material.specular = 0;
-	// s1 = sphere_new(translation(-0.5, 1, 0.5));
+	// s1 = sphere_new((chain_transform(2, scaling(2, 2, 2), translation(-0.75, -3, 2))));
 	// s1->material.pattern = checker_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1), 
 	// 	scaling(0.5, 0.2, 0.2));
 	// s1->material.diffuse = 0.7;

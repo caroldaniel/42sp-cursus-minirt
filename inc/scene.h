@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 12:23:11 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 18:33:19 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ typedef struct s_light
 enum e_object {
 	SPHERE,
 	PLANE,
-	CYLINDER
+	CYLINDER,
+	CONE
 };
 
 typedef struct s_object
@@ -121,7 +122,8 @@ typedef struct s_world
 ** Camera management
 */
 t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
-t_cam		camera(int hsize, int vsize, int field_of_view);
+t_cam		camera(int hsize, int vsize, double field_of_view);
+void		set_camera_transform(t_cam *cam, t_matrix transform);
 void		camera_destroy(t_cam *cam);
 t_ray		*ray_for_pixel(t_cam cam, int x, int y);
 
@@ -135,11 +137,12 @@ void		light_destroy(t_light **pl);
 /*
 ** Object list management
 */
-t_material	material(void);
 t_object	*object_new(int type, int id);
 void		object_add(t_object **ol, t_object *new);
 void		object_list_destroy(t_object**ol);
-void		set_transform(t_object *object, t_matrix t);
+void		set_object_transform(t_object *object, t_matrix t);
+void		truncate_object(t_object *obj, t_ray *ray, t_ray *l_ray, double *t);
+t_material	material(void);
 
 /*
 ** Sphere
@@ -159,8 +162,15 @@ t_tuple		normal_at_plane(t_object *pl, t_tuple p);
 ** Cylinder
 */
 t_object	*cylinder_new(t_matrix transform, double min, double max, bool cap);
-void		intersect_cylinder(t_object *cyl, t_ray *ray, t_ray *local_ray);
+void		intersect_cylinder(t_object *cyl, t_ray *ray, t_ray *l_ray);
 t_tuple		normal_at_cylinder(t_object *cyl, t_tuple p);
+
+/*
+** Cone
+*/
+t_object	*cone_new(t_matrix transform, double min, double max, bool cap);
+void		intersect_cone(t_object *cone, t_ray *ray, t_ray *l_ray);
+t_tuple		normal_at_cone(t_object *cone, t_tuple p);
 
 /*
 ** Ray Operations

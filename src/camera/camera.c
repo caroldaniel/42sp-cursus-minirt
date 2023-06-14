@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 14:09:49 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 12:26:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 10:47:41 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	calculate_ratios(t_cam *cam);
 
-t_cam	camera(int hsize, int vsize, int field_of_view)
+t_cam	camera(int hsize, int vsize, double field_of_view)
 {
 	t_cam	cam;
 
@@ -51,5 +51,12 @@ void	camera_destroy(t_cam *cam)
 {
 	if (cam->transform.data)
 		matrix_destroy(&cam->transform);
+	return ;
+}
+
+void	set_camera_transform(t_cam *cam, t_matrix transform)
+{
+	matrix_destroy(&cam->transform);
+	cam->transform = transform;
 	return ;
 }

@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   float_cmp.c                                        :+:      :+:    :+:   */
+/*   cone.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/04 19:44:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 10:36:56 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/04 22:49:04 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/14 16:40:22 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-bool	float_cmp(double a, double b, double epsilon)
+t_object	*cone_new(t_matrix transform, double min, double max, bool cap)
 {
-	if (fabs(a - b) < epsilon)
-		return (true);
-	else
-		return (false);
+	static int	id = 0;
+	t_object	*cone;
+
+	id++;
+	cone = object_new(CONE, id);
+	if (!cone)
+		return (NULL);
+	set_object_transform(cone, transform);
+	cone->minimum = min;
+	cone->maximum = max;
+	cone->capped = cap;
+	return (cone);
 }

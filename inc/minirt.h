@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 13:40:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:37:55 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define IMG_X			300
 # define IMG_Y			300
 # define BIG_ENDIAN		1
-# define EPSILON		0.01
+# define EPSILON		0.0001
 
 /*
 ** Macros for exit_codes
@@ -104,7 +104,6 @@ typedef struct s_win
 */
 typedef struct s_data
 {
-	char	*file_path;
 	void	*mlx_ptr;
 	t_win	win;
 	t_img	img;
@@ -144,7 +143,7 @@ void	intersect_world(t_world world, t_ray *ray);
 /*
 ** Utils
 */
-bool	float_cmp(double a, double b, double epsilon);
+bool	comp(double a, double b, double epsilon);
 void	swap_doubles(double *a, double *b);
 void	update_progress_bar(int current, int total);
 
