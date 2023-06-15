@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 23:29:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:16:48 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_hit	*get_hit_info(t_world world, t_light *light, t_ray *ray)
 	h_light->normalv = normal_at(h->object, h_light->point);
 	h_light->light = *light;
 	h_light->material = h->object->material;
-	h_light->color_hit = pattern_at_object(h->object, h_light->point);
 	h_light->inside = true;
 	if (dot(h_light->normalv, h_light->eyev) < 0)
 		h_light->normalv = tuple_negate(h_light->normalv);
@@ -39,6 +38,9 @@ t_hit	*get_hit_info(t_world world, t_light *light, t_ray *ray)
 	h_light->over_point = tuple_add(h_light->point, \
 		tuple_multiply(h_light->normalv, EPSILON));
 	h_light->in_shadow = is_shadowed(world, light, h_light->over_point);
+	h_light->color_hit = pattern_at_object(h->object, h_light->over_point);
+	h_light->normalv = perturb_normal(h_light->normalv, h_light->over_point, \
+		h_light->material.bumpiness);
 	return (h_light);
 }
 

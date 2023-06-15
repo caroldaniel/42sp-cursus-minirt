@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 23:48:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:09:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 */
 
 # define RT				"MiniRT"
-# define IMG_X			10
-# define IMG_Y			10
+# define IMG_X			400
+# define IMG_Y			400
 # define BIG_ENDIAN		1
-# define EPSILON		0.0001
+# define EPSILON		0.01
 
 /*
 ** Macros for exit_codes
@@ -56,6 +56,7 @@
 # include <stdbool.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 /*
 ** Allowed libraries: math and minilibx, witch is appended in the project's 
@@ -156,6 +157,7 @@ void		intersect_world(t_world world, t_ray *ray);
 */
 t_bhaskara	get_delta(t_object *object, t_ray *l_ray);
 void		update_progress_bar(int current, int total);
+double		random_double(void);
 bool		comp(double a, double b, double epsilon);
 
 #endif

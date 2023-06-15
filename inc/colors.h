@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 23:48:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:06:44 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,33 @@ typedef struct s_pattern
 }	t_pattern;
 
 /*
+** Perlin variables
+*/
+enum e_perlin {
+	A,
+	AA,
+	AB,
+	B,
+	BA,
+	BB
+};
+
+/*
+**	Perlin noise type definition
+*/	
+typedef struct s_perlin
+{
+	t_tuple		p;
+	t_tuple		pfloor;
+	t_tuple		pdiff;
+	t_tuple		pfade;
+	int			*ptable;
+	int			t[6];
+	double		g[8];
+	double		lerp[7];
+}	t_perlin;
+
+/*
 ** Init
 */
 t_color		color(double r, double g, double b, double a);
@@ -83,6 +110,15 @@ t_pattern	solid_pattern(t_color a);
 t_pattern	stripe_pattern(t_color a, t_color b, t_matrix transform);
 t_pattern	checker_pattern(t_color a, t_color b, t_matrix transform);
 t_color		pattern_at(t_pattern pattern, t_tuple point);
+
+/*
+**	Perlin noise
+*/
+t_tuple		perturb_normal(t_tuple normalv, t_tuple point, double bumpiness);
+int			*generate_permutation_table(int size);
+double		fade(double t);
+double		lerp(double t, double a, double b);
+double		grad(int hash, double x, double y, double z);
 
 /*
 ** Utils
