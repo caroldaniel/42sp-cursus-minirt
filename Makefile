@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/14 16:14:04 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/14 23:25:22 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,8 +83,8 @@ SRC				= main.c\
 				data_init.c\
 				data_destroy.c\
 				hooks.c\
+				bhaskara.c\
 				comp.c\
-				swap_doubles.c\
 				progress_bar.c
 				
 VPATH 			= $(SRC_PATH)\
@@ -145,7 +145,7 @@ install:
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:			all			
-				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) haha
+				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) scenes/scene_01.rt
 
 .PHONY:			all clean fclean re bonus rebonus
 

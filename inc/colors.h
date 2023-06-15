@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:26:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:48:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ enum e_pattern {
 typedef struct s_pattern
 {
 	t_color		a;
-	t_color 	b;
+	t_color		b;
 	t_matrix	transform;
 	int			type;
 }	t_pattern;
@@ -66,15 +66,15 @@ typedef struct s_pattern
 /*
 ** Init
 */
-t_color	color(double r, double g, double b, double a);
+t_color		color(double r, double g, double b, double a);
 
 /*
 ** Operations
 */
-t_color	color_add(t_color a, t_color b);
-t_color	color_subtract(t_color a, t_color b);
-t_color	color_multiply(t_color c, double scalar);
-t_color	hadamard_product(t_color a, t_color b);
+t_color		color_add(t_color a, t_color b);
+t_color		color_subtract(t_color a, t_color b);
+t_color		color_multiply(t_color c, double scalar);
+t_color		hadamard_product(t_color a, t_color b);
 
 /*
 ** Pattern
@@ -87,7 +87,7 @@ t_color		pattern_at(t_pattern pattern, t_tuple point);
 /*
 ** Utils
 */
-void	print_color(t_color color);
-int		combine(t_color c, t_img img);
+void		print_color(t_color color);
+int			combine(t_color c, t_img img);
 
 #endif

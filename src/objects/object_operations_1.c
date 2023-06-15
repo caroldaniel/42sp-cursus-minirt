@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:49:57 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 19:22:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:45:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,24 @@ void	set_object_transform(t_object *object, t_matrix t)
 	return ;
 }
 
-void	truncate_object(t_object *obj, t_ray *ray, t_ray *l_ray, double *t)
+void	truncate_object(t_object *obj, t_ray *ray, t_ray *l_ray, double t)
 {
-	double	y[2];
-	
-	y[0] = l_ray->origin.y + fmin(t[0], t[1]) * l_ray->direction.y;
-	if (obj->minimum < y[0] && y[0] < obj->maximum)
-		x_list_add(&ray->x_list, x_new(obj, fmin(t[0], t[1])));
-	y[1] = l_ray->origin.y + fmin(t[0], t[1]) * l_ray->direction.y;
-	if (obj->minimum < y[1] && y[1] < obj->maximum)
-		x_list_add(&ray->x_list, x_new(obj, fmin(t[0], t[1])));
+	double	y;
+
+	y = l_ray->origin.y + t * l_ray->direction.y;
+	if (obj->minimum < y && y < obj->maximum)
+		x_list_add(&ray->x_list, x_new(obj, t));
 	return ;
+}
+
+bool	check_caps(t_ray *l_ray, double t, double radius)
+{
+	double	x;
+	double	z;
+
+	x = l_ray->origin.x + t * l_ray->direction.x;
+	z = l_ray->origin.z + t * l_ray->direction.z;
+	if (pow(x, 2.0) + pow(z, 2.0) <= pow(radius, 2.0))
+		return (true);
+	return (false);
 }

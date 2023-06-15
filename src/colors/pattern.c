@@ -6,11 +6,19 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 18:38:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 21:18:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:43:29 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+void	set_pattern(t_object *obj, t_pattern pattern)
+{
+	if (obj->material.pattern.transform.data)
+		matrix_destroy(&obj->material.pattern.transform);
+	obj->material.pattern = pattern;
+	return ;
+}
 
 t_pattern	solid_pattern(t_color a)
 {

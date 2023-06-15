@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:57:18 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/05 15:48:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:29:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,11 @@ static bool	is_shadowed(t_world world, t_light *light, t_tuple point)
 	intersect_world(world, r);
 	h = hit(r);
 	if (h && h->t < distance)
+	{
+		ray_destroy(&r);
 		return (true);
+	}
+	ray_destroy(&r);
 	return (false);
 }
 

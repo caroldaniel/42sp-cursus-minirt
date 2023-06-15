@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 18:33:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:42:58 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,14 +141,15 @@ t_object	*object_new(int type, int id);
 void		object_add(t_object **ol, t_object *new);
 void		object_list_destroy(t_object**ol);
 void		set_object_transform(t_object *object, t_matrix t);
-void		truncate_object(t_object *obj, t_ray *ray, t_ray *l_ray, double *t);
+void		truncate_object(t_object *obj, t_ray *ray, t_ray *l_ray, double t);
+bool		check_caps(t_ray *l_ray, double t, double radius);
 t_material	material(void);
 
 /*
 ** Sphere
 */
 t_object	*sphere_new(t_matrix transform);
-void		intersect_sphere(t_object *s, t_ray *ray, t_ray *local_ray);
+void		intersect_sphere(t_object *s, t_ray *ray, t_ray *l_ray);
 t_tuple		normal_at_sphere(t_object *s, t_tuple p);
 
 /*
@@ -199,5 +200,6 @@ t_hit		*get_hit_info(t_world world, t_light *light, t_ray *ray);
 void		hit_info_destroy(t_hit **h_light);
 t_color		color_at(t_world world, t_ray *ray);
 t_color		pattern_at_object(t_object *object, t_tuple world_point);
+void		set_pattern(t_object *obj, t_pattern pattern);
 
 #endif

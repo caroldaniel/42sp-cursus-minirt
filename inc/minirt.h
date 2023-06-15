@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 14:37:55 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:48:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 
 # define RT				"MiniRT"
-# define IMG_X			300
-# define IMG_Y			300
+# define IMG_X			10
+# define IMG_Y			10
 # define BIG_ENDIAN		1
 # define EPSILON		0.0001
 
@@ -81,6 +81,17 @@
 # include "scene.h"
 
 /*
+** Bhaskara type definition
+*/
+typedef struct s_bhaskara
+{
+	double	a;
+	double	b;
+	double	c;
+	double	delta;
+}	t_bhaskara;
+
+/*
 ** Point type definition
 */
 typedef struct s_coord
@@ -114,37 +125,37 @@ typedef struct s_data
 /*
 ** Data utils
 */
-void	data_init(t_data *data, char *file_path);
-int		data_destroy(t_data *data, int exit_code);
-void	set_hooks(t_data *data);
+void		data_init(t_data *data, char *file_path);
+int			data_destroy(t_data *data, int exit_code);
+void		set_hooks(t_data *data);
 
 /*
 ** Coordinate utils
 */
-t_coord	coordinate(int x, int y);
+t_coord		coordinate(int x, int y);
 
 /*
 ** Image utils
 */
-void	image_init(t_data *data);
-void	image_create(t_data *data);
-void	image_display(t_data *data);
-void	draw_line(t_data *data, t_coord a, t_coord b, t_color c);
-void	render(t_data *data);
-void	put_pixel(t_img img, int x, int y, t_color color);
+void		image_init(t_data *data);
+void		image_create(t_data *data);
+void		image_display(t_data *data);
+void		draw_line(t_data *data, t_coord a, t_coord b, t_color c);
+void		render(t_data *data);
+void		put_pixel(t_img img, int x, int y, t_color color);
 
 /*
 ** World management
 */
-void	world_init(t_data *data);
-void	world_destroy(t_world *world);
-void	intersect_world(t_world world, t_ray *ray);
+void		world_init(t_data *data);
+void		world_destroy(t_world *world);
+void		intersect_world(t_world world, t_ray *ray);
 
 /*
 ** Utils
 */
-bool	comp(double a, double b, double epsilon);
-void	swap_doubles(double *a, double *b);
-void	update_progress_bar(int current, int total);
+t_bhaskara	get_delta(t_object *object, t_ray *l_ray);
+void		update_progress_bar(int current, int total);
+bool		comp(double a, double b, double epsilon);
 
 #endif

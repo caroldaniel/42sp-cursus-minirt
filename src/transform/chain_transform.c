@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:56:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/05/01 12:53:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:34:55 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ static t_matrix	calculate(int nb, va_list args)
 		return (curr);
 	next = calculate(--nb, args);
 	result = matrix_multiply(next, curr);
+	matrix_destroy(&next);
+	matrix_destroy(&curr);
 	return (result);
 }

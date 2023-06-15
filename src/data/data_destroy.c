@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 11:50:43 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/14 23:47:04 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	grid_destroy(t_img *img, int height)
 {
 	int	y;
 
-	if (!img->grid){
-		return ;}
+	if (!img->grid)
+		return ;
 	y = -1;
 	while (++y < height)
 	{
