@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:18:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 20:42:13 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	image_render(t_data *data)
 	set_pattern(s3, solid_pattern(color(1, 1, 0.5, 1)));
 	s3->material.diffuse = 0.7;
 	s3->material.specular = 0.3;
-	s3->material.bumpiness = 0.5;
+	s3->material.bumpiness = 0.1;
 	object_add(&(data->world.o_list), floor);
 	object_add(&(data->world.o_list), wall);
 	// object_add(&(data->world.o_list), s1);
