@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:06:44 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:04:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ t_color		pattern_at(t_pattern pattern, t_tuple point);
 /*
 **	Perlin noise
 */
-t_tuple		perturb_normal(t_tuple normalv, t_tuple point, double bumpiness);
+t_tuple		perturb_normal(t_tuple nmlv, t_tuple p, double scale, double bump);
 int			*generate_permutation_table(int size);
 double		fade(double t);
 double		lerp(double t, double a, double b);

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:45:34 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:05:00 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:43:12 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,19 @@ static double	perlin_noise(t_tuple point);
 static void 	get_perlin_tuples(t_perlin *p);
 static void		get_perlin_gradients(t_perlin *p);
 
-t_tuple	perturb_normal(t_tuple normalv, t_tuple point, double bumpiness)
+t_tuple	perturb_normal(t_tuple nmlv, t_tuple p, double scale, double bump)
 {
+	t_tuple	scaled_p;
 	t_tuple	perturbation;
 
-	bumpiness = fmax(0.0, fmin(1.0, bumpiness));
-	if (comp(bumpiness, 0.0, EPSILON))
-		return (normalv);
-	perturbation.x = perlin_noise(point) * bumpiness;
-	perturbation.y = perlin_noise(point) * bumpiness;
-	perturbation.z = perlin_noise(point) * bumpiness;
-	return (normalize(tuple_add(normalv, perturbation)));
+	bump = fmax(0.0, fmin(1.0, bump));
+	if (comp(bump, 0.0, EPSILON))
+		return (nmlv);
+	scale = fmax(0.0, scale);
+	scaled_p = tuple_multiply(p, scale);
+	perturbation = vector(perlin_noise(scaled_p) * bump, \
+ 		perlin_noise(scaled_p) * bump, perlin_noise(scaled_p) * bump);
+	return (normalize(tuple_add(nmlv, perturbation)));
 }
 
 static double	perlin_noise(t_tuple point)
@@ -39,6 +41,7 @@ static double	perlin_noise(t_tuple point)
 	if (!perlin.ptable)
 		return (0);
 	get_perlin_gradients(&perlin);
+	free(perlin.ptable);
 	perlin.lerp[0] = lerp(perlin.g[0], perlin.g[1], perlin.pfade.x);
 	perlin.lerp[1] = lerp(perlin.g[2], perlin.g[3], perlin.pfade.x);
 	perlin.lerp[2] = lerp(perlin.g[4], perlin.g[5], perlin.pfade.x);
@@ -51,9 +54,9 @@ static double	perlin_noise(t_tuple point)
 
 static void get_perlin_tuples(t_perlin *p)
 {
-	p->pfloor.x = floor(p->p.x);
-	p->pfloor.y = floor(p->p.y);
-	p->pfloor.z = floor(p->p.z);
+	p->pfloor.x = (int)floor(p->p.x) & 255;
+	p->pfloor.y = (int)floor(p->p.y) & 255;
+	p->pfloor.z = (int)floor(p->p.z) & 255;
 	p->pdiff.x = p->p.x - p->pfloor.x;
 	p->pdiff.y = p->p.y - p->pfloor.y;
 	p->pdiff.z = p->p.z - p->pfloor.z;

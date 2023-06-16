@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:40:24 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:29:26 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 
 # define RT				"MiniRT"
-# define IMG_X			400
-# define IMG_Y			400
+# define IMG_X			20
+# define IMG_Y			20
 # define BIG_ENDIAN		1
 # define EPSILON		0.0001
 

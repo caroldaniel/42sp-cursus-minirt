@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:37:10 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:07:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:37:42 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	*generate_permutation_table(int size)
 	int j;
 	int tmp;
 	
-	p = malloc(sizeof(int) * size * 2);
+	p = malloc(sizeof(int) * (size + size));
 	if (!p)
 		return (NULL);
 	i = -1;
@@ -28,13 +28,12 @@ int	*generate_permutation_table(int size)
 	i = -1;
 	while (++i < size)
 	{
-		j = random_double() * size;
+		j = fmod(random_double(), (double)size);
 		tmp = p[i];
 		p[i] = p[j];
 		p[j] = tmp;
 	}
-	i = -1;
-	while (++i < size)
+	while (++i < (size + size))
 		p[i + size] = p[i];
 	return (p);
 }

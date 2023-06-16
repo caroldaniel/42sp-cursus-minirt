@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:49:57 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:41:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:09:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_tuple	normal_at(t_object *o, t_tuple p)
 	nml.w = 0;
 	matrix_destroy(&inv);
 	matrix_destroy(&trs);
-	return (perturb_normal(normalize(nml), p, o->material.bumpiness));
+	return (perturb_normal(normalize(nml), p, o->material.texture_scale, \
+		o->material.bumpiness));
 }
 
 void	set_object_transform(t_object *object, t_matrix t)

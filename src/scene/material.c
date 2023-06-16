@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 16:05:50 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 19:55:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:08:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ t_material	material(void)
 	m.specular = 0.9;
 	m.shininess = 200.0;
 	m.bumpiness = 0.0;
+	m.texture_scale = 1.0;
 	return (m);
 }
