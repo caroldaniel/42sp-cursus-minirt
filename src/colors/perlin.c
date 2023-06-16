@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 09:36:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 12:50:26 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:11:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	*generate_permutation_table(int size)
 	i = -1;
 	while (++i < size)
 	{
-		j = abs(random_nb() % size);
+		j = abs(rand() % size);
 		tmp = p[i];
 		p[i] = p[j];
 		p[j] = tmp;

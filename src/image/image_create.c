@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 15:51:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:53:56 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static void	image_render(t_data *data)
 	// s1->material.specular = 0.3;
 	s2 = sphere_new(chain_transform(2, scaling(2, 2, 2), translation(0, 2, 0)));
 	set_pattern(s2, solid_pattern(color(1, 1, 0.5, 1)));
-	s2->material.bumpiness = 0.1;
+	s2->material.bumpiness = 0.05;
+	s2->material.scale = 0.075;
 	// s3 = cone_new(chain_transform(2, scaling(1, 2, 1), translation(0, 1, 0)), -1.0, 2.0, true);
 	// set_pattern(s3, solid_pattern(color(1, 1, 0.5, 1)));
 	object_add(&(data->world.o_list), floor);
