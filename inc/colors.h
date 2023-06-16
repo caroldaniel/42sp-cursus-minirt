@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 00:43:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:42:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,16 @@ typedef struct s_pattern
 }	t_pattern;
 
 /*
-** Perlin variables
-*/
-enum e_perlin {
-	A,
-	AA,
-	AB,
-	B,
-	BA,
-	BB
-};
-
-/*
 **	Perlin noise type definition
 */	
 typedef struct s_perlin
 {
-	t_tuple		p;
-	t_tuple		pfloor;
-	t_tuple		df;
+	int			*permutation;
+	int			x;
+	int			y;
+	int			z;
 	t_tuple		pfade;
-	int			*prm;
-	int			t[6];
-	double		g[8];
-	double		lerp[7];
+	int			hash[6];
 }	t_perlin;
 
 /*
@@ -114,8 +100,8 @@ t_color		pattern_at(t_pattern pattern, t_tuple point);
 /*
 **	Perlin noise
 */
-t_tuple		perturb_normal(t_tuple nmlv, t_tuple p, double scale, double bump);
-int			*generate_permutation_table(int size);
+t_perlin 	perlin_init(void);
+void		perlin_destroy(t_perlin *perlin);
 double		fade(double t);
 double		lerp(double t, double a, double b);
 double		grad(int hash, double x, double y, double z);

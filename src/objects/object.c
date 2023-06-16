@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:23:17 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 23:31:45 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 09:49:39 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,9 @@ void	object_list_destroy(t_object**ol)
 	while (*ol)
 	{
 		curr = (*ol)->next;
-		if ((*ol)->transform.data)
-			matrix_destroy(&(*ol)->transform);
-		if ((*ol)->material.pattern.transform.data)
-			matrix_destroy(&(*ol)->material.pattern.transform);
+		matrix_destroy(&(*ol)->transform);
+		matrix_destroy(&(*ol)->material.pattern.transform);
+		perlin_destroy(&(*ol)->material.perlin);
 		free(*ol);
 		*ol = curr;
 	}

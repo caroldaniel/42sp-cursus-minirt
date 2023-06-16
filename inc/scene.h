@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 21:07:58 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:09:21 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ typedef struct s_cam
 typedef struct s_material
 {
 	t_pattern	pattern;
+	t_perlin	perlin;
 	double		ambient;
 	double		diffuse;
 	double		specular;
 	double		shininess;
 	double		bumpiness;
-	double		texture_scale;
+	double		scale;
 }	t_material;
 
 /*
@@ -183,6 +184,8 @@ void		ray_destroy(t_ray **ray);
 t_tuple		position(t_ray *ray, double t);
 t_ray		*transform(t_ray *ray, t_matrix m);
 t_tuple		normal_at(t_object *o, t_tuple p);
+t_tuple		perturb_normal(t_tuple normalv, t_tuple p, t_material m);
+double		perlin_noise(double x, double y, double z, t_material m);
 t_tuple		reflect(t_tuple in, t_tuple nml);
 
 /*

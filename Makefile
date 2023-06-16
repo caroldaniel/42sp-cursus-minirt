@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/15 20:07:16 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/16 09:38:51 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC				= main.c\
 				colors_utils.c\
 				pattern.c\
 				pattern_operations_1.c\
+				perlin.c\
 				texture.c\
 				texture_utils.c\
 				matrix.c\
