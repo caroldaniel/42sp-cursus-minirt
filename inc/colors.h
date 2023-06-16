@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 21:04:32 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 00:43:59 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ typedef struct s_perlin
 {
 	t_tuple		p;
 	t_tuple		pfloor;
-	t_tuple		pdiff;
+	t_tuple		df;
 	t_tuple		pfade;
-	int			*ptable;
+	int			*prm;
 	int			t[6];
 	double		g[8];
 	double		lerp[7];

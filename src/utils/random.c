@@ -6,13 +6,13 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 19:52:27 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 20:00:05 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:11:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double	random_double(void)
+int	random_nb(void)
 {
 	int				fd;
 	unsigned int 	random_data;

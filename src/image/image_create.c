@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 21:22:43 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/16 00:30:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static void	image_render(t_data *data)
 	t_object	*floor;
 	t_object	*wall;
 	// t_object	*s1;
-	// t_object	*s2;
-	t_object	*s3;
+	t_object	*s2;
+	// t_object	*s3;
 
 	data->camera = camera(data->img.x, data->img.y, M_PI / 3);
 	set_camera_transform(&data->camera, view_transform(point(0, 6, -5), \
@@ -66,24 +66,16 @@ static void	image_render(t_data *data)
 	// 	scaling(0.5, 0.2, 0.2));
 	// s1->material.diffuse = 0.7;
 	// s1->material.specular = 0.3;
-	// s2 = sphere_new(chain_transform(2, scaling(0.5, 0.5, 0.5), 
-	// 	translation(1.5, 0.5, -0.5)));
-	// s2->material.pattern = stripe_pattern(color(1, 0.5, 0.5, 1), color(1, 1, 1, 1), 
-	// 	chain_transform(2, scaling(0.2, 0.2, 0.2), translation(0.5, 0, 0)));
-	// s2->material.diffuse = 0.7;
-	// s2->material.specular = 0.3;
-	s3 = cylinder_new(chain_transform(2, scaling(1, 2, 1), translation(0, 1, 0)), \
-		-1.0, 2.0, true);
-	set_pattern(s3, solid_pattern(color(1, 1, 0.5, 1)));
-	s3->material.diffuse = 0.7;
-	s3->material.specular = 0.3;
-	s3->material.bumpiness = 0.1;
-	s3->material.texture_scale = 5.0;
+	s2 = sphere_new(chain_transform(2, scaling(2, 2, 2), translation(0, 2, 0)));
+	set_pattern(s2, solid_pattern(color(1, 1, 0.5, 1)));
+	s2->material.bumpiness = 0.1;
+	// s3 = cone_new(chain_transform(2, scaling(1, 2, 1), translation(0, 1, 0)), -1.0, 2.0, true);
+	// set_pattern(s3, solid_pattern(color(1, 1, 0.5, 1)));
 	object_add(&(data->world.o_list), floor);
 	object_add(&(data->world.o_list), wall);
 	// object_add(&(data->world.o_list), s1);
-	// object_add(&(data->world.o_list), s2);
-	object_add(&(data->world.o_list), s3);
+	object_add(&(data->world.o_list), s2);
+	// object_add(&(data->world.o_list), s3);
 	render(data);
 }
 
