@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   token_array_destroy.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 16:05:50 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 23:42:45 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/17 22:45:53 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/17 22:46:12 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_material	material(void)
+void	token_array_destroy(char **matrix)
 {
-	t_material	m;
+	int	i;
 
-	m.pattern = solid_pattern(color(1, 1, 1, 1));
-	m.perlin = perlin_init();
-	m.diffuse = 0.9;
-	m.specular = 0.9;
-	m.shininess = 200.0;
-	m.bumpiness = 0.0;
-	m.scale = 1;
-	return (m);
+	if (!matrix)
+		return ;
+	i = -1;
+	while (matrix[++i])
+		if (matrix[i])
+			free(matrix[i]);
+	free(matrix);
+	return ;
 }

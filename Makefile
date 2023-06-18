@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/16 09:38:51 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/17 22:46:30 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,11 @@ SRC				= main.c\
 				bhaskara.c\
 				comp.c\
 				progress_bar.c\
-				random.c
+				random.c\
+				parser.c\
+				tokenizer.c\
+				token_array_destroy.c\
+				line.c
 				
 VPATH 			= $(SRC_PATH)\
 				$(SRC_PATH)tuples/\
@@ -101,6 +105,7 @@ VPATH 			= $(SRC_PATH)\
 				$(SRC_PATH)scene/\
 				$(SRC_PATH)camera/\
 				$(SRC_PATH)objects/\
+				$(SRC_PATH)parser/\
 				$(SRC_PATH)data/\
 				$(SRC_PATH)hooks/\
 				$(SRC_PATH)utils/

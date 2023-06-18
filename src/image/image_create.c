@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 20:59:32 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 17:53:56 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:30:33 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ static void	image_render(t_data *data)
 
 	data->camera = camera(data->img.x, data->img.y, M_PI / 3);
 	set_camera_transform(&data->camera, view_transform(point(0, 6, -5), \
-		point(0, 2, 0), vector(0, 1, 0)));
+		normalize(tuple_subtract(point(0, 2, 0), point(0, 6, -5))), \
+		vector(0, 1, 0)));
 	light_add(&(data->world.l_list), light_new(point(-10, 10, -10), \
-		color(1, 1, 1, 1)));
+		color(1, 1, 1, 1), 0.1));
 	// light_add(&(data->world.l_list), light_new(point(10, 10, -10), 
 	// 	color(1, 1, 1, 1)));
 	floor = plane_new(identity(4));

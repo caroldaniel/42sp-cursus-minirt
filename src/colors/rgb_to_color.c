@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   rgb_to_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/14 16:05:50 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 23:42:45 by cado-car         ###   ########.fr       */
+/*   Created: 2023/06/17 23:52:28 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/18 00:01:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_material	material(void)
+t_color	rgb_to_color(int red, int green, int blue)
 {
-	t_material	m;
+	t_color	color;
 
-	m.pattern = solid_pattern(color(1, 1, 1, 1));
-	m.perlin = perlin_init();
-	m.diffuse = 0.9;
-	m.specular = 0.9;
-	m.shininess = 200.0;
-	m.bumpiness = 0.0;
-	m.scale = 1;
-	return (m);
+	color.r = fmin(fmax((double)(red / 255.0), 0.0), 1.0);
+	color.g = fmin(fmax((double)(green / 255.0), 0.0), 1.0);
+	color.b = fmin(fmax((double)(blue / 255.0), 0.0), 1.0);
+	return (color);
 }

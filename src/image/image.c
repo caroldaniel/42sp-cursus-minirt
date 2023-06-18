@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:54:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/13 13:10:24 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/17 20:14:26 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ void	image_init(t_data *data)
 	data->img.x = IMG_X;
 	data->img.y = IMG_Y;
 	data->img.ptr = mlx_new_image(data->mlx_ptr, data->img.x, data->img.y);
+	if (!data->img.ptr)
+		exit(data_destroy(data, ERR_MLXINIT));
 	data->img.data = (int *)mlx_get_data_addr(data->img.ptr, \
 		&data->img.bits_per_pixel, &data->img.size_line, &data->img.endian);
+	if (!data->img.data)
+		exit(data_destroy(data, ERR_MLXINIT));
 	data->img.grid = grid_init(data->img.x, data->img.y);
 	if (!data->img.grid)
 		exit(data_destroy(data, ERR_MEMALOC));

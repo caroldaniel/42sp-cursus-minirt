@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 17:53:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:02:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 # define ERR_EXTINVL	4
 # define ERR_FDERROR	5
 
+/*
+**	Parser macros
+*/
+
+# define IDENTIFIERS	"ACLSP"
 /*
 ** Macros for message colors
 */
@@ -116,6 +121,7 @@ typedef struct s_win
 */
 typedef struct s_data
 {
+	int		fd;
 	void	*mlx_ptr;
 	t_win	win;
 	t_img	img;
@@ -124,11 +130,36 @@ typedef struct s_data
 }	t_data;
 
 /*
+** Parser elements struct definition
+*/
+
+typedef struct s_line
+{
+	char			**tokens;
+	struct s_line	*next;
+}	t_line;
+
+/*
 ** Data utils
 */
 void		data_init(t_data *data, char *file_path);
 int			data_destroy(t_data *data, int exit_code);
 void		set_hooks(t_data *data);
+
+/*
+**	Parser utils
+*/
+void		parser(t_data *data);
+char		**tokenizer(char const *s);
+void		token_array_destroy(char **matrix);
+
+/*
+**	Line struct utils
+*/
+t_line		*line_new(char *content);
+void		line_add(t_line **list, t_line *new);
+void		line_destroy(t_line **line);
+void		line_list_destroy(t_line *list);
 
 /*
 ** Coordinate utils

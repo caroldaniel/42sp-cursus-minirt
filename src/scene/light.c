@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point_light.c                                      :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 17:48:41 by cado-car          #+#    #+#             */
-/*   Updated: 2023/04/21 16:06:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:42:11 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_light	*light_new(t_tuple position, t_color intensity)
+t_light	*light_new(t_tuple position, t_color intensity, double ambient)
 {
 	t_light	*p_light;
 
@@ -21,6 +21,7 @@ t_light	*light_new(t_tuple position, t_color intensity)
 		return (NULL);
 	p_light->position = position;
 	p_light->intensity = intensity;
+	p_light->ambient = ambient;
 	p_light->next = NULL;
 	return (p_light);
 }

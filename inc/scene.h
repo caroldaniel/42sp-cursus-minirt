@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 15:09:21 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:29:14 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_material
 {
 	t_pattern	pattern;
 	t_perlin	perlin;
-	double		ambient;
 	double		diffuse;
 	double		specular;
 	double		shininess;
@@ -51,6 +50,7 @@ typedef struct s_light
 {
 	t_color			intensity;
 	t_tuple			position;
+	double			ambient;
 	struct s_light	*next;
 }	t_light;
 
@@ -124,7 +124,7 @@ typedef struct s_world
 /*
 ** Camera management
 */
-t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
+t_matrix	view_transform(t_tuple position, t_tuple forward, t_tuple up);
 t_cam		camera(int hsize, int vsize, double field_of_view);
 void		set_camera_transform(t_cam *cam, t_matrix transform);
 void		camera_destroy(t_cam *cam);
@@ -133,7 +133,7 @@ t_ray		*ray_for_pixel(t_cam cam, int x, int y);
 /*
 ** Point light list management
 */
-t_light		*light_new(t_tuple position, t_color intensity);
+t_light		*light_new(t_tuple position, t_color intensity, double ambient);
 void		light_add(t_light **pl, t_light *new);
 void		light_destroy(t_light **pl);
 

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 12:42:30 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/18 00:01:36 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,6 @@ double		grad(int hash, double x, double y, double z);
 */
 void		print_color(t_color color);
 int			combine(t_color c, t_img img);
+t_color		rgb_to_color(int red, int green, int blue);
 
 #endif

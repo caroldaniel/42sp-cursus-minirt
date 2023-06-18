@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/14 23:47:04 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/17 19:48:27 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ static void	grid_destroy(t_img *img, int height);
 int	data_destroy(t_data *data, int exit_code)
 {
 	print_exit_message(exit_code);
-	if (data->mlx_ptr)
+	if (exit_code != ERR_MLXINIT)
 	{
+		if (data->fd > 2)
+			close(data->fd);
 		world_destroy(&data->world);
 		camera_destroy(&data->camera);
 		grid_destroy(&data->img, data->img.y);

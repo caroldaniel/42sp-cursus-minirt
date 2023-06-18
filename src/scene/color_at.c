@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 15:45:45 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/04 19:14:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/17 23:45:09 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static t_color	lightning(t_hit *h)
 
 	eff_color = hadamard_product(h->color_hit, h->light.intensity);
 	lightv = normalize(tuple_subtract(h->light.position, h->over_point));
-	ambient = color_multiply(eff_color, h->material.ambient);
-	if (h->in_shadow)
+	ambient = color_multiply(eff_color, h->light.ambient);
+	if (h->in_shadow || !comp(h->light.ambient, 0.0, EPSILON))
 		return (ambient);
 	return (color_add(ambient, diffuse(*h, eff_color, lightv)));
 }
