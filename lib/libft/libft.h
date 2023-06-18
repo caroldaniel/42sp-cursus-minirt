@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdarg.h>
+# include <math.h>
 # include "libftprintf.h"
 
 // Part 1 functions
@@ -77,5 +78,6 @@ char	*ft_strnjoin(int argn, ...);
 char	*ft_strndup(const char *s1, size_t size);
 int		ft_strisalnum(char *s);
 char	*ft_appendchr(char const *s, char const c);
+double	ft_atod(char *str);
 
 #endif
