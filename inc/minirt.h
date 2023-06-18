@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 23:02:38 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:17:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define ERR_MLXINIT	3
 # define ERR_EXTINVL	4
 # define ERR_FDERROR	5
+# define ERR_SCNCNTR	6
 
 /*
 **	Parser macros
@@ -132,12 +133,34 @@ typedef struct s_data
 /*
 ** Parser elements struct definition
 */
-
 typedef struct s_line
 {
 	char			**tokens;
 	struct s_line	*next;
 }	t_line;
+
+/*
+**	ELements struct definition
+*/
+typedef struct s_element
+{
+	int		count;
+	bool	locked;
+}	t_element;
+
+/*
+** Elements counter struct definition
+*/
+typedef struct s_counter
+{
+	t_element	ambient;
+	t_element	camera;
+	t_element	light;
+	t_element	sphere;
+	t_element	plane;
+	t_element	cylinder;
+	t_element	cone;
+}	t_counter;
 
 /*
 ** Data utils
@@ -152,6 +175,8 @@ void		set_hooks(t_data *data);
 void		parser(t_data *data);
 char		**tokenizer(char const *s);
 void		token_array_destroy(char **matrix);
+bool		check_element(char *identifier);
+bool		check_count(t_line *line);
 
 /*
 **	Line struct utils
@@ -190,5 +215,6 @@ t_bhaskara	get_delta(t_object *object, t_ray *l_ray);
 void		update_progress_bar(int current, int total);
 int			random_nb(void);
 bool		comp(double a, double b, double epsilon);
+bool		comp_str(const char *str1, const char *str2);
 
 #endif

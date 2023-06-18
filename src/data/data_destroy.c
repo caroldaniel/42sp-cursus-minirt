@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 19:48:27 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/18 17:19:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ static void	print_exit_message(int exit_code)
 		printf("Invalid extention. Please choose a `.rt` file to continue.\n");
 	if (exit_code == ERR_FDERROR)
 		perror("Failed to open file");
+	if (exit_code == ERR_SCNCNTR)
+		printf("Parser error. Invalid number of elements to render.\n");
+
 }
 
 static void	grid_destroy(t_img *img, int height)
