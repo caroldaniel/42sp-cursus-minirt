@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 21:18:18 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:56:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 */
 
 # define RT				"MiniRT"
-# define IMG_X			500
-# define IMG_Y			500
+# define IMG_X			200
+# define IMG_Y			200
 # define BIG_ENDIAN		1
 # define EPSILON		0.0001
 
@@ -34,14 +34,15 @@
 # define ERR_MLXINIT	3
 # define ERR_EXTINVL	4
 # define ERR_FDERROR	5
-# define ERR_SCNCNTR	6
-# define ERR_PARSEAM	7
-# define ERR_PARSECA	8
-# define ERR_PARSELI	9
-# define ERR_PARSESP	10
-# define ERR_PARSEPL	11
-# define ERR_PARSECY	12
-# define ERR_PARSECN	13
+# define ERR_INVELEM	6
+# define ERR_SCNCNTR	7
+# define ERR_PARSEAM	8
+# define ERR_PARSECA	9
+# define ERR_PARSELI	10
+# define ERR_PARSESP	11
+# define ERR_PARSEPL	12
+# define ERR_PARSECY	13
+# define ERR_PARSECN	14
 
 /*
 ** Macros for message colors
@@ -88,7 +89,6 @@
 # include "matrix.h"
 # include "keys.h"
 # include "scene.h"
-# include "parser.h"
 
 /*
 ** Bhaskara type definition
@@ -133,6 +133,37 @@ typedef struct s_data
 	t_world	world;
 }	t_data;
 
+/*
+** Parser elements struct definition
+*/
+typedef struct s_line
+{
+	char			**tokens;
+	struct s_line	*next;
+}	t_line;
+
+/*
+**	ELements struct definition
+*/
+typedef struct s_element
+{
+	int		count;
+	bool	locked;
+}	t_element;
+
+/*
+** Elements counter struct definition
+*/
+typedef struct s_counter
+{
+	t_element	ambient;
+	t_element	camera;
+	t_element	light;
+	t_element	sphere;
+	t_element	plane;
+	t_element	cylinder;
+	t_element	cone;
+}	t_counter;
 
 /*
 ** Data utils
@@ -140,6 +171,52 @@ typedef struct s_data
 void		data_init(t_data *data, char *file_path);
 int			data_destroy(t_data *data, int exit_code);
 void		set_hooks(t_data *data);
+
+/*
+**	Parser line struct utils
+*/
+t_line		*line_new(char *content);
+void		line_add(t_line **list, t_line *new);
+void		line_destroy(t_line **line);
+void		line_list_destroy(t_line *list);
+
+/*
+**	Parser utils
+*/
+void		parser(t_data *data);
+char		**tokenizer(char const *s);
+void		token_array_destroy(char **matrix);
+
+/*
+**	Checkers
+*/
+bool		check_count(t_line *line);
+bool		check_element(char *identifier);
+bool		check_element_properties_count(t_line *line);
+bool		check_range(double value, double min, double max);
+bool		check_ratio(char *token);
+bool		check_int(char *token);
+bool		check_double(char *token);
+bool		check_color(char *token);
+bool		check_tuple(char *token);
+bool		check_normalized_vector(char *token);
+bool		check_material(char **tokens);
+
+/*
+**	Getters
+*/
+t_color		get_color(char *token);
+t_tuple 	get_vector(char *token);
+t_tuple 	get_point(char *token);
+t_pattern	get_pattern(char *pattern, char *color_str);
+void		get_element_properties(t_line *line, t_data *data);
+t_light		*get_ambient(t_line *line, t_data *data);
+t_light 	*get_light(t_line *line, t_data *data);
+t_cam		*get_camera(t_line *line, t_data *data);
+t_object	*get_sphere(t_line *line, t_data *data);
+t_object	*get_plane(t_line *line, t_data *data);
+t_object	*get_cylinder(t_line *line, t_data *data);
+t_object	*get_cone(t_line *line, t_data *data);
 
 /*
 ** Coordinate utils

@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/20 20:51:48 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/20 23:40:57 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,6 @@ SRC				= main.c\
 				view_transform.c\
 				camera.c\
 				ray_for_pixel.c\
-				render.c\
 				coordinate.c\
 				data_init.c\
 				data_destroy.c\
@@ -97,6 +96,7 @@ SRC				= main.c\
 				checkers_03.c\
 				getters_01.c\
 				getters_02.c\
+				getters_03.c\
 				getters_utils.c\
 				tokenizer.c\
 				token_array_destroy.c\

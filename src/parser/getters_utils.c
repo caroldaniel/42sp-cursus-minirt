@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:22:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 20:56:48 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 00:05:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_color	get_color(char *token)
 {
-	t_color	color;
+	t_color	c;
 	char	**rgb;
 	int		i;
 
@@ -26,16 +26,16 @@ t_color	get_color(char *token)
 		i++;
 	if (i != 3)
 		return (color(0, 0, 0, 1));
-	color.r = (double)(ft_atod(rgb[0]) / 256.0);
-	color.g = (double)(ft_atod(rgb[1]) / 256.0);
-	color.b = (double)(ft_atod(rgb[2]) / 256.0);
-	color.a = 1;
-	return (color);
+	c.red = (double)(ft_atod(rgb[0]) / 256.0);
+	c.green = (double)(ft_atod(rgb[1]) / 256.0);
+	c.blue = (double)(ft_atod(rgb[2]) / 256.0);
+	c.alpha = 1;
+	return (c);
 }
 
 t_tuple get_vector(char *token)
 {
-	t_tuple	vector;
+	t_tuple	v;
 	char	**xyz;
 	int		i;
 
@@ -47,13 +47,13 @@ t_tuple get_vector(char *token)
 		i++;
 	if (i != 3)
 		return (vector(0, 0, 0));
-	vector = vector(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
-	return (vector);
+	v = vector(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	return (v);
 }
 
 t_tuple get_point(char *token)
 {
-	t_tuple	point;
+	t_tuple	p;
 	char	**xyz;
 	int		i;
 
@@ -65,8 +65,8 @@ t_tuple get_point(char *token)
 		i++;
 	if (i != 3)
 		return (point(0, 0, 0));
-	point = point(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
-	return (point);
+	p = point(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	return (p);
 }
 
 t_pattern	get_pattern(char *pattern, char *color_str)
@@ -74,9 +74,10 @@ t_pattern	get_pattern(char *pattern, char *color_str)
 	if (comp_str(pattern, "solid"))
 		return (solid_pattern(get_color(color_str)));
 	if (comp_str(pattern, "stripe"))
-		return (stripe_pattern(get_color(color_str), color(1, 1, 1, 1)));
+		return (stripe_pattern(get_color(color_str), color(1, 1, 1, 1), \
+			identity(4)));
 	if (comp_str(pattern, "checker"))
-		return (checker_pattern(get_color(color_str), color(1, 1, 1, 1)),\
-			scaling(0.5, 0.5, 0.5));
+		return (checker_pattern(get_color(color_str), color(1, 1, 1, 1), \
+			identity(4)));
 	return (solid_pattern(get_color(color_str)));
 }

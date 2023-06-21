@@ -6,13 +6,14 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 17:19:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:36:07 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 static void	print_exit_message(int exit_code);
+static void	print_parser_message(int exit_code);
 static void	grid_destroy(t_img *img, int height);
 
 int	data_destroy(t_data *data, int exit_code)
@@ -49,9 +50,32 @@ static void	print_exit_message(int exit_code)
 		printf("Invalid extention. Please choose a `.rt` file to continue.\n");
 	if (exit_code == ERR_FDERROR)
 		perror("Failed to open file");
+	if (exit_code == ERR_INVELEM)
+		printf("Parser error. Invalid element.\n");
 	if (exit_code == ERR_SCNCNTR)
 		printf("Parser error. Invalid number of elements to render.\n");
+	if (exit_code >= ERR_PARSEAM)
+		print_parser_message(exit_code);
+	return ;
+}
 
+static void	print_parser_message(int exit_code)
+{
+	if (exit_code == ERR_PARSEAM)
+		printf("Parser error. Invalid ambient light.\n");
+	if (exit_code == ERR_PARSECA)
+		printf("Parser error. Invalid camera.\n");
+	if (exit_code == ERR_PARSELI)
+		printf("Parser error. Invalid light.\n");
+	if (exit_code == ERR_PARSESP)
+		printf("Parser error. Invalid sphere.\n");
+	if (exit_code == ERR_PARSEPL)
+		printf("Parser error. Invalid plane.\n");
+	if (exit_code == ERR_PARSECY)
+		printf("Parser error. Invalid cylinder.\n");
+	if (exit_code == ERR_PARSECN)
+		printf("Parser error. Invalid cone.\n");
+	return ;
 }
 
 static void	grid_destroy(t_img *img, int height)

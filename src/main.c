@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 22:11:19 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:39:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		exit(data_destroy(&data, ERR_WRNGARG));
 	data_init(&data, argv[1]);
-	// image_create(&data);
+	image_create(&data);
 	set_hooks(&data);
 	mlx_loop(data.mlx_ptr);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:50:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 21:49:05 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:53:06 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,11 @@ bool	check_normalized_vector(char *token)
 		i++;
 	}
 	if (i == 3)
-		mag = magnitude(vector(xyz[0], xyz[1], xyz[2]))
+		mag = magnitude(vector(ft_atod(xyz[0]), ft_atod(xyz[1]), \
+			ft_atod(xyz[2])));
 	free(xyz);
 	if (i != 3 || (i == 3 && !comp(mag, 1.0, 0.01)))
-		return (false)
+		return (false);
 	return (true);
 }
 

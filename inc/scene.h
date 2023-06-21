@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 15:58:03 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 17:38:59 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 23:49:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ t_matrix	view_transform(t_tuple position, t_tuple forward, t_tuple up);
 t_cam		*camera(int hsize, int vsize, double field_of_view);
 void		set_camera_transform(t_cam *cam, t_matrix transform);
 void		camera_destroy(t_cam **cam);
-t_ray		*ray_for_pixel(t_cam cam, int x, int y);
+t_ray		*ray_for_pixel(t_cam *cam, int x, int y);
 
 /*
 ** Point light list management
