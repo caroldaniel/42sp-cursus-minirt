@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 09:36:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 17:11:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:36:02 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static double	gradient_lerp(t_perlin perlin);
 
 t_perlin	perlin_init(void)
 {
-	t_perlin perlin;
+	t_perlin	perlin;
 
 	perlin.permutation = generate_permutation_table(256);
 	perlin.x = 0;
@@ -32,9 +32,9 @@ static int	*generate_permutation_table(int size)
 {
 	int	*p;
 	int	i;
-	int j;
-	int tmp;
-	
+	int	j;
+	int	tmp;
+
 	p = malloc(sizeof(int) * size * 2);
 	if (!p)
 		return (NULL);
@@ -65,7 +65,7 @@ void	perlin_destroy(t_perlin *perlin)
 double	perlin_noise(double x, double y, double z, t_material m)
 {
 	t_perlin	p;
-	
+
 	p = m.perlin;
 	p.x = (int)floor(x) & 255;
 	p.y = (int)floor(y) & 255;
@@ -87,9 +87,9 @@ double	perlin_noise(double x, double y, double z, t_material m)
 
 static double	gradient_lerp(t_perlin p)
 {
-	double x[2];
-	double y[2];
-	double res[2];
+	double	x[2];
+	double	y[2];
+	double	res[2];
 
 	x[0] = grad(p.permutation[p.hash[1]], p.x, p.y, p.z);
 	x[1] = grad(p.permutation[p.hash[4]], p.x - 1, p.y, p.z);
@@ -105,5 +105,5 @@ static double	gradient_lerp(t_perlin p)
 	x[1] = grad(p.permutation[p.hash[5] + 1], p.x - 1, p.y - 1, p.z - 1);
 	y[1] = lerp(p.pfade.x, x[0], x[1]);
 	res[1] = lerp(p.pfade.y, y[0], y[1]);
-	return(lerp(p.pfade.z, res[0], res[1]));
+	return (lerp(p.pfade.z, res[0], res[1]));
 }

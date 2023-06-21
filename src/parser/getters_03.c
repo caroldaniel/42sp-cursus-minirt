@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 23:00:00 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 00:00:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:31:05 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	get_cylinder_properties(t_line *line, t_object **cylinder)
 	double	scale;
 	double	rad_x;
 	double	rad_z;
-	
+
 	trsl = get_point(line->tokens[1]);
 	axis = get_vector(line->tokens[2]);
 	rad_x = atan2(axis.z, axis.y);
@@ -101,7 +101,7 @@ static void	get_cone_properties(t_line *line, t_object **cone)
 	double	scale;
 	double	rad_x;
 	double	rad_z;
-	
+
 	trsl = get_point(line->tokens[1]);
 	axis = get_vector(line->tokens[2]);
 	rad_x = atan2(axis.z, axis.y);

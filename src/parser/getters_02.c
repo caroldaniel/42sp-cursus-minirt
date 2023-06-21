@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:30:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:58:17 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:30:50 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ static void	get_plane_properties(t_line *line, t_object **plane)
 	t_tuple	normalv;
 	double	rad_x;
 	double	rad_z;
-	
+
 	trsl = get_point(line->tokens[1]);
 	normalv = get_vector(line->tokens[2]);
 	rad_x = atan2(normalv.z, normalv.y);
 	rad_z = atan2(normalv.x, normalv.y);
 	set_object_transform(*plane, chain_transform(3, rotation_x(rad_x), \
-		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));	
+		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[4])
 		set_pattern(*plane, solid_pattern(get_color(line->tokens[3])));
 	else

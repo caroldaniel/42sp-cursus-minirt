@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:28:34 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:34:39 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:32:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	parser(t_data *data)
 {
 	char	*line;
 	t_line	*line_list;
-	t_line	*curr;
 
 	line_list = NULL;
 	line = get_next_line(data->fd);
@@ -27,13 +26,12 @@ void	parser(t_data *data)
 	{
 		if (is_line_parseble(line))
 		{
-			curr = validated(line);
-			if (!curr)
+			if (!validated(line))
 			{
 				line_list_destroy(line_list);
 				exit(data_destroy(data, ERR_INVELEM));
 			}
-			line_add(&line_list, curr);
+			line_add(&line_list, validated(line));
 		}
 		free(line);
 		line = get_next_line(data->fd);

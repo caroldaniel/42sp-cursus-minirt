@@ -6,23 +6,23 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 16:37:10 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/16 13:25:52 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:37:03 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-double fade(double t)
+double	fade(double t)
 {
 	return (t * t * t * (t * (t * 6 - 15) + 10));
 }
 
-double lerp(double t, double a, double b)
+double	lerp(double t, double a, double b)
 {
 	return (a + t * (b - a));
 }
 
-double grad(int hash, double x, double y, double z)
+double	grad(int hash, double x, double y, double z)
 {
 	int		h;
 	double	u;
@@ -33,7 +33,7 @@ double grad(int hash, double x, double y, double z)
 	if (h < 8)
 	{
 		u = x;
-		v = y;	
+		v = y;
 	}
 	else
 	{

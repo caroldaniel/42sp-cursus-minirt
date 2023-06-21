@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 14:09:49 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 00:07:39 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:32:43 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	camera_destroy(t_cam **cam)
 	{
 		if ((*cam)->transform.data)
 			matrix_destroy(&(*cam)->transform);
-		free(*cam);		
+		free(*cam);
 	}
 	return ;
 }

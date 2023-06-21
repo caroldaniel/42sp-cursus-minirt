@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:22:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 00:05:25 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:30:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_color	get_color(char *token)
 	return (c);
 }
 
-t_tuple get_vector(char *token)
+t_tuple	get_vector(char *token)
 {
 	t_tuple	v;
 	char	**xyz;
@@ -51,7 +51,7 @@ t_tuple get_vector(char *token)
 	return (v);
 }
 
-t_tuple get_point(char *token)
+t_tuple	get_point(char *token)
 {
 	t_tuple	p;
 	char	**xyz;

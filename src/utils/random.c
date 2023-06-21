@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 19:52:27 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/15 22:11:02 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:37:15 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	random_nb(void)
 {
 	int				fd;
-	unsigned int 	random_data;
+	unsigned int	random_data;
 
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd == -1)

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:21:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:56:07 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:31:34 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_light	*get_ambient(t_line *line, t_data *data)
 	return (ambient);
 }
 
-t_light *get_light(t_line *line, t_data *data)
+t_light	*get_light(t_line *line, t_data *data)
 {
 	t_light	*light;
 
@@ -84,7 +84,7 @@ t_light *get_light(t_line *line, t_data *data)
 t_cam	*get_camera(t_line *line, t_data *data)
 {
 	t_matrix	transform;
-	
+
 	data->camera = NULL;
 	if (!check_tuple(line->tokens[1]))
 		return (data->camera);

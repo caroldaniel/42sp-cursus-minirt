@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:56:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:38:26 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,12 +206,12 @@ bool		check_material(char **tokens);
 **	Getters
 */
 t_color		get_color(char *token);
-t_tuple 	get_vector(char *token);
-t_tuple 	get_point(char *token);
+t_tuple		get_vector(char *token);
+t_tuple		get_point(char *token);
 t_pattern	get_pattern(char *pattern, char *color_str);
 void		get_element_properties(t_line *line, t_data *data);
 t_light		*get_ambient(t_line *line, t_data *data);
-t_light 	*get_light(t_line *line, t_data *data);
+t_light		*get_light(t_line *line, t_data *data);
 t_cam		*get_camera(t_line *line, t_data *data);
 t_object	*get_sphere(t_line *line, t_data *data);
 t_object	*get_plane(t_line *line, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:44:51 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 00:01:36 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 09:38:46 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_color		pattern_at(t_pattern pattern, t_tuple point);
 /*
 **	Perlin noise
 */
-t_perlin 	perlin_init(void);
+t_perlin	perlin_init(void);
 void		perlin_destroy(t_perlin *perlin);
 double		fade(double t);
 double		lerp(double t, double a, double b);
