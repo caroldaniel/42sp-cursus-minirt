@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:36:07 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:18:01 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	data_destroy(t_data *data, int exit_code)
 	{
 		if (data->fd > 2)
 			close(data->fd);
+		line_list_destroy(&data->line_list);
 		world_destroy(&data->world);
 		camera_destroy(&data->camera);
 		grid_destroy(&data->img, data->img.y);

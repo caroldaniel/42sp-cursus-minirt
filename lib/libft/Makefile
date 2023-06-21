@@ -31,7 +31,7 @@ SRCS		= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c\
 			ft_printf_conversion.c ft_printf_convert_c.c ft_printf_convert_p.c\
 			ft_printf_convert_d_i.c ft_printf_convert_pct.c ft_printf_parse.c\
 			ft_printf_initialize.c ft_printf_convert_s.c ft_printf_convert_ux.c\
-			ft_printf_placeholder.c ft_atod.c
+			ft_printf_placeholder.c ft_atod.c ft_free_split.c
 			
 OBJS		= $(SRCS:.c=.o)
 

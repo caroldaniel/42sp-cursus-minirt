@@ -79,5 +79,6 @@ char	*ft_strndup(const char *s1, size_t size);
 int		ft_strisalnum(char *s);
 char	*ft_appendchr(char const *s, char const c);
 double	ft_atod(char *str);
+void	ft_free_split(char **matrix);
 
 #endif

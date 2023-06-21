@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:22:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 09:30:25 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:29:34 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,24 @@ t_color	get_color(char *token)
 	char	**rgb;
 	int		i;
 
+	c = color(0, 0, 0, 1);
 	rgb = ft_split(token, ',');
 	if (!rgb)
-		return (color(0, 0, 0, 1));
+		return (c);
 	i = 0;
 	while (rgb[i])
 		i++;
-	if (i != 3)
-		return (color(0, 0, 0, 1));
-	c.red = (double)(ft_atod(rgb[0]) / 256.0);
-	c.green = (double)(ft_atod(rgb[1]) / 256.0);
-	c.blue = (double)(ft_atod(rgb[2]) / 256.0);
-	c.alpha = 1;
+	if (i == 3)
+	{
+		c.red = (double)(ft_atod(rgb[0]) / 256.0);
+		c.green = (double)(ft_atod(rgb[1]) / 256.0);
+		c.blue = (double)(ft_atod(rgb[2]) / 256.0);
+		c.alpha = 1;
+	}
+	i = 0;
+	while (rgb[i])
+		free(rgb[i++]);
+	free(rgb);
 	return (c);
 }
 
@@ -39,15 +45,19 @@ t_tuple	get_vector(char *token)
 	char	**xyz;
 	int		i;
 
+	v = vector(0, 0, 0);
 	xyz = ft_split(token, ',');
 	if (!xyz)
-		return (vector(0, 0, 0));
+		return (v);
 	i = 0;
 	while (xyz[i])
 		i++;
-	if (i != 3)
-		return (vector(0, 0, 0));
-	v = vector(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	if (i == 3)
+		v = vector(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	i = 0;
+	while (xyz[i])
+		free(xyz[i++]);
+	free(xyz);
 	return (v);
 }
 
@@ -57,15 +67,19 @@ t_tuple	get_point(char *token)
 	char	**xyz;
 	int		i;
 
+	p = point(0, 0, 0);
 	xyz = ft_split(token, ',');
 	if (!xyz)
-		return (point(0, 0, 0));
+		return (p);
 	i = 0;
 	while (xyz[i])
 		i++;
-	if (i != 3)
-		return (point(0, 0, 0));
-	p = point(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	if (i == 3)
+		p = point(ft_atod(xyz[0]), ft_atod(xyz[1]), ft_atod(xyz[2]));
+	i = 0;
+	while (xyz[i])
+		free(xyz[i++]);
+	free(xyz);
 	return (p);
 }
 

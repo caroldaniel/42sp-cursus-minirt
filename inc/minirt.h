@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 09:38:26 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:16:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,19 +121,6 @@ typedef struct s_win
 }	t_win;
 
 /*
-** Data type definition
-*/
-typedef struct s_data
-{
-	int		fd;
-	void	*mlx_ptr;
-	t_win	win;
-	t_img	img;
-	t_cam	*camera;
-	t_world	world;
-}	t_data;
-
-/*
 ** Parser elements struct definition
 */
 typedef struct s_line
@@ -166,6 +153,20 @@ typedef struct s_counter
 }	t_counter;
 
 /*
+** Data type definition
+*/
+typedef struct s_data
+{
+	int		fd;
+	void	*mlx_ptr;
+	t_win	win;
+	t_img	img;
+	t_cam	*camera;
+	t_world	world;
+	t_line	*line_list;
+}	t_data;
+
+/*
 ** Data utils
 */
 void		data_init(t_data *data, char *file_path);
@@ -178,7 +179,7 @@ void		set_hooks(t_data *data);
 t_line		*line_new(char *content);
 void		line_add(t_line **list, t_line *new);
 void		line_destroy(t_line **line);
-void		line_list_destroy(t_line *list);
+void		line_list_destroy(t_line **list);
 
 /*
 **	Parser utils

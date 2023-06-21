@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:38:10 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/17 23:19:01 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:19:48 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ void	line_add(t_line **list, t_line *new)
 
 void	line_destroy(t_line **line)
 {
-	if (!(*line))
-		return ;
-	if ((*line)->tokens)
-		token_array_destroy((*line)->tokens);
-	free(*line);
-	*line = NULL;
+	if (*line)
+	{
+		if ((*line)->tokens)
+			token_array_destroy((*line)->tokens);
+		free(*line);
+		*line = NULL;
+	}
 	return ;
 }
 
-void	line_list_destroy(t_line *list)
+void	line_list_destroy(t_line **list)
 {
 	t_line	*curr;
 	t_line	*next;
 
-	if (!list)
-		return ;
-	curr = list;
+	curr = *list;
 	while (curr)
 	{
 		next = curr->next;
 		line_destroy(&curr);
 		curr = next;
 	}
+	*list = NULL;
 	return ;
 }

@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_free_split.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 22:09:58 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 11:21:56 by cado-car         ###   ########.fr       */
+/*   Created: 2021/07/31 11:45:55 by cado-car          #+#    #+#             */
+/*   Updated: 2023/06/21 10:59:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+/*
+*	DESCRIPTION
+*	Frees the matrix alloc'ed during ft_split.
+*	PARAMETERS
+*	#1. The array of strings to be freed.
+*	RETURN VALUES
+*	- 
+*/
 
-int	main(int argc, char **argv)
+#include "libft.h"
+
+void	ft_free_split(char **matrix)
 {
-	t_data	data;
+	int	i;
 
-	data.mlx_ptr = NULL;
-	if (argc != 2)
-		exit(data_destroy(&data, ERR_WRNGARG));
-	data_init(&data, argv[1]);
-	image_create(&data);
-	set_hooks(&data);
-	mlx_loop(data.mlx_ptr);
-	return (0);
+	i = -1;
+	if (!matrix)
+		return ;
+	while (matrix[++i])
+	{
+		free(matrix[i]);
+		matrix[i] = NULL;
+	}
+	free(matrix);
+	matrix = NULL;
+	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 20:50:19 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/20 23:53:06 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:00:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ bool	check_color(char *token)
 	{
 		if (!check_int(rgb[i]) || !check_range(ft_atoi(rgb[i]), 0, 255))
 		{
-			free(rgb);
+			ft_free_split(rgb);
 			return (false);
 		}
 		i++;
 	}
-	free(rgb);
+	ft_free_split(rgb);
 	if (i != 3)
 		return (false);
 	return (true);
@@ -49,12 +49,12 @@ bool	check_tuple(char *token)
 	{
 		if (!check_double(xyz[i]))
 		{
-			free(xyz);
+			ft_free_split(xyz);
 			return (false);
 		}
 		i++;
 	}
-	free(xyz);
+	ft_free_split(xyz);
 	if (i != 3)
 		return (false);
 	return (true);
@@ -75,7 +75,7 @@ bool	check_normalized_vector(char *token)
 	{
 		if (!check_double(xyz[i]))
 		{
-			free(xyz);
+			ft_free_split(xyz);
 			return (false);
 		}
 		i++;
@@ -83,7 +83,7 @@ bool	check_normalized_vector(char *token)
 	if (i == 3)
 		mag = magnitude(vector(ft_atod(xyz[0]), ft_atod(xyz[1]), \
 			ft_atod(xyz[2])));
-	free(xyz);
+	ft_free_split(xyz);
 	if (i != 3 || (i == 3 && !comp(mag, 1.0, 0.01)))
 		return (false);
 	return (true);
