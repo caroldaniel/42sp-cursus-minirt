@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/18 16:33:55 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/20 20:51:48 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,12 @@ SRC				= main.c\
 				progress_bar.c\
 				random.c\
 				parser.c\
-				parser_utils.c\
+				checkers_01.c\
+				checkers_02.c\
+				checkers_03.c\
+				getters_01.c\
+				getters_02.c\
+				getters_utils.c\
 				tokenizer.c\
 				token_array_destroy.c\
 				line.c

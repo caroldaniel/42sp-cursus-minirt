@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:28:34 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 17:42:49 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 21:25:16 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	parser(t_data *data)
 	}
 	if (!check_count(line_list))
 		exit(data_destroy(data, ERR_SCNCNTR));
-
-	//TODO - parse line_list
+	get_element_properties(line_list, data);
 	line_list_destroy(line_list);
 	return ;
 }
@@ -45,6 +44,8 @@ static t_line	*validated(char *line)
 	if (!new)
 		return (NULL);
 	if (!check_element(new->tokens[0]))
+		line_destroy(&new);
+	if (!check_element_properties_count(new))
 		line_destroy(&new);
 	return (new);
 }

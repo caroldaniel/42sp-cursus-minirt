@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser_utils.c                                     :+:      :+:    :+:   */
+/*   checkers_01.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 16:15:10 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 17:29:48 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 21:22:25 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ static void	count_element(t_line *line, t_counter *counter)
 
 static bool	check_element_count(t_counter counter)
 {
-	if (counter.ambient.locked && counter.ambient.count > 1)
+	if (!counter.camera.locked || counter.camera.count != 1)
 		return (false);
-	if (counter.camera.locked && counter.camera.count > 1)
+	if (counter.ambient.locked && counter.ambient.count > 1)
 		return (false);
 	if (counter.light.locked && counter.light.count > 1)
 		return (false);
@@ -90,8 +90,6 @@ static bool	check_element_count(t_counter counter)
 	if (counter.cylinder.locked && counter.cylinder.count > 1)
 		return (false);
 	if (counter.cone.locked && counter.cone.count > 1)
-		return (false);
-	if (counter.camera.count != 1)
 		return (false);
 	if (counter.ambient.count + counter.light.count == 0)
 		return (false);

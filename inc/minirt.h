@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 17:17:50 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/20 21:18:18 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,14 @@
 # define ERR_EXTINVL	4
 # define ERR_FDERROR	5
 # define ERR_SCNCNTR	6
+# define ERR_PARSEAM	7
+# define ERR_PARSECA	8
+# define ERR_PARSELI	9
+# define ERR_PARSESP	10
+# define ERR_PARSEPL	11
+# define ERR_PARSECY	12
+# define ERR_PARSECN	13
 
-/*
-**	Parser macros
-*/
-
-# define IDENTIFIERS	"ACLSP"
 /*
 ** Macros for message colors
 */
@@ -86,6 +88,7 @@
 # include "matrix.h"
 # include "keys.h"
 # include "scene.h"
+# include "parser.h"
 
 /*
 ** Bhaskara type definition
@@ -126,41 +129,10 @@ typedef struct s_data
 	void	*mlx_ptr;
 	t_win	win;
 	t_img	img;
-	t_cam	camera;
+	t_cam	*camera;
 	t_world	world;
 }	t_data;
 
-/*
-** Parser elements struct definition
-*/
-typedef struct s_line
-{
-	char			**tokens;
-	struct s_line	*next;
-}	t_line;
-
-/*
-**	ELements struct definition
-*/
-typedef struct s_element
-{
-	int		count;
-	bool	locked;
-}	t_element;
-
-/*
-** Elements counter struct definition
-*/
-typedef struct s_counter
-{
-	t_element	ambient;
-	t_element	camera;
-	t_element	light;
-	t_element	sphere;
-	t_element	plane;
-	t_element	cylinder;
-	t_element	cone;
-}	t_counter;
 
 /*
 ** Data utils
@@ -168,23 +140,6 @@ typedef struct s_counter
 void		data_init(t_data *data, char *file_path);
 int			data_destroy(t_data *data, int exit_code);
 void		set_hooks(t_data *data);
-
-/*
-**	Parser utils
-*/
-void		parser(t_data *data);
-char		**tokenizer(char const *s);
-void		token_array_destroy(char **matrix);
-bool		check_element(char *identifier);
-bool		check_count(t_line *line);
-
-/*
-**	Line struct utils
-*/
-t_line		*line_new(char *content);
-void		line_add(t_line **list, t_line *new);
-void		line_destroy(t_line **line);
-void		line_list_destroy(t_line *list);
 
 /*
 ** Coordinate utils
