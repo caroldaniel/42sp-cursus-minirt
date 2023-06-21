@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:21:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 09:31:34 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 12:47:42 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	get_element_properties(t_line *line, t_data *data)
 	curr = line;
 	while (curr)
 	{
+		if ((comp_str(curr->tokens[0], "R")) && !get_ratio(curr, data))
+			exit(data_destroy(data, ERR_PARSERA));
 		if ((comp_str(curr->tokens[0], "A")) && !get_ambient(curr, data))
 			exit(data_destroy(data, ERR_PARSEAM));
 		if (comp_str(curr->tokens[0], "C") && !get_camera(curr, data))
@@ -36,6 +38,17 @@ void	get_element_properties(t_line *line, t_data *data)
 		curr = curr->next;
 	}
 	return ;
+}
+
+bool	get_ratio(t_line *line, t_data *data)
+{
+	if (!check_int(line->tokens[1]) || !check_int(line->tokens[2]))
+		return (false);
+	data->img.x = ft_atoi(line->tokens[1]);
+	data->img.y = ft_atoi(line->tokens[2]);
+	data->win.x = data->img.x;
+	data->win.y = data->img.y;
+	return (true);
 }
 
 t_light	*get_ambient(t_line *line, t_data *data)
@@ -90,13 +103,13 @@ t_cam	*get_camera(t_line *line, t_data *data)
 		return (data->camera);
 	if (!check_normalized_vector(line->tokens[2]))
 		return (data->camera);
-	if (!check_int(line->tokens[3]) || \
+	if (!check_double(line->tokens[3]) || \
 		!check_range(ft_atod(line->tokens[3]), 0.0, 180.0))
 		return (data->camera);
-	data->camera = camera(data->img.x, data->img.y, \
-		ft_atod(line->tokens[3]) * (M_PI / 180.0));
 	transform = view_transform(get_point(line->tokens[1]), \
 		get_vector(line->tokens[2]), vector(0, 1, 0));
+	data->camera = camera(data->img.x, data->img.y, \
+		ft_atod(line->tokens[3]) * (M_PI / 180.0));
 	set_camera_transform(data->camera, transform);
 	return (data->camera);
 }

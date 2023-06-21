@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 11:16:38 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 13:38:40 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,20 @@
 # define ERR_WRNGARG	1
 # define ERR_MEMALOC	2
 # define ERR_MLXINIT	3
-# define ERR_EXTINVL	4
-# define ERR_FDERROR	5
-# define ERR_INVELEM	6
-# define ERR_SCNCNTR	7
-# define ERR_PARSEAM	8
-# define ERR_PARSECA	9
-# define ERR_PARSELI	10
-# define ERR_PARSESP	11
-# define ERR_PARSEPL	12
-# define ERR_PARSECY	13
-# define ERR_PARSECN	14
+# define ERR_WININIT	4
+# define ERR_IMGINIT	5
+# define ERR_EXTINVL	6
+# define ERR_FDERROR	7
+# define ERR_INVELEM	8
+# define ERR_SCNCNTR	9
+# define ERR_PARSERA	10
+# define ERR_PARSEAM	11
+# define ERR_PARSECA	12
+# define ERR_PARSELI	13
+# define ERR_PARSESP	14
+# define ERR_PARSEPL	15
+# define ERR_PARSECY	16
+# define ERR_PARSECN	17
 
 /*
 ** Macros for message colors
@@ -143,6 +146,7 @@ typedef struct s_element
 */
 typedef struct s_counter
 {
+	t_element	ratio;
 	t_element	ambient;
 	t_element	camera;
 	t_element	light;
@@ -211,6 +215,7 @@ t_tuple		get_vector(char *token);
 t_tuple		get_point(char *token);
 t_pattern	get_pattern(char *pattern, char *color_str);
 void		get_element_properties(t_line *line, t_data *data);
+bool		get_ratio(t_line *line, t_data *data);
 t_light		*get_ambient(t_line *line, t_data *data);
 t_light		*get_light(t_line *line, t_data *data);
 t_cam		*get_camera(t_line *line, t_data *data);

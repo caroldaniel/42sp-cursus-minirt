@@ -6,7 +6,7 @@
 #    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/20 23:40:57 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/21 16:00:29 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,7 +161,7 @@ install:
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:			all			
-				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) scenes/scene_01.rt
+				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) scenes/scene_leak_test.rt
 
 .PHONY:			all clean fclean re bonus rebonus
 

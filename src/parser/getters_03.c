@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 23:00:00 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 09:31:05 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:21:47 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_object	*get_cylinder(t_line *line, t_data *data)
 	cylinder = NULL;
 	if (!check_tuple(line->tokens[1]))
 		return (cylinder);
-	if (!check_tuple(line->tokens[2]))
+	if (!check_normalized_vector(line->tokens[2]))
 		return (cylinder);
 	if (!check_double(line->tokens[3]) || ft_atod(line->tokens[3]) < 0)
 		return (cylinder);
@@ -54,9 +54,9 @@ static void	get_cylinder_properties(t_line *line, t_object **cylinder)
 	rad_x = atan2(axis.z, axis.y);
 	rad_z = atan2(axis.x, axis.y);
 	scale = ft_atod(line->tokens[3]) / 2.0;
-	set_object_transform(*cylinder, chain_transform(4, rotation_x(rad_x), \
-		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z), \
-		scaling(scale, scale, scale)));
+	set_object_transform(*cylinder, chain_transform(4, \
+		scaling(scale, scale, scale), rotation_x(rad_x), \
+		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[6])
 		set_pattern(*cylinder, solid_pattern(get_color(line->tokens[5])));
 	else
@@ -75,7 +75,7 @@ t_object	*get_cone(t_line *line, t_data *data)
 	cone = NULL;
 	if (!check_tuple(line->tokens[1]))
 		return (cone);
-	if (!check_tuple(line->tokens[2]))
+	if (!check_normalized_vector(line->tokens[2]))
 		return (cone);
 	if (!check_double(line->tokens[3]) || ft_atod(line->tokens[3]) < 0)
 		return (cone);
