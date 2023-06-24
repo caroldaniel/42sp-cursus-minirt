@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:51:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/18 15:30:09 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 09:35:23 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	is_valid(char *str)
 		if (str[i] == '.')
 		{
 			if (has_dot)
-				return (0);	
+				return (0);
 			has_dot = 1;
 		}
 	}
