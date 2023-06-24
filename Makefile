@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/21 16:00:29 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/24 15:07:15 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,7 +126,7 @@ RM 				= rm -rf
 $(OBJ_PATH)%.o: %.c
 				@printf "\n$(CY)Generating object...$(RC)\n"
 				mkdir -p $(OBJ_PATH)
-				$(CC) $(CF) $(CFI) -lmlx -c $< -o $@
+				$(CC) $(CF) $(CFI) -c $< -o $@
 				@printf "$(GR)Object ready!$(RC)"
 
 $(NAME):		$(OBJ)
