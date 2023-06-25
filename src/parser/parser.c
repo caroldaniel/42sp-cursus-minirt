@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 19:28:34 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 13:47:56 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 19:01:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static t_line	*validated(char *line);
 static bool		is_line_parseble(char *line);
+static void		finish_reading(int fd, char **line);
 
 void	parser(t_data *data)
 {
@@ -30,7 +31,7 @@ void	parser(t_data *data)
 			curr = validated(line);
 			if (!curr)
 			{
-				free(line);
+				finish_reading(data->fd, &line);
 				exit(data_destroy(data, ERR_INVELEM));
 			}
 			line_add(&data->line_list, curr);
@@ -51,9 +52,7 @@ static t_line	*validated(char *line)
 	new = line_new(line);
 	if (!new)
 		return (NULL);
-	if (!check_element(new->tokens[0]))
-		line_destroy(&new);
-	if (!check_element_properties_count(new))
+	if (!check_element(new->tokens[0]) || !check_element_properties_count(new))
 		line_destroy(&new);
 	return (new);
 }
@@ -71,4 +70,14 @@ static bool	is_line_parseble(char *line)
 	if (ft_strlen(line) >= 2 && line[0] == '/' && line[1] == '/')
 		return (false);
 	return (true);
+}
+
+static void	finish_reading(int fd, char **line)
+{
+	while (*line)
+	{
+		free(*line);
+		*line = get_next_line(fd);
+	}
+	return ;
 }
