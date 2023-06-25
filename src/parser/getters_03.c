@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 23:00:00 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/24 21:14:48 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:58:31 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_object	*get_cylinder(t_line *line, t_data *data)
 		return (cylinder);
 	if (!check_material(&(line->tokens[6])))
 		return (cylinder);
-	printf("cylinder min: %f \ncylinder max: %f\n", -ft_atod(line->tokens[4]) / 2.0, ft_atod(line->tokens[4]) / 2.0);
 	cylinder = cylinder_new(-ft_atod(line->tokens[4]) / 2.0, \
 		ft_atod(line->tokens[4]) / 2.0);
 	if (!cylinder)

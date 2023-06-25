@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:22:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/24 21:37:41 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 22:33:45 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ t_tuple	get_upv(t_tuple forward)
 	t_tuple	up;
 	t_tuple	right;
 
-	arbitrary_up = vector(0, 1, 0);
+	if (comp(forward.y, 1.0, EPSILON) || comp(forward.y, -1.0, EPSILON))
+		arbitrary_up = vector(0, 0, -1);
+	else
+		arbitrary_up = vector(0, 1, 0);
 	right = cross(forward, arbitrary_up);
 	up = cross(normalize(right), forward);
 	return (normalize(up));
