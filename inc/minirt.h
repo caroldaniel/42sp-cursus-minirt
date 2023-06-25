@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 22:10:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 13:38:40 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 20:56:32 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,7 @@ bool		check_material(char **tokens);
 */
 t_color		get_color(char *token);
 t_tuple		get_vector(char *token);
+t_tuple		get_upv(t_tuple forward);
 t_tuple		get_point(char *token);
 t_pattern	get_pattern(char *pattern, char *color_str);
 void		get_element_properties(t_line *line, t_data *data);

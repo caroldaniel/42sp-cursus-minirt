@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:22:01 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 10:29:34 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:37:41 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,18 @@ t_tuple	get_vector(char *token)
 		free(xyz[i++]);
 	free(xyz);
 	return (v);
+}
+
+t_tuple	get_upv(t_tuple forward)
+{
+	t_tuple	arbitrary_up;
+	t_tuple	up;
+	t_tuple	right;
+
+	arbitrary_up = vector(0, 1, 0);
+	right = cross(forward, arbitrary_up);
+	up = cross(normalize(right), forward);
+	return (normalize(up));
 }
 
 t_tuple	get_point(char *token)

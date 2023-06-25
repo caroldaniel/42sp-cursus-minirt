@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 14:51:35 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/24 09:35:23 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:51:20 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,21 @@ static int	is_valid(char *str);
 double	ft_atod(char *str)
 {
 	double	result;
+	int		sign;
 	int		i;
 
 	result = 0.0;
+	sign = 1;
 	i = 0;
 	while (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
 		i++;
+	}
 	if (ft_strlen(&str[i]) > 12 || !is_valid(&str[i]))
 		return (0.0);
-	result = (double)ft_atoi(str);
+	result = (double)ft_atoi(&str[i]);
 	while (*str && *str != '.')
 		str++;
 	if (*str == '.')
@@ -45,7 +51,7 @@ double	ft_atod(char *str)
 		str++;
 		result += ((double)ft_atoi(str) / pow(10, ft_strlen(str)));
 	}
-	return (result);
+	return (result * sign);
 }
 
 static int	is_valid(char *str)

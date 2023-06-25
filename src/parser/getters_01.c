@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:21:26 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 12:47:42 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/24 21:45:22 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,9 @@ t_cam	*get_camera(t_line *line, t_data *data)
 	if (!check_double(line->tokens[3]) || \
 		!check_range(ft_atod(line->tokens[3]), 0.0, 180.0))
 		return (data->camera);
+	print_tuple(get_vector(line->tokens[2]));
 	transform = view_transform(get_point(line->tokens[1]), \
-		get_vector(line->tokens[2]), vector(0, 1, 0));
+		get_vector(line->tokens[2]), get_upv(get_vector(line->tokens[2])));
 	data->camera = camera(data->img.x, data->img.y, \
 		ft_atod(line->tokens[3]) * (M_PI / 180.0));
 	set_camera_transform(data->camera, transform);
