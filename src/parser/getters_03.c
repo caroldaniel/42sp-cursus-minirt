@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 23:00:00 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/24 21:58:31 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 19:49:34 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	get_cone_properties(t_line *line, t_object **cone)
 	axis = get_vector(line->tokens[2]);
 	rad_x = atan2(axis.z, axis.y);
 	rad_z = atan2(axis.x, axis.y);
-	scale = ft_atod(line->tokens[3]) / 2.0;
+	scale = ft_atod(line->tokens[3]) / ft_atod(line->tokens[4]);
 	set_object_transform(*cone, chain_transform(4, rotation_x(rad_x), \
 		rotation_z(rad_z), scaling(scale, 1, scale), \
 		translation(trsl.x, trsl.y, trsl.z)));
