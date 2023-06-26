@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:30:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 13:21:29 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 21:51:28 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	get_sphere_properties(t_line *line, t_object **sphere)
 	trsl = get_point(line->tokens[1]);
 	scale = ft_atod(line->tokens[2]) / 2.0;
 	set_object_transform(*sphere, chain_transform(2, \
-		scaling(scale, scale, scale), translation(trsl.x, trsl.y, trsl.z)));
+		translation(trsl.x, trsl.y, trsl.z), scaling(scale, scale, scale)));
 	if (!line->tokens[4])
 		set_pattern(*sphere, solid_pattern(get_color(line->tokens[3])));
 	else
@@ -88,8 +88,9 @@ static void	get_plane_properties(t_line *line, t_object **plane)
 	normalv = get_vector(line->tokens[2]);
 	rad_x = atan2(normalv.z, normalv.y);
 	rad_z = atan2(normalv.x, normalv.y);
-	set_object_transform(*plane, chain_transform(3, rotation_x(rad_x), \
-		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));
+	set_object_transform(*plane, chain_transform(3, \
+		rotation_x(rad_x), rotation_z(rad_z), \
+		translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[4])
 		set_pattern(*plane, solid_pattern(get_color(line->tokens[3])));
 	else

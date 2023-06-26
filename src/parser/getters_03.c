@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 23:00:00 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/25 19:49:34 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 22:04:53 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	get_cylinder_properties(t_line *line, t_object **cylinder)
 	rad_z = atan2(axis.x, axis.y);
 	scale = ft_atod(line->tokens[3]) / 2.0;
 	set_object_transform(*cylinder, chain_transform(4, \
-		rotation_x(rad_x), rotation_z(rad_z), \
-		scaling(scale, 1, scale), translation(trsl.x, trsl.y, trsl.z)));
+		scaling(scale, 1, scale), rotation_x(rad_x), \
+		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[6])
 		set_pattern(*cylinder, solid_pattern(get_color(line->tokens[5])));
 	else
@@ -107,9 +107,9 @@ static void	get_cone_properties(t_line *line, t_object **cone)
 	rad_x = atan2(axis.z, axis.y);
 	rad_z = atan2(axis.x, axis.y);
 	scale = ft_atod(line->tokens[3]) / ft_atod(line->tokens[4]);
-	set_object_transform(*cone, chain_transform(4, rotation_x(rad_x), \
-		rotation_z(rad_z), scaling(scale, 1, scale), \
-		translation(trsl.x, trsl.y, trsl.z)));
+	set_object_transform(*cone, chain_transform(4, \
+		scaling(scale, 1, scale), rotation_x(rad_x), \
+		rotation_z(rad_z), translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[6])
 		set_pattern(*cone, solid_pattern(get_color(line->tokens[5])));
 	else
