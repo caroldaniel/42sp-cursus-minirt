@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 16:21:21 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 13:48:32 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:46:30 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	open_path(t_data *data, char *file_path);
 
 void	data_init(t_data *data, char *file_path)
 {
-	data->fd = -1;
-	data->line_list = NULL;
 	data->mlx_ptr = NULL;
+	data->line_list = NULL;
+	data->fd = -1;
 	ratio_init(data);
 	world_init(data);
 	open_path(data, file_path);

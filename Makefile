@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/23 09:39:16 by cado-car          #+#    #+#              #
-#    Updated: 2023/06/25 19:03:35 by cado-car         ###   ########.fr        #
+#    Updated: 2023/06/26 18:39:27 by cado-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,7 +161,7 @@ install:
 				@printf "$(GR)All dependencies ready!$(RC)\n\n"
 
 leak:			all			
-				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME) scenes/scene_leak_test.rt
+				valgrind --leak-check=full --track-origins=yes --show-leak-kinds=all ./$(NAME)
 
 .PHONY:			all clean fclean re bonus rebonus
 

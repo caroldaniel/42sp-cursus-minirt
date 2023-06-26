@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_destroy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: cado-car <cado-car@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 17:21:05 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/21 13:40:00 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/26 18:43:29 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	data_destroy(t_data *data, int exit_code)
 	print_exit_message(exit_code);
 	if (data->fd > 2)
 		close(data->fd);
+	if (exit_code == ERR_WRNGARG)
+		return (exit_code);
 	line_list_destroy(&data->line_list);
 	world_destroy(&data->world);
 	camera_destroy(&data->camera);
