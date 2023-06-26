@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 17:30:36 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/25 21:51:28 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 22:22:10 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	get_sphere_properties(t_line *line, t_object **sphere)
 	trsl = get_point(line->tokens[1]);
 	scale = ft_atod(line->tokens[2]) / 2.0;
 	set_object_transform(*sphere, chain_transform(2, \
-		translation(trsl.x, trsl.y, trsl.z), scaling(scale, scale, scale)));
+		scaling(scale, scale, scale), translation(trsl.x, trsl.y, trsl.z)));
 	if (!line->tokens[4])
 		set_pattern(*sphere, solid_pattern(get_color(line->tokens[3])));
 	else
