@@ -18,9 +18,9 @@ Ray tracing is a rendering technique that can produce stunningly realistic and b
 	Final score
 </h2>
 
-<img alt="cado-car's 42Project Score"/>
+<img src=https://github.com/caroldaniel/caroldaniel-utils/blob/5caf7ef929330f9684510999d248c40a474d8200/philosophers_grade.png alt="cado-car's 42Project Score"/>
 <h4>Completed + Bonus</h4>
-<img alt="cado-car's 42Project Badge"/>
+<img src=https://github.com/caroldaniel/caroldaniel-utils/blob/ebce3ee2c94da4d5ddce2ec98b08929dedf05802/minirtm.png alt="cado-car's 42Project Badge"/>
 </div>
 
 ---
@@ -48,9 +48,11 @@ In your local repository, run `make`
 $> make 
 ```
 
-> `make` suports 5 flags:
+> `make` suports 7 flags:
 > - `make all` or simply `make` compiles minirt in its mandatory format
 > - `make clean` deletes the `.o` files generated during compilation
 > - `make fclean` deletes the `.o` and the `minirt` file generated
 > - `make re` executes `fclean` and `all` in sequence, recompiling the program
+> - `make install` installs all dependency libraries
+> - `make leak`executes the project with valgrind, checking all leaks 
 
