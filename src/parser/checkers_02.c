@@ -6,7 +6,7 @@
 /*   By: cado-car <cado-car@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/18 18:39:14 by cado-car          #+#    #+#             */
-/*   Updated: 2023/06/25 18:46:04 by cado-car         ###   ########.fr       */
+/*   Updated: 2023/06/25 23:23:38 by cado-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ bool	check_element_properties_count(t_line *line)
 {
 	char	*identifier;
 	int		i;
-	
-	if (!line)
-		return (false);
+
 	identifier = line->tokens[0];
 	i = 0;
 	while (line->tokens[i])
