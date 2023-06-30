@@ -31,6 +31,8 @@ The project
 
 ### What is a Ray Tracer
 
+![miniRT](img/translation.png)
+
 A ray tracer is a computer program that simulates the behavior of light in order to generate realistic images. It works by tracing the path of rays of light as they interact with objects in a virtual scene, ultimately determining the color and brightness of each pixel in the final image.
 
 The basic idea behind a ray tracer is to simulate the physical phenomena of light, such as reflection, refraction, and shading, to create visually accurate renderings. It starts by casting a primary ray from the viewer's perspective through each pixel of the image plane. This primary ray determines the direction of the incoming light for that pixel.
