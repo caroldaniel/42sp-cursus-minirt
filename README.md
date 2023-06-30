@@ -67,6 +67,31 @@ While implementing a ray tracer in C may be more challenging due to the lack of 
 
 All of this makes miniRT the PERFECT project to end our cursus syllabus of C. It stretches our limitations and makes us even more anxious to delve into C++ in the next project. 
 
+### Code Organization: Structures and Types
+#### Tuples: Points and Vectors
+To represent points and vectors in 3D space, we have defined a `t_tuple` structure. It consists of three floating-point values (`x`, `y`, and `z`) to store the coordinates of a point or the components of a vector. We use this structure to represent positions of objects in the scene as well as the directions of rays.
+
+#### Colors
+To represent colors in our ray tracer, we have defined a `t_color` structure. It consists of three floating-point values (`red`, `green`, and `blue`) that range from 0.0 to 1.0, representing the intensities of the respective color channels. By combining these color channels, we can accurately represent and manipulate the colors of objects and light sources in the scene.
+
+#### Rays
+We use a `t_ray` structure to represent a ray in our ray tracer. It consists of an `origin` point and a `direction` vector. The origin represents the starting point of the ray, typically the viewer's position, while the direction indicates the path that the ray follows. Rays are essential for determining the interactions between light and objects in the scene.
+
+#### Intersections
+In order to track intersections between rays and objects in the scene, we have defined an Intersection structure, called `t_x`. This structure contains information about the intersection point, such as the distance along the ray and the object that was intersected. We store these intersections for further calculations, such as determining the visible objects and calculating lighting effects.
+
+#### Camera
+To simulate a virtual camera within our ray tracer, we have implemented a `t_cam` structure. This structure includes parameters like the camera's position, the direction it is facing, and the field of view. It allows us to generate rays originating from the camera's position and passing through each pixel of the image plane, enabling the rendering of the scene from the desired perspective.
+
+#### Lights
+We have created a `t_light` structure to represent light sources in the scene. It contains properties such as the light's position and intensity, which determine how the light interacts with objects and affects their appearance. By considering the positions and intensities of lights, we can calculate the illumination and shading of objects in the scene.
+
+#### Objects
+In order to represent different types of objects in the scene, such as **spheres**, **planes**, **cones**, and **cylinders**, we have defined the structure `t_object`. This structure contains properties like type, position, orientation, and material properties that define how the objects interact with light rays. They allow us to create and render diverse scenes with various geometric shapes.
+
+#### Functions and Algorithms
+Throughout our entire program, we have implemented various functions and algorithms to handle calculations and operations related to ray tracing. These functions include ray-object intersection, lighting calculations, shading models, and rendering algorithms like Phong Reflective algorithm and Perlin distortion effect. Each function plays a crucial role in simulating the behavior of light and producing visually accurate images.
+
 
 
 ---
