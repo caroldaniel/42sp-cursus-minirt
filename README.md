@@ -49,7 +49,9 @@ In our Mini Ray Tracer, we've implemented a simplified version of this process u
 
 ### A Ray Tracer in C?! Are we crazy? 
 
-When developing a ray tracer in C, we've encountered several challenges due to the nature of the language. C is a procedural programming language that lacks built-in support for higher-level abstractions like classes and objects, which are fundamental to OOP. As a result, we had to handle various aspects manually, leading to increased complexity and potential pitfalls.
+No, not really. Indeed, maybe C is not the first language that comes to mind when we think about a project this size and scope, but attempting to code it in a language like this does have its perks - and downnsides.
+
+C is a procedural programming language that lacks built-in support for higher-level abstractions like classes and objects, which are fundamental to OOP. As a result, we had to handle various aspects manually, leading to increased complexity and potential pitfalls.
 
 - **Lack of encapsulation**: In C, encapsulation must be implemented manually by defining structures and functions that operate on them. This requires careful management of data structures and associated functions to ensure proper encapsulation and avoid data corruption or inconsistent states. OOP, on the other hand, provides a natural and intuitive way to encapsulate data and behavior within classes, promoting modularity and code organization.
 
