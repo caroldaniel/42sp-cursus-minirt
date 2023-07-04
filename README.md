@@ -47,6 +47,8 @@ Ray tracing is widely used in various fields, including computer graphics, video
 
 In our Mini Ray Tracer, we've implemented a simplified version of this process using the C programming language. Our program takes a scene description, calculates ray-object intersections, and simulates light interactions to produce rendered images. In the following sections of the documentation, we will delve into the specifics of our implementation and explain how various components and algorithms work together to achieve the desired results.
 
+![pillars](img/pillars.png)
+
 ### A Ray Tracer in C?! Are we crazy? 
 
 No, not really. Indeed, maybe C is not the first language that comes to mind when we think about a project this size and scope, but attempting to code it in a language like this does have its perks - and downnsides.
